@@ -21,8 +21,6 @@ sim_kghunnlaks_filnavn <- "results/KgHunnlaks2019.txt"
 # initialiser en liste over vassdrag som skal være med i innsigsfordelingen med noen bakgrunnstall
 elveliste <- read.csv("data/elveliste.csv", header = TRUE, sep = ";", stringsAsFactors = FALSE, fileEncoding = "UTF-8-BOM")
 antall_elver <- nrow(elveliste)
-elveliste$VdrNr <- as.character(elveliste$VdrNr)
-elveliste$Vassdrag <- as.character(elveliste$Vassdrag)
 
 # fordelingsnøkkel for fordeling av fangsten i kystregionene 
 kyst_fordeling <- read.csv("data/fordelingsnokkel_sjofangst.csv", header = TRUE, sep = ";", stringsAsFactors = FALSE, fileEncoding = "UTF-8-BOM")
@@ -198,14 +196,16 @@ for (i in 1:antall_elver) {
 # initier data.frame for samlede resultat og begynn å sette inn variable med resultat
 #-----------------------------------------------------------------------------------------------------------------
 
-resultat_fordeling <- data.frame(matrix(0, nrow = antall_elver * antall_aar, ncol = 29, 
+resultat_fordeling <- data.frame(matrix(0, nrow = antall_elver * antall_aar, ncol = 35, 
                                         dimnames = list(NULL, c("VdrNr", "Vassdrag", "Aar", "RegionNr", "Region", "Gyt_vekt_u3", "Gyt_vekt_37",
                                                                 "Gyt_vekt_o7", "Gyt_ant_u3", "Gyt_ant_37", "Gyt_ant_o7", "Fangst_elv_vekt_u3", 
                                                                 "Fangst_elv_vekt_37", "Fangst_elv_vekt_o7", "Fangst_elv_ant_u3", "Fangst_elv_ant_37", 
                                                                 "Fangst_elv_ant_o7", "PFA_elv_vekt_u3", "PFA_elv_vekt_37", "PFA_elv_vekt_o7",
                                                                 "PFA_elv_ant_u3", "PFA_elv_ant_37", "PFA_elv_ant_o7", "Andel_region_vekt_u3",
                                                                 "Andel_region_vekt_37", "Andel_region_vekt_o7", "Andel_region_ant_u3", 
-                                                                "Andel_region_ant_37", "Andel_region_ant_o7"
+                                                                "Andel_region_ant_37", "Andel_region_ant_o7", "Sjofangst_vekt_u3",
+                                                                "Sjofangst_vekt_37", "Sjofangst_vekt_o7", "Sjofangst_ant_u3", "Sjofangst_ant_37",
+                                                                "Sjofangst_ant_o7"
                                                                 ))))
 i <- 1
 for (j in 1:antall_aar) {
@@ -234,6 +234,7 @@ for (j in 1:antall_aar) {
   for (i in 1:antall_elver) {
     k <- filter(ddf, Region == elveliste$RegionNavn[i] & Aar == aar_liste[j])
     resultat_fordeling[l, 24:29] <- resultat_fordeling[l, 18:23] / k[1, 3:8]
+    resultat_fordeling[l, 30:35] <- resultat_fordeling[l, 24:29] * region_fangst[j, elveliste$RegionNr[i], 1:6]
     l <- l + 1
   }
 }
