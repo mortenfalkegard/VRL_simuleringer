@@ -1,0 +1,11 @@
+﻿Kystregion;Østlandet;Agderkysten;Jæren;Kysten_fra_Stadt_til_Stavanger;Kysten_av_Møre_og_Romsdal;Kysten_av_Trøndelag;Nordlandskysten_sør_for_Vestfjorden;Lofoten_og_Vesterålen;Kysten_av_Troms;Kysten_av_Finnmark;Indre_Rogaland;Indre_Hordaland;Sognefjorden;Indre_Fjordane;Fjordene_i_Møre_og_Romsdal;Fjordstrøk_i_Trøndelag;Indre_Helgeland;Ofoten_og_Indre_Salten;Fjordstrøkene_i_Troms;Fjordene_i_Vest-Finnmark;Porsangerfjorden;Tanafjorden;Indre_Varanger;Utlandet
+Østlandet;80;10;;;;;;;;;;;;;;;;;;;;;;10
+Agderkysten;10;78;10;;;;;;;;1;;;;;;;;;;;;;1
+Jæren;;10;73;;;;;;;;10;5;1;1;;;;;;;;;;
+Kysten_fra_Stadt_til_Stavanger;5;10;15;10;1;;;;;;19;5;10;15;10;;;;;;;;;
+Kysten_av_Møre_og_Romsdal;;;;0.5;5;1.5;;;;;;;1;1;65;26;;;;;;;;
+Kysten_av_Trøndelag;;;;;0.5;10;;;;;;;;;10;78;1.5;;;;;;;
+Nordlandskysten_sør_for_Vestfjorden;;;;;0.5;5;20;13;;;;;;;1.5;20;20;20;;;;;;
+Lofoten_og_Vesterålen;;;;;;;1;50;1;;;;;;;;1;20;27;;;;;
+Kysten_av_Troms;;;;;;;;;10;2.5;;;;;;;;;60;15;2.5;10;;
+Kysten_av_Finnmark;;;;;;;;;1;11;;;;;;;;;2;18;9;33;6;20

@@ -1,0 +1,413 @@
+﻿Vassdrag;VdrNr;RegionNr;RegionNavn;Filnavn;GBM;GBM_lav;GBM_hoy;Andel15;GytingSim;Fjord;Ytre
+Akerselva;006.Z;23;Østlandet;;37;28;55;0.55;FALSE;;TRUE
+Drammenselva;012.Z;23;Østlandet;;4355;2177;6532;0.98;FALSE;;TRUE
+Enningdalselva;001.1Z;23;Østlandet;Enningdal;453;339;680;1;TRUE;;TRUE
+Gjersjøelva;005.4Z;23;Østlandet;;20;15;30;0.62;FALSE;;TRUE
+Glomma;002.Z;23;Østlandet;Glomma;960;480;1440;1;TRUE;;TRUE
+Herrevassdraget;016.4Z;23;Østlandet;;80;40;120;0.95;FALSE;;TRUE
+Lierelva;011.Z;23;Østlandet;;494;247;741;0.87;FALSE;;TRUE
+Lysakerelva;007.Z;23;Østlandet;;53;40;80;0.91;FALSE;;TRUE
+Numedalslågen;015.Z;23;Østlandet;Numedal;12296;6148;18444;0.98554232;TRUE;;TRUE
+Sandvikselva;008.Z;23;Østlandet;Sandvikselva;331;248;497;0.936027712;TRUE;;TRUE
+Skiensvassdraget;016.Z;23;Østlandet;Skien;1496;748;2244;0.99;TRUE;;TRUE
+Tista;001.Z;23;Østlandet;;;;;1;FALSE;;TRUE
+Åroselva;009.Z;23;Østlandet;Aaros;247;185;370;0.97;TRUE;;TRUE
+Audna;023.Z;22;Agderkysten;Audna;1210;605;1815;0.929961737;TRUE;;TRUE
+Feda;025.3Z;22;Agderkysten;;73;36;109;0.97;FALSE;;TRUE
+Kvina;025.Z;22;Agderkysten;Kvina;1875;1406;2813;0.986883807;TRUE;;TRUE
+Lygna;024.Z;22;Agderkysten;Lygna;1889;1417;2834;0.97120612;TRUE;;TRUE
+Mandalselva;022.Z;22;Agderkysten;Mandal;5155;3866;7733;0.948969593;TRUE;;TRUE
+Nidelva;019.Z;22;Agderkysten;NidelvaAA;1574;787;2361;0.900190212;TRUE;;TRUE
+Otra;021.Z;22;Agderkysten;Otra;2341;1756;3511;0.952576711;TRUE;;TRUE
+Songdalselva (Søgne);022.1Z;22;Agderkysten;SogneSogndal;559;419;838;0.72;TRUE;;TRUE
+Tovdalselva;020.Z;22;Agderkysten;Tovdal;3721;2791;5582;0.960569885;TRUE;;TRUE
+Vegårdsvassdraget;018.Z;22;Agderkysten;;565;424;848;0.908910729;FALSE;;TRUE
+Sira;026.Z;22;Agderkysten;;163;122;244;0.88;FALSE;;TRUE
+Bjerkreimselva;027.Z;21;Jæren;Bjerkreim;4319;3239;5399;0.932639577;TRUE;;TRUE
+Figgjo;028.Z;21;Jæren;Figgjo;2246;1871;2620;0.94821124;TRUE;;TRUE
+Fuglestadelva;027.7Z;21;Jæren;Fuglestad;387;290;483;0.921875903;TRUE;;TRUE
+Hellelandselva;027.3Z;21;Jæren;;123;92;185;0.909831888;FALSE;;TRUE
+Håelva;028.3Z;21;Jæren;Haaelv;1821;1366;2276;0.950105153;TRUE;;TRUE
+Kvassheimelva;028.1Z;21;Jæren;Kvassheim;67;56;78;0.689489802;TRUE;;TRUE
+Nordre Varhaugselva;028.21Z;21;Jæren;Nvarhaug;73;54;91;0.35;TRUE;;TRUE
+Ogna;027.6Z;21;Jæren;Ogna;1162;968;1356;0.894614862;TRUE;;TRUE
+Sokndalselva;026.4Z;21;Jæren;Sokndal;861;646;1076;0.913576846;TRUE;;TRUE
+Søndre Varhaugselva;028.21Z;21;Jæren;Svarhaug;73;54;91;0.35;TRUE;;TRUE
+Espedalselva;030.4Z;20;Indre_Rogaland;Espedal;648;486;972;0.984927371;TRUE;;FALSE
+Dirdalselva;030.2Z;20;Indre_Rogaland;Dirdal;310;233;466;0.986790552;TRUE;;FALSE
+Frafjordelva;030.Z;20;Indre_Rogaland;Frafjord;239;179;358;0.988941594;TRUE;;FALSE
+Hjelmelandsåna;035.2Z;20;Indre_Rogaland;Hjelmeland;97;73;121;0.944319343;TRUE;;FALSE
+Hålandselva;035.7Z;20;Indre_Rogaland;Haaland;119;89;178;0.974990062;TRUE;;FALSE
+Jørpelandsåna;032.Z;20;Indre_Rogaland;Jorpeland;111;83;166;0.939671263;TRUE;;FALSE
+Lyseelva;031.Z;20;Indre_Rogaland;Lyse;166;124;234;0.967413731;TRUE;;FALSE
+Rødneelva;038.3Z;20;Indre_Rogaland;Rodne;123;93;154;0.88;TRUE;;FALSE
+Storelva (Sauda);037.Z;20;Indre_Rogaland;;174;87;260;0.96;FALSE;;FALSE
+Suldalslågen;036.Z;20;Indre_Rogaland;Suldal;2318;1738;3477;0.985049491;TRUE;;FALSE
+Svendsbøelva;041.21Z;20;Indre_Rogaland;;;;;0.7;FALSE;;FALSE
+Ulla;035.Z;20;Indre_Rogaland;Ulla;178;133;266;0.98848805;TRUE;;FALSE
+Vikedalselva;038.Z;20;Indre_Rogaland;Vikedal;736;552;920;0.93;TRUE;;FALSE
+Vorma;035.3Z;20;Indre_Rogaland;Vormo;300;225;375;0.95;TRUE;;FALSE
+Nordelva (Åbøelva);037.2Z;20;Indre_Rogaland;;55;41;82;0.93;FALSE;;FALSE
+Åmselva;038.5Z;20;Indre_Rogaland;;;;;0.61;FALSE;;FALSE
+Årdalselva;033.Z;20;Indre_Rogaland;Aardal;892;669;1338;0.980832553;TRUE;;FALSE
+Frøysetelva (Yndesdal);067.6Z;19;Indre_Hordaland;Froyset;169;126;211;0.947404848;TRUE;Austfjorden;FALSE
+Haugsdalselva;067.2Z;19;Indre_Hordaland;;139;104;208;0.961880066;FALSE;Austfjorden;FALSE
+Hopevassdraget;067.4Z;19;Indre_Hordaland;;;;;0.77;FALSE;Austfjorden;FALSE
+Matreelva;067.3Z;19;Indre_Hordaland;;150;112;225;1;FALSE;Austfjorden;FALSE
+Daleelva;061.Z;19;Indre_Hordaland;DaleelvaiVaksdal;195;146;292;0.964812145;TRUE;Osterøy;FALSE
+Ekso;063.Z;19;Indre_Hordaland;Ekso;219;164;328;0.98;TRUE;Osterøy;FALSE
+Loneelva;060.4Z;19;Indre_Hordaland;Lone;153;127;178;0.882402284;TRUE;Osterøy;FALSE
+Modalselva;064.Z;19;Indre_Hordaland;;598;448;896;0.94;FALSE;Osterøy;FALSE
+Romarheimselva;064.4Z;19;Indre_Hordaland;;;;;0.2649;FALSE;Osterøy;FALSE
+Storelva (Arna);061.2Z;19;Indre_Hordaland;StorelvaiArna;167;125;209;0.959785176;TRUE;Osterøy;FALSE
+Vosso;062.Z;19;Indre_Hordaland;;2110;1583;3166;0.96394;FALSE;Osterøy;FALSE
+Bondhuselva;046.3Z;19;Indre_Hordaland;;;;;0.981403072;FALSE;Hardanger;FALSE
+Eio;050.Z;19;Indre_Hordaland;Eio;427;320;641;1.000117998;TRUE;Hardanger;FALSE
+Etneelva;041.Z;19;Indre_Hordaland;Etne;1025;769;1281;0.94;TRUE;Hardanger;FALSE
+Fjæraelva;042.3Z;19;Indre_Hordaland;;38;28;57;0.99;FALSE;Hardanger;FALSE
+Tordalselva (Fosselva);053.1Z;19;Indre_Hordaland;;;;;0.99;FALSE;Hardanger;FALSE
+Granvin;052.1Z;19;Indre_Hordaland;Granvin;187;140;281;0.991914798;TRUE;Hardanger;FALSE
+Guddalselva;045.32Z;19;Indre_Hordaland;;;;;0.926032275;FALSE;Hardanger;FALSE
+Hopselva (Fusa);055.3Z;19;Indre_Hordaland;;;;;0.9139;FALSE;Hardanger;FALSE
+Jondalselva;047.2Z;19;Indre_Hordaland;;54;40;67;1;FALSE;Hardanger;FALSE
+Kinso;050.1Z;19;Indre_Hordaland;Kinso;126;95;189;1;TRUE;Hardanger;FALSE
+Lønningdalselva;055.6Z;19;Indre_Hordaland;;;;;0.5;FALSE;Hardanger;FALSE
+Mosneselva;042.4Z;19;Indre_Hordaland;;;;;0.922160156;FALSE;Hardanger;FALSE
+Opo;048.Z;19;Indre_Hordaland;;149;111;223;1;FALSE;Hardanger;FALSE
+Oselva;055.7Z;19;Indre_Hordaland;OselvaiOs;425;319;637;0.971168317;TRUE;Hardanger;FALSE
+Rosendalselva;045.4Z;19;Indre_Hordaland;Rosendal;99;74;124;0.97;TRUE;Hardanger;FALSE
+Simadalselva (Simo);050.4Z;19;Indre_Hordaland;;;;;1;FALSE;Hardanger;FALSE
+Steinsdalselva;052.7Z;19;Indre_Hordaland;SteinsdalKvam;233;175;291;0.99;TRUE;Hardanger;FALSE
+Tysseelva;055.Z;19;Indre_Hordaland;Tysse;247;185;371;0.86;TRUE;Hardanger;FALSE
+Uskedalselva;045.2Z;19;Indre_Hordaland;;;;;0.9231384;FALSE;Hardanger;FALSE
+Æneselva;046.1Z;19;Indre_Hordaland;;;;;1;FALSE;Hardanger;FALSE
+Øysteseelva;052.6Z;19;Indre_Hordaland;;;;;0.97;FALSE;Hardanger;FALSE
+Aurlandselva;072.Z;18;Sognefjorden;Aurlandselva;596;447;894;0.945965957;TRUE;;FALSE
+Bøelva;080.4Z;18;Sognefjorden;;22;16;27;0.861090706;FALSE;;FALSE
+Daleelva;079.Z;18;Sognefjorden;DaleiHoyanger;271;203;406;0.982430373;TRUE;;FALSE
+Flåmselva;072.2Z;18;Sognefjorden;Flaam;196;147;294;0.98;TRUE;;FALSE
+Jostedøla (Jostedalselva);076.Z;18;Sognefjorden;;;;;1;FALSE;;FALSE
+Lærdalselva;073.Z;18;Sognefjorden;Laerdal;5017;3763;6271;1;TRUE;;FALSE
+Nærøydalselva;071.Z;18;Sognefjorden;Naeroydal;513;385;769;0.965624389;TRUE;;FALSE
+Ortnevikselva;070.2Z;18;Sognefjorden;;0;0;0;0.784119122;FALSE;;FALSE
+Sogndalselva;077.3Z;18;Sognefjorden;Sogndal;114;86;172;0.897065455;TRUE;;FALSE
+Storelvi (Fjærland);078.2Z;18;Sognefjorden;;;;;0.998127543;FALSE;;FALSE
+Vetlefjordelvi;078.5Z;18;Sognefjorden;;;;;0.94;FALSE;;FALSE
+Vikja;070.Z;18;Sognefjorden;Vikja;43;32;64;0.977081847;TRUE;;FALSE
+Årdalselva;074.Z;18;Sognefjorden;;;;;0.960561574;FALSE;;FALSE
+Årøyelva;077.Z;18;Sognefjorden;Aaroy;128;96;160;0.997058413;TRUE;;FALSE
+Eidselva;089.Z;17;Indre_Fjordane;Eidselva;763;572;1145;0.982451369;TRUE;Nordfjord;FALSE
+Gloppenelva;087.Z;17;Indre_Fjordane;Gloppen;443;332;664;0.997940829;TRUE;Nordfjord;FALSE
+Hjalma;089.4Z;17;Indre_Fjordane;Hjalma;121;91;182;0.92220317;TRUE;Nordfjord;FALSE
+Hopselva;086.8Z;17;Indre_Fjordane;HopselvaHyen;94;70;117;0.952537969;TRUE;Nordfjord;FALSE
+Loelva;088.2Z;17;Indre_Fjordane;Loen;127;95;191;0.993544926;TRUE;Nordfjord;FALSE
+Oldenelva;088.1Z;17;Indre_Fjordane;Olden;151;114;227;0.99656729;TRUE;Nordfjord;FALSE
+Ryggelva;087.1Z;17;Indre_Fjordane;;56;42;84;0.936240646;FALSE;Nordfjord;FALSE
+Strynselva;088.Z;17;Indre_Fjordane;Stryn;540;270;810;0.999486013;TRUE;Nordfjord;FALSE
+Åelva og Ommedalselva;086.Z;17;Indre_Fjordane;AaOmmedal;436;326;545;0.980877414;TRUE;Nordfjord;FALSE
+Jølstra;084.Z;17;Indre_Fjordane;Jolstra;1153;865;1441;0.997565806;TRUE;Førdefjorden;FALSE
+Nausta;084.7Z;17;Indre_Fjordane;Nausta;2171;1628;2713;0.946669196;TRUE;Førdefjorden;FALSE
+Dalselva (Dale);082.5Z;17;Indre_Fjordane;DalselvaDaleFjaler;142;107;213;0.906561965;TRUE;Dalsfjorden;FALSE
+Flekkeelva;082.Z;17;Indre_Fjordane;Flekke;277;188;415;0.992059568;TRUE;Dalsfjorden;FALSE
+Gaula i Sunnfjorden;083.Z;17;Indre_Fjordane;Gaular;1443;1082;2164;0.985024591;TRUE;Dalsfjorden;FALSE
+Kvamselva;083.2Z;17;Indre_Fjordane;Kvamselva;172;129;215;0.61;TRUE;Dalsfjorden;FALSE
+Rivedalselva;083.4Z;17;Indre_Fjordane;;38;28;57;0.89;FALSE;Dalsfjorden;FALSE
+Ervikelva;091.3Z;16;Kysten_fra_Stadt_til_Stavanger;Ervik;123;92;154;0.99540256;TRUE;;TRUE
+Indrehusvassdraget;086.1Z;16;Kysten_fra_Stadt_til_Stavanger;;;;;0.958389601;FALSE;;TRUE
+Norddalselva (Flora);085.5Z;16;Kysten_fra_Stadt_til_Stavanger;;;;;0.93;FALSE;;TRUE
+Osenelva;085.Z;16;Kysten_fra_Stadt_til_Stavanger;OsenFlora;1019;764;1274;0.999040423;TRUE;;TRUE
+Solheimsvassdraget;085.4Z;16;Kysten_fra_Stadt_til_Stavanger;;;;;0.988591756;FALSE;;TRUE
+Fjellvassdraget;057.2Z;16;Kysten_fra_Stadt_til_Stavanger;;;;;0.99;FALSE;;TRUE
+Kjærelva;044.5Z;16;Kysten_fra_Stadt_til_Stavanger;;;;;0.9386125;FALSE;;TRUE
+Batnfjordselva;108.3Z;15;Fjordene_i_Møre_og_Romsdal;;875;656;1094;0.45;FALSE;Nordmørsfjordene;FALSE
+Fjelna;113.Z;15;Fjordene_i_Møre_og_Romsdal;Fjelna;108;81;161;0.9;TRUE;Nordmørsfjordene;FALSE
+Bævra;112.3Z;15;Fjordene_i_Møre_og_Romsdal;;1074;805;1611;0.961772642;FALSE;Nordmørsfjordene;FALSE
+Driva;109.Z;15;Fjordene_i_Møre_og_Romsdal;;6073;4555;9110;0.988630509;FALSE;Nordmørsfjordene;FALSE
+Litledalselva;109.5Z;15;Fjordene_i_Møre_og_Romsdal;;252;189;378;0.951799045;FALSE;Nordmørsfjordene;FALSE
+Nås (Vågsbøelva);108.2Z;15;Fjordene_i_Møre_og_Romsdal;Vaagsbo;344;258;457;0.477033162;TRUE;Nordmørsfjordene;FALSE
+Surna;112.Z;15;Fjordene_i_Møre_og_Romsdal;Surna;4836;3627;7254;0.99135287;TRUE;Nordmørsfjordene;FALSE
+Søya;111.7Z;15;Fjordene_i_Møre_og_Romsdal;Soya;828;621;1241;0.480216077;TRUE;Nordmørsfjordene;FALSE
+Todalselva (Aure);113.6Z;15;Fjordene_i_Møre_og_Romsdal;;164;123;246;0.735229167;FALSE;Nordmørsfjordene;FALSE
+Toåa (Tordalselva Surnadal);111.Z;15;Fjordene_i_Møre_og_Romsdal;Toaaa;426;319;639;0.94465397;TRUE;Nordmørsfjordene;FALSE
+Usma;109.4Z;15;Fjordene_i_Møre_og_Romsdal;;370;278;556;0.907538462;FALSE;Nordmørsfjordene;FALSE
+Vassgårdselva;108.221Z;15;Fjordene_i_Møre_og_Romsdal;;30;22;44;0.611968775;FALSE;Nordmørsfjordene;FALSE
+Eira;104.Z;15;Fjordene_i_Møre_og_Romsdal;Eira;761;571;1142;0.986586242;TRUE;Romsdalsfjorden;FALSE
+Innfjordelva;103.2Z;15;Fjordene_i_Møre_og_Romsdal;;275;206;343;0.921419724;FALSE;Romsdalsfjorden;FALSE
+Isa (Henselva);103.4Z;15;Fjordene_i_Møre_og_Romsdal;;566;425;850;0.905538235;FALSE;Romsdalsfjorden;FALSE
+Måna;103.1Z;15;Fjordene_i_Møre_og_Romsdal;;363;272;454;0.98004178;FALSE;Romsdalsfjorden;FALSE
+Oselva;105.Z;15;Fjordene_i_Møre_og_Romsdal;OselvaMolde;892;669;1115;0.791571224;TRUE;Romsdalsfjorden;FALSE
+Istadelva (Olterelva);105.3Z;15;Fjordene_i_Møre_og_Romsdal;;36;27;54;0.144776891;FALSE;Romsdalsfjorden;FALSE
+Rauma;103.Z;15;Fjordene_i_Møre_og_Romsdal;;5216;3912;7823;1.011851612;FALSE;Romsdalsfjorden;FALSE
+Skorgeelva (Vestnes);102.5Z;15;Fjordene_i_Møre_og_Romsdal;;152;114;190;0.589558974;FALSE;Romsdalsfjorden;FALSE
+Tressa;102.6Z;15;Fjordene_i_Møre_og_Romsdal;Tressa;262;197;328;0.946622803;TRUE;Romsdalsfjorden;FALSE
+Visa;104.2Z;15;Fjordene_i_Møre_og_Romsdal;Visa;185;139;278;0.95;TRUE;Romsdalsfjorden;FALSE
+Aureelva;097.72Z;15;Fjordene_i_Møre_og_Romsdal;Aureelva;323;242;404;0.884988609;TRUE;Sunnmørsfjordene;FALSE
+Austefjordelva;094.4Z;15;Fjordene_i_Møre_og_Romsdal;Austefjord;233;175;291;0.95;TRUE;Sunnmørsfjordene;FALSE
+Barstadvikelva;095.4Z;15;Fjordene_i_Møre_og_Romsdal;Barstadvik;165;124;206;0.959034146;TRUE;Sunnmørsfjordene;FALSE
+Bondalselva;097.1Z;15;Fjordene_i_Møre_og_Romsdal;Bondal;582;437;728;0.95;TRUE;Sunnmørsfjordene;FALSE
+Eidsdalselva (Ytterdalselva);099.1Z;15;Fjordene_i_Møre_og_Romsdal;;172;129;258;0.909739188;FALSE;Sunnmørsfjordene;FALSE
+Hareidvassdraget;096.1Z;15;Fjordene_i_Møre_og_Romsdal;;388;291;485;0.83;FALSE;Sunnmørsfjordene;FALSE
+Korsbrekkelva;098.6Z;15;Fjordene_i_Møre_og_Romsdal;Korsbrekk;161;134;188;0.973470555;TRUE;Sunnmørsfjordene;FALSE
+Norangdalselva;097.4Z;15;Fjordene_i_Møre_og_Romsdal;Norangdal;127;95;159;0.98;TRUE;Sunnmørsfjordene;FALSE
+Norddalselva (Norddal);099.2Z;15;Fjordene_i_Møre_og_Romsdal;;86;65;108;0.97752724;FALSE;Sunnmørsfjordene;FALSE
+Norddalselva (Vanylven);093.3Z;15;Fjordene_i_Møre_og_Romsdal;;32;24;40;1;FALSE;Sunnmørsfjordene;FALSE
+Oselva (Syvde);093.2Z;15;Fjordene_i_Møre_og_Romsdal;OsSyvde;173;130;224;0.928008664;TRUE;Sunnmørsfjordene;FALSE
+Riksheimselva;097.6Z;15;Fjordene_i_Møre_og_Romsdal;;;;;0.79;FALSE;Sunnmørsfjordene;FALSE
+Solnørelva;101.2Z;15;Fjordene_i_Møre_og_Romsdal;Solnor;128;96;159;0.627571633;TRUE;Sunnmørsfjordene;FALSE
+Standalselva;097.11Z;15;Fjordene_i_Møre_og_Romsdal;;;;;0.945789364;FALSE;Sunnmørsfjordene;FALSE
+Stordalselva;100.2Z;15;Fjordene_i_Møre_og_Romsdal;StordaliStordal;724;543;905;0.957382748;TRUE;Sunnmørsfjordene;FALSE
+Storelva (Søre Vartdal);095.3Z;15;Fjordene_i_Møre_og_Romsdal;StorSVart;324;243;405;0.94544793;TRUE;Sunnmørsfjordene;FALSE
+Strandaelva;098.3Z;15;Fjordene_i_Møre_og_Romsdal;Stranda;343;257;515;0.986376139;TRUE;Sunnmørsfjordene;FALSE
+Tafjordelva;099.Z;15;Fjordene_i_Møre_og_Romsdal;;37;28;56;0.84711215;FALSE;Sunnmørsfjordene;FALSE
+Tennfjordelva;101.6Z;15;Fjordene_i_Møre_og_Romsdal;Tennfjord;346;260;433;0.648981644;TRUE;Sunnmørsfjordene;FALSE
+Vagsvikelva;100.3Z;15;Fjordene_i_Møre_og_Romsdal;;25;19;31;0.6;FALSE;Sunnmørsfjordene;FALSE
+Valldalselva;100.Z;15;Fjordene_i_Møre_og_Romsdal;Valldal;808;606;1212;0.996126976;TRUE;Sunnmørsfjordene;FALSE
+Velledalselva (Fet);097.7Z;15;Fjordene_i_Møre_og_Romsdal;Velledal;484;363;605;0.85346807;TRUE;Sunnmørsfjordene;FALSE
+Vikelva (Bjørke);097.2Z;15;Fjordene_i_Møre_og_Romsdal;VikelvBjorke;169;127;223;0.998465512;TRUE;Sunnmørsfjordene;FALSE
+Vikelva (Sykkylven);097.721Z;15;Fjordene_i_Møre_og_Romsdal;;;;;0.927693787;FALSE;Sunnmørsfjordene;FALSE
+Ørskogelva;101.1Z;15;Fjordene_i_Møre_og_Romsdal;Orskog;99;74;123;0.79;TRUE;Sunnmørsfjordene;FALSE
+Ørstaelva;095.Z;15;Fjordene_i_Møre_og_Romsdal;Orsta;1353;1015;1691;0.986969612;TRUE;Sunnmørsfjordene;FALSE
+Øyraelva (Volda);094.6Z;15;Fjordene_i_Møre_og_Romsdal;;9;7;11;0.798000505;FALSE;Sunnmørsfjordene;FALSE
+Åheimselva;092.Z;15;Fjordene_i_Møre_og_Romsdal;Aaheim;468;351;585;0.945938159;TRUE;Sunnmørsfjordene;FALSE
+Hildreelva;102.11Z;14;Fjordene_i_Møre_og_Romsdal;;20;17;23;0.1627;FALSE;;TRUE
+Hustadelva;107.6Z;14;Fjordene_i_Møre_og_Romsdal;Hustad;444;333;589;0.48;TRUE;;TRUE
+Sylteelva (Moa);107.3Z;14;Fjordene_i_Møre_og_Romsdal;Sylteelva;406;304;507;0.729279466;TRUE;;TRUE
+Horvenelva;143.532Z;13;Fjordstrøk_i_Trøndelag;;152;114;227;0.65;FALSE;Sørsalten;FALSE
+Kongsmoelva;142.3Z;13;Fjordstrøk_i_Trøndelag;KongsmoAlene;306;153;460;0.804963073;TRUE;Foldafjorden;FALSE
+Kvistenelva;141.4Z;13;Fjordstrøk_i_Trøndelag;;89;66;133;0.246930769;FALSE;Foldafjorden;FALSE
+Nordfolda;142.3AZ;13;Fjordstrøk_i_Trøndelag;Nordfolda;124;62;186;0.804963073;TRUE;Foldafjorden;FALSE
+Opløyelva;141.Z;13;Fjordstrøk_i_Trøndelag;;2;2;3;0.95;FALSE;Foldafjorden;FALSE
+Aursunda;138.5Z;13;Fjordstrøk_i_Trøndelag;Aursunda;327;245;490;0.203043887;TRUE;Namsfjorden;FALSE
+Bogna;138.6Z;13;Fjordstrøk_i_Trøndelag;Bogna;870;653;1306;0.763211264;TRUE;Namsfjorden;FALSE
+Namsen;139.Z;13;Fjordstrøk_i_Trøndelag;Namsen;18654;11161;26148;0.94850049;TRUE;Namsfjorden;FALSE
+Oksdøla;138.3Z;13;Fjordstrøk_i_Trøndelag;Oksdola;258;194;388;0.517739193;TRUE;Namsfjorden;FALSE
+Salvassdraget;140.Z;13;Fjordstrøk_i_Trøndelag;Salvassdraget;797;598;1196;0.75;TRUE;Namsfjorden;FALSE
+Årgårdsvassdraget/Øyen;138.ZB;13;Fjordstrøk_i_Trøndelag;AargaardAargOyensaaa;1008;755;1259;0.35;TRUE;Namsfjorden;FALSE
+Årgårdsvassdraget/Ferga;138.ZA;13;Fjordstrøk_i_Trøndelag;AargaardFergaOsterelva;2512;1884;3139;0.35;TRUE;Namsfjorden;FALSE
+Norddalselva;135.ZB;13;Fjordstrøk_i_Trøndelag;NordalselvaAafjord;834;625;1251;0.534752544;TRUE;Åfjord;FALSE
+Oldenelva;135.1Z;13;Fjordstrøk_i_Trøndelag;OldenelvaBjugn;177;132;221;0.41;TRUE;Åfjord;FALSE
+Stordalselva;135.Z;13;Fjordstrøk_i_Trøndelag;StordalselvaAafjord;3090;2317;3862;0.795809127;TRUE;Åfjord;FALSE
+Børsa;122.1Z;13;Fjordstrøk_i_Trøndelag;Borsa;137;103;171;0.525672222;TRUE;Trondheimsfjorden;FALSE
+Figga;128.3Z;13;Fjordstrøk_i_Trøndelag;;773;580;1159;;FALSE;Trondheimsfjorden;FALSE
+Gaula;122.Z;13;Fjordstrøk_i_Trøndelag;Gaula;25817;19362;32271;0.998068456;TRUE;Trondheimsfjorden;FALSE
+Homla;123.4Z;13;Fjordstrøk_i_Trøndelag;Homla;250;188;313;0.85549798;TRUE;Trondheimsfjorden;FALSE
+Levangerelva;126.6Z;13;Fjordstrøk_i_Trøndelag;Levanger;516;387;774;0.7;TRUE;Trondheimsfjorden;FALSE
+Nidelva;123.Z;13;Fjordstrøk_i_Trøndelag;NidelvaTrondheim;2730;2047;3412;0.99300495;TRUE;Trondheimsfjorden;FALSE
+Nordelva;133.3Z;13;Fjordstrøk_i_Trøndelag;NordelvaBjugn;575;431;719;0.937256481;TRUE;Trondheimsfjorden;FALSE
+Orkla;121.Z;13;Fjordstrøk_i_Trøndelag;Orkla;18911;14183;23639;0.991691732;TRUE;Trondheimsfjorden;FALSE
+Osaelva;133.2Z;13;Fjordstrøk_i_Trøndelag;;130;97;162;0.24;FALSE;Trondheimsfjorden;FALSE
+Skauga;132.Z;13;Fjordstrøk_i_Trøndelag;Skauga;1179;884;1768;0.936640922;TRUE;Trondheimsfjorden;FALSE
+Steinkjerelva;128.Z;13;Fjordstrøk_i_Trøndelag;;1743;1308;2615;0.98;FALSE;Trondheimsfjorden;FALSE
+Stjørdalselva;124.Z;13;Fjordstrøk_i_Trøndelag;Stjordal;6763;5072;10144;0.995307469;TRUE;Trondheimsfjorden;FALSE
+Verdalselva;127.Z;13;Fjordstrøk_i_Trøndelag;Verdal;4016;3012;6025;0.95;TRUE;Trondheimsfjorden;FALSE
+Vigda;122.2Z;13;Fjordstrøk_i_Trøndelag;Vigda;309;232;386;0.866158918;TRUE;Trondheimsfjorden;FALSE
+Bergselva;119.4Z;13;Fjordstrøk_i_Trøndelag;;36;27;54;0.58;FALSE;Hemnfjorden;FALSE
+Snilldalselva;119.42Z;13;Fjordstrøk_i_Trøndelag;;113;85;170;1;FALSE;Hemnfjorden;FALSE
+Søa;119.1Z;13;Fjordstrøk_i_Trøndelag;Soa;171;112;256;0.7;TRUE;Hemnfjorden;FALSE
+Åstelva;119.6Z;13;Fjordstrøk_i_Trøndelag;;3;3;4;0.96;FALSE;Hemnfjorden;FALSE
+Lauvsneselva;137.7Z;12;Kysten_av_Trøndelag;;0;0;0;0.85;FALSE;;TRUE
+Steinsdalselva;137.2Z;12;Kysten_av_Trøndelag;SteinsdalselvaOsen;1207;905;1810;0.822545979;TRUE;;TRUE
+Straumsvassdraget;136.52Z;12;Kysten_av_Trøndelag;;48;36;72;0.4547;FALSE;;TRUE
+Teksdalselva;134.Z;12;Kysten_av_Trøndelag;Teksdalselva;49;37;62;0.936414733;TRUE;;TRUE
+Åelva;116.Z;12;Kysten_av_Trøndelag;AaelvaHemne;436;310;654;0.7;TRUE;;TRUE
+Flostrandvassdraget;157.42Z;11;Indre_Helgeland;;60;45;90;0.8;FALSE;Sjona;FALSE
+Bjerka;155.4Z;11;Indre_Helgeland;;205;112;308;0.8;FALSE;Ranafjorden;FALSE
+Ranavassdraget;156.Z;11;Indre_Helgeland;Rana;1222;611;1833;0.995587401;TRUE;Ranafjorden;FALSE
+Røssåga;155.Z;11;Indre_Helgeland;Rossaaga;1249;624;1873;0.974395358;TRUE;Ranafjorden;FALSE
+Bardalselva;153.6Z;11;Indre_Helgeland;;190;143;285;0.38;FALSE;Vefsnfjorden;FALSE
+Breilandselva;153.32Z;11;Indre_Helgeland;;;;;0.746914815;FALSE;Vefsnfjorden;FALSE
+Drevjavassdraget;152.2Z;11;Indre_Helgeland;;570;285;855;0.83;FALSE;Vefsnfjorden;FALSE
+Fustavassdraget;152.Z;11;Indre_Helgeland;;1263;947;1894;0.96;FALSE;Vefsnfjorden;FALSE
+Halsanelva;149.6Z;11;Indre_Helgeland;;133;100;200;0.36;FALSE;Vefsnfjorden;FALSE
+Hestdalselva;149.61Z;11;Indre_Helgeland;;80;60;121;0.66;FALSE;Vefsnfjorden;FALSE
+Hundåla;151.1Z;11;Indre_Helgeland;;131;65;196;1;FALSE;Vefsnfjorden;FALSE
+Lakselvvassdraget;149.2Z;11;Indre_Helgeland;;307;153;460;0.99;FALSE;Vefsnfjorden;FALSE
+Leirelvvassdraget;153.22Z;11;Indre_Helgeland;;171;128;256;0.841984195;FALSE;Vefsnfjorden;FALSE
+Ranelva (Leirfjord);153.3Z;11;Indre_Helgeland;;56;42;71;0.993542654;FALSE;Vefsnfjorden;FALSE
+Vefsnavassdraget;151.Z;11;Indre_Helgeland;;6306;4730;7883;0.977276065;FALSE;Vefsnfjorden;FALSE
+Lomselva;148.Z;11;Indre_Helgeland;;221;110;331;0.723175115;FALSE;Vellfjorden;FALSE
+Sausvassdraget;148.2Z;11;Indre_Helgeland;;750;563;938;0.86;FALSE;Vellfjorden;FALSE
+Bogelva (Bindal);144.61Z;11;Indre_Helgeland;;115;87;173;0.98;FALSE;Bindalsfjorden;FALSE
+Eidevassdraget;145.2Z;11;Indre_Helgeland;EideBindal;155;117;233;0.685728833;TRUE;Bindalsfjorden;FALSE
+Storelva (Tosbotn);144.7Z;11;Indre_Helgeland;StorelvaTosbotn;93;70;140;0.81;TRUE;Bindalsfjorden;FALSE
+Terråkelva;144.4Z;11;Indre_Helgeland;;55;28;83;0.8;FALSE;Bindalsfjorden;FALSE
+Urvollvassdraget;144.5Z;11;Indre_Helgeland;;75;56;112;0.565316535;FALSE;Bindalsfjorden;FALSE
+Åbjøra;144.Z;11;Indre_Helgeland;Aabjora;954;477;1430;0.88;TRUE;Bindalsfjorden;FALSE
+Bogenvassdraget;175.2Z;10;Ofoten_og_Indre_Salten;;;;;0.27;FALSE;Vestfjorden/Ofotfjorden;FALSE
+Elvegårdselva;174.5Z;10;Ofoten_og_Indre_Salten;Elvegard;172;129;258;0.992810575;TRUE;Vestfjorden/Ofotfjorden;FALSE
+Forsåvassdraget;172.Z;10;Ofoten_og_Indre_Salten;Forsaa;324;225;485;0.914615377;TRUE;Vestfjorden/Ofotfjorden;FALSE
+Heggedalselva;177.7Z;10;Ofoten_og_Indre_Salten;Heggedal;95;47;142;0.75;TRUE;Vestfjorden/Ofotfjorden;FALSE
+Kjeldelva;173.1Z;10;Ofoten_og_Indre_Salten;Kjeld;364;273;546;0.59;TRUE;Vestfjorden/Ofotfjorden;FALSE
+Kongsvikelva;177.6Z;10;Ofoten_og_Indre_Salten;;120;90;180;0.57;FALSE;Vestfjorden/Ofotfjorden;FALSE
+Lakselva (Beisfjord);174.2Z;10;Ofoten_og_Indre_Salten;;;;;0.3817;FALSE;Vestfjorden/Ofotfjorden;FALSE
+Laksåvassdraget (Evenes);175.3Z;10;Ofoten_og_Indre_Salten;;50;37;74;0.37;FALSE;Vestfjorden/Ofotfjorden;FALSE
+Muskvikelva;171.6Z;10;Ofoten_og_Indre_Salten;;;;;0.6;FALSE;Vestfjorden/Ofotfjorden;FALSE
+Myklebostadvassdraget;176.2Z;10;Ofoten_og_Indre_Salten;;40;30;60;0.39;FALSE;Vestfjorden/Ofotfjorden;FALSE
+Rombakselva;174.3Z;10;Ofoten_og_Indre_Salten;;60;30;90;0.9;FALSE;Vestfjorden/Ofotfjorden;FALSE
+Rånavassdraget;173.3Z;10;Ofoten_og_Indre_Salten;Raana;91;68;137;0.97;TRUE;Vestfjorden/Ofotfjorden;FALSE
+Sagvatnanvassdraget;170.Z;10;Ofoten_og_Indre_Salten;;;;;0.62;FALSE;Vestfjorden/Ofotfjorden;FALSE
+Skjoma;173.Z;10;Ofoten_og_Indre_Salten;Skjoma;547;274;821;0.97;TRUE;Vestfjorden/Ofotfjorden;FALSE
+Sneiselvvassdraget;177.73Z;10;Ofoten_og_Indre_Salten;;102;77;154;0.75;FALSE;Vestfjorden/Ofotfjorden;FALSE
+Storvatnvassdraget (Lødingen);178.112Z;10;Ofoten_og_Indre_Salten;;;;;0.8;FALSE;Vestfjorden/Ofotfjorden;FALSE
+Tårstadvassdraget;175.4Z;10;Ofoten_og_Indre_Salten;Taarstad;312;234;467;0.459148521;TRUE;Vestfjorden/Ofotfjorden;FALSE
+Varpavassdraget;170.5Z;10;Ofoten_og_Indre_Salten;Varpa;218;163;272;0.784432976;TRUE;Vestfjorden/Ofotfjorden;FALSE
+Bonnåga;167.3Z;10;Ofoten_og_Indre_Salten;Bonnaa;210;157;315;0.96;TRUE;Sørfolda;FALSE
+Kobbelvvassdraget;167.Z;10;Ofoten_og_Indre_Salten;;234;117;351;0.970859899;FALSE;Sørfolda;FALSE
+Lakselva (Valljorda);166.3Z;10;Ofoten_og_Indre_Salten;;98;74;123;0.71;FALSE;Sørfolda;FALSE
+Laksåga;166.5Z;10;Ofoten_og_Indre_Salten;LaksaagaSorfold;203;102;305;0.991672055;TRUE;Sørfolda;FALSE
+Stabburselva og Draugelva;171.Z;10;Ofoten_og_Indre_Salten;;86;43;129;0.841940181;FALSE;Sørfolda;FALSE
+Straumenvassdraget;166.4Z;10;Ofoten_og_Indre_Salten;;;;;0.952545769;FALSE;Sørfolda;FALSE
+Lakselva i Valnesfjord;164.3Z;10;Ofoten_og_Indre_Salten;LakselvaValnesfjord;298;149;447;0.9;TRUE;Skjerstadfjorden;FALSE
+Lakselva i Misvær (Bodø);162.7Z;10;Ofoten_og_Indre_Salten;;196;147;294;0.894348513;FALSE;Skjerstadfjorden;FALSE
+Saltdalsvassdraget;163.Z;10;Ofoten_og_Indre_Salten;Saltdal;2385;1193;3578;0.981058818;TRUE;Skjerstadfjorden;FALSE
+Beiarvassdraget;161.Z;10;Ofoten_og_Indre_Salten;Beiarn;1704;852;2555;0.984012699;TRUE;Beiarfjorden;FALSE
+Brattlandsvassdraget;157.6Z;9;Nordlandskysten_sør_for_Vestfjorden;;;;;0.87;FALSE;;TRUE
+Fjærevassdraget;165.7Z;9;Nordlandskysten_sør_for_Vestfjorden;Fjaere;75;56;94;0.52;TRUE;;TRUE
+Futelva;165.2Z;9;Nordlandskysten_sør_for_Vestfjorden;;88;66;132;0.3943415;FALSE;;TRUE
+Færsetvassdraget;147.3Z;9;Nordlandskysten_sør_for_Vestfjorden;;161;120;241;0.74;FALSE;;TRUE
+Gjervalelva;159.21Z;9;Nordlandskysten_sør_for_Vestfjorden;Gjerval;75;63;88;0.94633485;TRUE;;TRUE
+Hopsvassdraget i Bodø;165.1Z;9;Nordlandskysten_sør_for_Vestfjorden;;;;;0.94;FALSE;;TRUE
+Hopvassdraget (Steigen);168.6Z;9;Nordlandskysten_sør_for_Vestfjorden;;150;75;225;0.97411135;FALSE;;TRUE
+Laksådalsvassdraget;160.71Z;9;Nordlandskysten_sør_for_Vestfjorden;;37;28;55;0.3087;FALSE;;TRUE
+Lommervassdraget (Bellkjøselva);168.7Z;9;Nordlandskysten_sør_for_Vestfjorden;;;;;1.040723624;FALSE;;TRUE
+Reipåvassdraget;160.43Z;9;Nordlandskysten_sør_for_Vestfjorden;Reipaa;111;83;166;0.550827894;TRUE;;TRUE
+Silavassdraget;157.52Z;9;Nordlandskysten_sør_for_Vestfjorden;;28;21;41;0.3087;FALSE;;TRUE
+Skromma;160.51Z;9;Nordlandskysten_sør_for_Vestfjorden;;;;;0.75;FALSE;;TRUE
+Spildervassdraget;160.41Z;9;Nordlandskysten_sør_for_Vestfjorden;Spilder;235;176;352;0.806728619;TRUE;;TRUE
+Strandåvassdraget;165.8Z;9;Nordlandskysten_sør_for_Vestfjorden;;;;;0.230109524;FALSE;;TRUE
+Sundfjordselva;161.1Z;9;Nordlandskysten_sør_for_Vestfjorden;;;;;0.944286875;FALSE;;TRUE
+Alsvågvassdraget;185.1Z;8;Lofoten_og_Vesterålen;Alsvaag;241;180;344;0.617149909;TRUE;;TRUE
+Bleiksvassdraget;186.62Z;8;Lofoten_og_Vesterålen;;13;9;16;0.68;FALSE;;TRUE
+Blokkenvassdraget (Blokkelva);178.43Z;8;Lofoten_og_Vesterålen;;10;7;15;0.7;FALSE;;TRUE
+Borgevassdraget;180.6Z;8;Lofoten_og_Vesterålen;;38;29;57;0.99;FALSE;;TRUE
+Bremnesvassdraget;185.22Z;8;Lofoten_og_Vesterålen;;;;;0.81;FALSE;;TRUE
+Buksnesvassdraget;178.7Z;8;Lofoten_og_Vesterålen;Buksnes;573;430;716;0.74;TRUE;;TRUE
+Delpvassdraget;179.7Z;8;Lofoten_og_Vesterålen;;;;;0.4547;FALSE;;TRUE
+Eidebuktvassdraget;178.55Z;8;Lofoten_og_Vesterålen;;;;;0.479033333;FALSE;;TRUE
+Farstadvassdraget;180.4Z;8;Lofoten_og_Vesterålen;;124;93;155;0.75;FALSE;;TRUE
+Fiskebølvassdraget;179.8Z;8;Lofoten_og_Vesterålen;;;;;0.66;FALSE;;TRUE
+Fiskfjordvassdraget;178.42Z;8;Lofoten_og_Vesterålen;;8;6;12;0.809253552;FALSE;;TRUE
+Forfjordelva;178.63Z;8;Lofoten_og_Vesterålen;Forfjord;117;88;175;0.53;TRUE;;TRUE
+Gryttingvassdraget;185.3Z;8;Lofoten_og_Vesterålen;;56;42;85;0.64;FALSE;;TRUE
+Gårdselvvassdraget;178.6Z;8;Lofoten_og_Vesterålen;Gardselv;292;219;372;0.719573431;TRUE;;TRUE
+Gåsfjordvassdraget;185.23Z;8;Lofoten_og_Vesterålen;;;;;0.12;FALSE;;TRUE
+Helosvassdraget;180.11Z;8;Lofoten_og_Vesterålen;;11;8;14;0.62;FALSE;;TRUE
+Holmstadvassdraget;185.4Z;8;Lofoten_og_Vesterålen;;116;87;175;0.65;FALSE;;TRUE
+Indre Straumfjordvassdraget;185.43Z;8;Lofoten_og_Vesterålen;;21;16;31;0.36;FALSE;;TRUE
+Kaljordvassdraget;178.3Z;8;Lofoten_og_Vesterålen;;18;13;27;0.8;FALSE;;TRUE
+Kjerringnesvassdraget;178.51Z;8;Lofoten_og_Vesterålen;Kjerringnes;281;211;356;0.639546;TRUE;;TRUE
+Klovassdraget;185.111Z;8;Lofoten_og_Vesterålen;;;;;0.5277;FALSE;;TRUE
+Kobbedalselva;186.3Z;8;Lofoten_og_Vesterålen;;76;57;95;0.57;FALSE;;TRUE
+Kongselvvassdraget;178.2Z;8;Lofoten_og_Vesterålen;;;;;0.61;FALSE;;TRUE
+Lahaugvassdraget;185.441Z;8;Lofoten_og_Vesterålen;;58;29;87;0.88;FALSE;;TRUE
+Lifjordvassdraget;185.12Z;8;Lofoten_og_Vesterålen;;;;;0.560144444;FALSE;;TRUE
+Litlelvvassdraget;178.73Z;8;Lofoten_og_Vesterålen;;;;;0.61;FALSE;;TRUE
+Melavassdraget;186.51Z;8;Lofoten_og_Vesterålen;;47;35;70;0.75;FALSE;;TRUE
+Nordsandvassdraget;185.81Z;8;Lofoten_og_Vesterålen;;;;;0.576366667;FALSE;;TRUE
+Nykvågvassdraget;185.71Z;8;Lofoten_og_Vesterålen;;;;;0.6;FALSE;;TRUE
+Oshaugvassdraget;185.44Z;8;Lofoten_og_Vesterålen;;48;36;72;0.35;FALSE;;TRUE
+Osvollvassdraget;178.52Z;8;Lofoten_og_Vesterålen;;205;153;261;0.533582334;FALSE;;TRUE
+Ramsåa (Gårdselva);186.1Z;8;Lofoten_og_Vesterålen;;76;57;114;0.98;FALSE;;TRUE
+Roksdalsvassdraget;186.2Z;8;Lofoten_og_Vesterålen;Roksdal;1087;862;1312;0.714243626;TRUE;;TRUE
+Roksøyvassdraget;178.62Z;8;Lofoten_og_Vesterålen;;53;40;80;0.76;FALSE;;TRUE
+Ryggedalsvassdraget;185.7Z;8;Lofoten_og_Vesterålen;;16;12;20;0.35;FALSE;;TRUE
+Selnesvassdraget (Sortland);185.52Z;8;Lofoten_og_Vesterålen;;41;31;62;0.21;FALSE;;TRUE
+Skogvollvassdraget;186.53Z;8;Lofoten_og_Vesterålen;;52;39;77;0.446588889;FALSE;;TRUE
+Stavevassdraget;186.61Z;8;Lofoten_og_Vesterålen;;54;41;82;0.86;FALSE;;TRUE
+Storelva (Lovik);178.74Z;8;Lofoten_og_Vesterålen;;101;76;152;0.63;FALSE;;TRUE
+Straumevassdraget;185.6Z;8;Lofoten_og_Vesterålen;;;;;0.3817;FALSE;;TRUE
+Svolværvassdraget;179.41Z;8;Lofoten_og_Vesterålen;;;;;0.87;FALSE;;TRUE
+Sørdalselva;178.54Z;8;Lofoten_og_Vesterålen;;146;109;218;0.59;FALSE;;TRUE
+Vestpollvassdraget (Vågan);179.332Z;8;Lofoten_og_Vesterålen;;61;45;76;0.6;FALSE;;TRUE
+Vikelva (Sortland);185.2Z;8;Lofoten_og_Vesterålen;;15;11;19;0.67;FALSE;;TRUE
+Åseelva;186.22Z;8;Lofoten_og_Vesterålen;AaseAndoy;156;117;195;0.56;TRUE;;TRUE
+Brøstadelva;193.3Z;7;Fjordstrøkene_i_Troms;;85;43;128;0.79;FALSE;Astafjorden/Salangen;FALSE
+Grasmyrvassdraget;194.4Z;7;Fjordstrøkene_i_Troms;Grasmyr;264;198;395;0.54;TRUE;Astafjorden/Salangen;FALSE
+Laukhellevassdraget;194.Z;7;Fjordstrøkene_i_Troms;Laukhelle;1055;791;1582;0.87;TRUE;Astafjorden/Salangen;FALSE
+Løksebotnvassdraget;191.4Z;7;Fjordstrøkene_i_Troms;;61;31;92;0.75;FALSE;Astafjorden/Salangen;FALSE
+Rensåvassdraget;189.3Z;7;Fjordstrøkene_i_Troms;Rensaa;199;149;299;0.9;TRUE;Astafjorden/Salangen;FALSE
+Salangsvassdraget;191.Z;7;Fjordstrøkene_i_Troms;Salang;1741;870;2611;0.97;TRUE;Astafjorden/Salangen;FALSE
+Skøelvvassdraget;193.Z;7;Fjordstrøkene_i_Troms;Skoelv;368;184;552;0.96;TRUE;Astafjorden/Salangen;FALSE
+Spansdalselva;190.7Z;7;Fjordstrøkene_i_Troms;;241;120;361;1;FALSE;Astafjorden/Salangen;FALSE
+Tennelvvassdraget;194.5Z;7;Fjordstrøkene_i_Troms;Tennelv;257;193;321;0.58;TRUE;Astafjorden/Salangen;FALSE
+Tennevikelva;189.2Z;7;Fjordstrøkene_i_Troms;;;;;0.84;FALSE;Astafjorden/Salangen;FALSE
+Vardnesvassdraget;194.61Z;7;Fjordstrøkene_i_Troms;;55;41;83;0.46;FALSE;Astafjorden/Salangen;FALSE
+Åndervassdraget;194.6Z;7;Fjordstrøkene_i_Troms;Aander;378;284;568;0.39;TRUE;Astafjorden/Salangen;FALSE
+Lakselva i Aursfjorden;196.5Z;7;Fjordstrøkene_i_Troms;LakselvAursfjord;90;68;113;0.25;TRUE;Malangen/Målselv;FALSE
+Målselvvassdraget;196.Z;7;Fjordstrøkene_i_Troms;Maalselv;5362;2681;8043;0.94;TRUE;Malangen/Målselv;FALSE
+Mårelva (Aursfjorden);196.4Z;7;Fjordstrøkene_i_Troms;;;;;0.51;FALSE;Malangen/Målselv;FALSE
+Rossfjordvassdraget;196.2Z;7;Fjordstrøkene_i_Troms;Rossfjord;110;82;165;0.81;TRUE;Malangen/Målselv;FALSE
+Laksvatnvassdraget;198.52Z;7;Fjordstrøkene_i_Troms;;;;;0.18;FALSE;Balsfjord;FALSE
+Nordkjoselva;198.Z;7;Fjordstrøkene_i_Troms;Nordkjos;259;129;388;0.97;TRUE;Balsfjord;FALSE
+Tømmerelvvassdraget (Balsfjord);198.42Z;7;Fjordstrøkene_i_Troms;;;;;0.96;FALSE;Balsfjord;FALSE
+Kåfjordelva;206.Z;7;Fjordstrøkene_i_Troms;;;;;0.961955814;FALSE;Lyngen/Reisafjorden;FALSE
+Manndalselva;206.1Z;7;Fjordstrøkene_i_Troms;ManndalselvaKaafjord;183;92;275;0.9657;TRUE;Lyngen/Reisafjorden;FALSE
+Oksfjordvassdraget;208.4Z;7;Fjordstrøkene_i_Troms;Oksfjord;248;142;372;0.974798901;TRUE;Lyngen/Reisafjorden;FALSE
+Reisavassdraget;208.Z;7;Fjordstrøkene_i_Troms;Reisa;3652;1826;5477;0.978699976;TRUE;Lyngen/Reisafjorden;FALSE
+Signaldalselva;204.Z;7;Fjordstrøkene_i_Troms;;655;328;983;0.955789524;FALSE;Lyngen/Reisafjorden;FALSE
+Skibotnelva;205.Z;7;Fjordstrøkene_i_Troms;;1628;1221;2442;0.959584324;FALSE;Lyngen/Reisafjorden;FALSE
+Burfjordelva;210.Z;7;Fjordstrøkene_i_Troms;Burfjord;352;264;528;0.870228496;TRUE;Kvænangen;FALSE
+Kvænangselva;209.Z;7;Fjordstrøkene_i_Troms;Kvaenang;430;322;645;0.931432083;TRUE;Kvænangen;FALSE
+Ballesvikvassdraget;195.51Z;6;Kysten_av_Troms;;;;;0.073477778;FALSE;;TRUE
+Botnelva (Kvæfjord);177.3Z;6;Kysten_av_Troms;;;;;0.939037209;FALSE;;TRUE
+Breivikvassdraget;203.2Z;6;Kysten_av_Troms;Breivik;290;145;435;0.91;TRUE;;TRUE
+Bunkanvassdraget;195.1Z;6;Kysten_av_Troms;;24;18;30;0.54595;FALSE;;TRUE
+Finnsætervassdraget;195.52Z;6;Kysten_av_Troms;;;;;0.435327586;FALSE;;TRUE
+Jægervatnvassdraget;203.8Z;6;Kysten_av_Troms;;81;61;122;0.942340318;FALSE;;TRUE
+Lakselva (Gullesfjord);177.1Z;6;Kysten_av_Troms;;87;43;130;0.82;FALSE;;TRUE
+Langvatnvassdraget;178.9Z;6;Kysten_av_Troms;;22;18;26;0.522304237;FALSE;;TRUE
+Lysbotnvassdraget;194.3Z;6;Kysten_av_Troms;Lysbotn;336;252;504;0.650149043;TRUE;;TRUE
+Melåa;177.2Z;6;Kysten_av_Troms;;;;;0.7898125;FALSE;;TRUE
+Nord-Rekvikelva;207.4Z;6;Kysten_av_Troms;;;;;1;FALSE;;TRUE
+Oldervikelva (Tromsø);203.1Z;6;Kysten_av_Troms;;;;;0.590411595;FALSE;;TRUE
+Ringvatnvassdraget;200.3Z;6;Kysten_av_Troms;;;;;0.3087;FALSE;;TRUE
+Rotsundelva;206.5Z;6;Kysten_av_Troms;;128;64;192;0.866266369;FALSE;;TRUE
+Skipsfjordvassdraget;202.11Z;6;Kysten_av_Troms;Skipsfjord;179;135;269;0.807276162;TRUE;;TRUE
+Skittenelva;199.3Z;6;Kysten_av_Troms;;62;31;93;0.3087;FALSE;;TRUE
+Skogsfjordvassdraget;200.6Z;6;Kysten_av_Troms;Skogsfjord;120;90;150;0.76;TRUE;;TRUE
+Straumselvvassdraget;197.4Z;6;Kysten_av_Troms;;141;70;211;0.586686889;FALSE;;TRUE
+Sørbotnelva;198.7Z;6;Kysten_av_Troms;;;;;0.93;FALSE;;TRUE
+Tromvikvassdraget;197.63Z;6;Kysten_av_Troms;;43;21;64;0.157485714;FALSE;;TRUE
+Tønsvikelva;199.2Z;6;Kysten_av_Troms;;178;89;267;0.482776923;FALSE;;TRUE
+Vannareidvassdraget;202.3Z;6;Kysten_av_Troms;;62;47;94;0.611128571;FALSE;;TRUE
+Å-vassdraget (Tranøy);194.81Z;6;Kysten_av_Troms;;;;;0.6;FALSE;;TRUE
+Repparfjordelva;213.Z;5;Fjordene_i_Vest-Finnmark;Repparfjord;3301;1650;4951;0.727945976;TRUE;;FALSE
+Altaelva;212.Z;5;Fjordene_i_Vest-Finnmark;Alta;12130;9098;15163;0.965252034;TRUE;;FALSE
+Halselva;212.2Z;5;Fjordene_i_Vest-Finnmark;;181;90;271;0.84;FALSE;;FALSE
+Russelva;218.Z;5;Fjordene_i_Vest-Finnmark;Russelv;241;120;361;0.623456994;TRUE;;FALSE
+Kvalsundelva;213.6Z;5;Fjordene_i_Vest-Finnmark;;101;51;152;0.9;FALSE;;FALSE
+Skillefjordelva;213.2Z;5;Fjordene_i_Vest-Finnmark;;;;;0.76;FALSE;;FALSE
+Lakselv i Kviby;213.1Z;5;Fjordene_i_Vest-Finnmark;;127;95;191;0.77;FALSE;;FALSE
+Mathiselva;212.4Z;5;Fjordene_i_Vest-Finnmark;;376;188;564;0.45;FALSE;;FALSE
+Transfarelva;212.7Z;5;Fjordene_i_Vest-Finnmark;;;;;;FALSE;;FALSE
+Tverrelva (Alta);212.6Z;5;Fjordene_i_Vest-Finnmark;;;;;;FALSE;;FALSE
+Børselv;225.Z;4;Porsangerfjorden;Borselva;2749;1374;4123;0.878692404;TRUE;;FALSE
+Lakselv;224.Z;4;Porsangerfjorden;LakselvPorsanger;3424;2568;5137;0.992811901;TRUE;;FALSE
+Stabburselv;223.Z;4;Porsangerfjorden;Stabbur;1616;1212;2424;0.937296437;TRUE;;FALSE
+Ytre Billefjordelv;222.7Z;4;Porsangerfjorden;;604;453;906;0.657477778;FALSE;;FALSE
+Tana;234.Z;3;Tanafjorden;TanaTotal2;52312;38510;78070;0.913822079;TRUE;;FALSE
+Langfjordelva;233.Z;3;Tanafjorden;Langfjord;2142;1606;3213;0.881269891;TRUE;;FALSE
+Karpelva;247.3Z;2;Indre_Varanger;Karpe;207;103;310;0.866082876;TRUE;Køfjord/Bøkfjord/Jarfjord;FALSE
+Sandneselva;246.1Z;2;Indre_Varanger;Sandnes;196;98;295;;TRUE;Køfjord/Bøkfjord/Jarfjord;FALSE
+Munkelva;244.4Z;2;Indre_Varanger;Munkelva;199;100;299;0.72869373;TRUE;Køfjord/Bøkfjord/Jarfjord;FALSE
+Neiden;244.Z;2;Indre_Varanger;Neiden;2957;2218;4436;0.897546483;TRUE;Køfjord/Bøkfjord/Jarfjord;FALSE
+Klokkerelva;243.Z;2;Indre_Varanger;Klokkerelv;143;107;214;0.582839429;TRUE;Køfjord/Bøkfjord/Jarfjord;FALSE
+Vesterelva;241.5Z;2;Indre_Varanger;VesterelvaNesseby;281;141;422;0.826952523;TRUE;Karlebotn;FALSE
+Bergebyelva;241.Z;2;Indre_Varanger;Bergeby;459;229;688;0.839588968;TRUE;Karlebotn;FALSE
+Grense Jakobselv;247.Z;1;Kysten_av_Finnmark;GrenseJakob;621;466;932;0.84362028;TRUE;;TRUE
+Vestre Jakobselv;240.Z;1;Kysten_av_Finnmark;VestreJakobselv;1919;959;2878;0.876608922;TRUE;;TRUE
+Skallelv;239.3Z;1;Kysten_av_Finnmark;Skalle;570;285;856;0.879003733;TRUE;;TRUE
+Komagelv;239.Z;1;Kysten_av_Finnmark;Komag;2151;1613;3227;0.896320493;TRUE;;TRUE
+Sandfjordelva (Båtsfjord);238.Z;1;Kysten_av_Finnmark;;;;;0.89;FALSE;;TRUE
+Syltefjordelva;237.Z;1;Kysten_av_Finnmark;Syltefjord;1356;678;2034;0.779431479;TRUE;;TRUE
+Kongsfjordelva;236.Z;1;Kysten_av_Finnmark;Kongsfjord;1102;826;1653;0.837658489;TRUE;;TRUE
+Risfjordvassdraget;231.8Z;1;Kysten_av_Finnmark;Risfjord;204;153;306;0.803592793;TRUE;;TRUE
+Sandfjordelva (Gamvik);231.7Z;1;Kysten_av_Finnmark;Sandfjord;426;213;639;0.72915856;TRUE;;TRUE
+Futelva (Gamvik);231.64Z;1;Kysten_av_Finnmark;;69;34;103;0.549622514;FALSE;;TRUE
+Storelva (Kunes);228.Z;1;Kysten_av_Finnmark;StorelvaLaksefjord;1241;620;1861;0.966033754;TRUE;;TRUE
+Veidneselva;227.6Z;1;Kysten_av_Finnmark;Veidnes;362;181;543;0.901540226;TRUE;;TRUE
+Lille Porsangerelva;227.5Z;1;Kysten_av_Finnmark;LillePorsanger;104;78;155;0.627234421;TRUE;;TRUE
+Tømmervikvassdraget;227.2Z;1;Kysten_av_Finnmark;;;;;0.648929091;FALSE;;TRUE
+Hamneelva;220.5Z;1;Kysten_av_Finnmark;;;;;0.2357;FALSE;;TRUE
+Snefjordvassdraget;220.1Z;1;Kysten_av_Finnmark;;;;;0.3087;FALSE;;TRUE
+Sør-Tverrfjordelva;211.32Z;1;Kysten_av_Finnmark;;;;;0.0897;FALSE;;TRUE

@@ -1,0 +1,413 @@
+﻿Vassdrag;VdrNr;Andel_hunn;Fangst;Maloppnaelse;Fangstrate;Gytebestand;Elvinnsig;GytingSim
+Akerselva;006.Z;0.57;1;0.01;;;;FALSE
+Drammenselva;012.Z;0.57;1;;0.5;;;FALSE
+Enningdalselva;001.1Z;0.61;;;;;;TRUE
+Gjersjøelva;005.4Z;0.58;1;0.15;;;;FALSE
+Glomma;002.Z;0.57;;;;;;TRUE
+Herrevassdraget;016.4Z;0.63;1;;;80;200;FALSE
+Lierelva;011.Z;0.59;1;;0.54;;;FALSE
+Lysakerelva;007.Z;0.57;1;;0.43;;;FALSE
+Numedalslågen;015.Z;0.6;;;;;;TRUE
+Sandvikselva;008.Z;0.61;;;;;;TRUE
+Skiensvassdraget;016.Z;0.65;;;;;;TRUE
+Tista;001.Z;0.61;1;;0.42;;;FALSE
+Åroselva;009.Z;0.64;;;;;;TRUE
+Audna;023.Z;0.59;;;;;;TRUE
+Feda;025.3Z;0.6;1;0;;;;FALSE
+Kvina;025.Z;0.61;;;;;;TRUE
+Lygna;024.Z;0.64;;;;;;TRUE
+Mandalselva;022.Z;0.63;;;;;;TRUE
+Nidelva;019.Z;0.61;;;;;;TRUE
+Otra;021.Z;0.58;;;;;;TRUE
+Songdalselva (Søgne);022.1Z;0.65;;;;;;TRUE
+Tovdalselva;020.Z;0.65;;;;;;TRUE
+Vegårdsvassdraget;018.Z;0.648998169;1;;;570;;FALSE
+Sira;026.Z;0.6;1;1;;;;FALSE
+Bjerkreimselva;027.Z;0.63;;;;;;TRUE
+Figgjo;028.Z;0.65;;;;;;TRUE
+Fuglestadelva;027.7Z;0.66;;;;;;TRUE
+Hellelandselva;027.3Z;0.6;1;1.46;;;;FALSE
+Håelva;028.3Z;0.64;;;;;;TRUE
+Kvassheimelva;028.1Z;0.58;;;;;;TRUE
+Nordre Varhaugselva;028.21Z;0.6;;;;;;TRUE
+Ogna;027.6Z;0.64;;;;;;TRUE
+Sokndalselva;026.4Z;0.58;;;;;;TRUE
+Søndre Varhaugselva;028.21Z;0.61;;;;;;TRUE
+Espedalselva;030.4Z;0.62;;;;;;TRUE
+Dirdalselva;030.2Z;0.63;;;;;;TRUE
+Frafjordelva;030.Z;0.62;;;;;;TRUE
+Hjelmelandsåna;035.2Z;0.61;;;;;;TRUE
+Hålandselva;035.7Z;0.64;;;;;;TRUE
+Jørpelandsåna;032.Z;0.64;;;;;;TRUE
+Lyseelva;031.Z;0.63;;;;;;TRUE
+Rødneelva;038.3Z;0.62;;;;;;TRUE
+Storelva (Sauda);037.Z;0.55;1;0;;;;FALSE
+Suldalslågen;036.Z;0.6;;;;;;TRUE
+Svendsbøelva;041.21Z;0.59;1;0;;;;FALSE
+Ulla;035.Z;0.63;;;;;;TRUE
+Vikedalselva;038.Z;0.63;;;;;;TRUE
+Vorma;035.3Z;0.65;;;;;;TRUE
+Nordelva (Åbøelva);037.2Z;0.53;1;0;;;;FALSE
+Åmselva;038.5Z;0.6;1;0;;;;FALSE
+Årdalselva;033.Z;0.61;;;;;;TRUE
+Frøysetelva (Yndesdal);067.6Z;0.61;;;;;;TRUE
+Haugsdalselva;067.2Z;0.59;1;;0.49;;;FALSE
+Hopevassdraget;067.4Z;0.55;1;;0.5;;;FALSE
+Matreelva;067.3Z;0.58;1;;0.49;;;FALSE
+Daleelva;061.Z;0.58;;;;;;TRUE
+Ekso;063.Z;0.55;;;;;;TRUE
+Loneelva;060.4Z;0.6;;;;;;TRUE
+Modalselva;064.Z;0.56;1;;0.38;;;FALSE
+Romarheimselva;064.4Z;0.63;1;;0.5;;;FALSE
+Storelva (Arna);061.2Z;0.48;;;;;;TRUE
+Vosso;062.Z;0.6;1;;;1500;;FALSE
+Bondhuselva;046.3Z;0.57;1;;0.37;;;FALSE
+Eio;050.Z;0.64;;;;;;TRUE
+Etneelva;041.Z;0.57;;;;;;TRUE
+Fjæraelva;042.3Z;0.56;1;;0.37;;;FALSE
+Tordalselva (Fosselva);053.1Z;0.58;1;;0.42;;;FALSE
+Granvin;052.1Z;0.53;;;;;;TRUE
+Guddalselva;045.32Z;0.54;1;;0.39;;;FALSE
+Hopselva (Fusa);055.3Z;0.54;1;;0.5;;;FALSE
+Jondalselva;047.2Z;0.58;0;;0;;;FALSE
+Kinso;050.1Z;0.43;;;;;;TRUE
+Lønningdalselva;055.6Z;0.6;1;;0.2;;;FALSE
+Mosneselva;042.4Z;0.55;1;;0.41;;;FALSE
+Opo;048.Z;0.54;1;;;;158;FALSE
+Oselva;055.7Z;0.63;;;;;;TRUE
+Rosendalselva;045.4Z;0.4;;;;;;TRUE
+Simadalselva (Simo);050.4Z;0.52;1;0;;;;FALSE
+Steinsdalselva;052.7Z;0.55;;;;;;TRUE
+Tysseelva;055.Z;0.61;;;;;;TRUE
+Uskedalselva;045.2Z;0.62;1;;0.5;;;FALSE
+Æneselva;046.1Z;0.56;1;;0.5;;;FALSE
+Øysteseelva;052.6Z;0.6;1;;0.5;;;FALSE
+Aurlandselva;072.Z;0.59;;;;;;TRUE
+Bøelva;080.4Z;0.53;1;;0.53;;;FALSE
+Daleelva;079.Z;0.56;;;;;;TRUE
+Flåmselva;072.2Z;0.45;;;;;;TRUE
+Jostedøla (Jostedalselva);076.Z;0.54;1;;0.47;;;FALSE
+Lærdalselva;073.Z;0.54;;;;;;TRUE
+Nærøydalselva;071.Z;0.56;;;;;;TRUE
+Ortnevikselva;070.2Z;0.58;1;;0.5;;;FALSE
+Sogndalselva;077.3Z;0.56;;;;;;TRUE
+Storelvi (Fjærland);078.2Z;0.58;1;;0.32;;;FALSE
+Vetlefjordelvi;078.5Z;0.54;1;;0.41;;;FALSE
+Vikja;070.Z;0.53;;;;;;TRUE
+Årdalselva;074.Z;0.56;1;;0.51;;;FALSE
+Årøyelva;077.Z;0.56;;;;;;TRUE
+Eidselva;089.Z;0.57;;;;;;TRUE
+Gloppenelva;087.Z;0.56;;;;;;TRUE
+Hjalma;089.4Z;0.67;;;;;;TRUE
+Hopselva;086.8Z;0.57;;;;;;TRUE
+Loelva;088.2Z;0.61;;;;;;TRUE
+Oldenelva;088.1Z;0.56;;;;;;TRUE
+Ryggelva;087.1Z;0.56;1;;0.36;;;FALSE
+Strynselva;088.Z;0.56;;;;;;TRUE
+Åelva og Ommedalselva;086.Z;0.57;;;;;;TRUE
+Jølstra;084.Z;0.5;;;;;;TRUE
+Nausta;084.7Z;0.6;;;;;;TRUE
+Dalselva (Dale);082.5Z;0.64;;;;;;TRUE
+Flekkeelva;082.Z;0.59;;;;;;TRUE
+Gaula i Sunnfjorden;083.Z;0.58;;;;;;TRUE
+Kvamselva;083.2Z;0.63;;;;;;TRUE
+Rivedalselva;083.4Z;0.56;1;;0.4;;;FALSE
+Ervikelva;091.3Z;0.67;;;;;;TRUE
+Indrehusvassdraget;086.1Z;0.62;1;;0.39;;;FALSE
+Norddalselva (Flora);085.5Z;0.58;1;;0.27;;;FALSE
+Osenelva;085.Z;0.56;;;;;;TRUE
+Solheimsvassdraget;085.4Z;0.54;1;;0.5;;;FALSE
+Fjellvassdraget;057.2Z;0.38;0;;0.38;;;FALSE
+Kjærelva;044.5Z;0.58;1;;0.35;;;FALSE
+Batnfjordselva;108.3Z;0.55;1;;0.5;;;FALSE
+Fjelna;113.Z;0.61;;;;;;TRUE
+Bævra;112.3Z;0.56;1;;0.38;;;FALSE
+Driva;109.Z;0.53;1;;0.6;;;FALSE
+Litledalselva;109.5Z;0.55;1;;0.27;;;FALSE
+Nås (Vågsbøelva);108.2Z;0.55;;;;;;TRUE
+Surna;112.Z;0.58;;;;;;TRUE
+Søya;111.7Z;0.6;;;;;;TRUE
+Todalselva (Aure);113.6Z;0.57;1;;0.5;;;FALSE
+Toåa (Tordalselva Surnadal);111.Z;0.59;;;;;;TRUE
+Usma;109.4Z;0.58;1;;0.5;;;FALSE
+Vassgårdselva;108.221Z;0.56;1;;0.58;;;FALSE
+Eira;104.Z;0.49;;;;;;TRUE
+Innfjordelva;103.2Z;0.6;1;;0.49;;;FALSE
+Isa (Henselva);103.4Z;0.58;1;;0.48;;;FALSE
+Måna;103.1Z;0.639341918;1;;0.48;;;FALSE
+Oselva;105.Z;0.62;;;;;;TRUE
+Istadelva (Olterelva);105.3Z;0.57;1;;0.43;;;FALSE
+Rauma;103.Z;0.52;1;;0.26;;;FALSE
+Skorgeelva (Vestnes);102.5Z;0.6;1;;0.53;;;FALSE
+Tressa;102.6Z;0.63;;;;;;TRUE
+Visa;104.2Z;0.65;;;;;;TRUE
+Aureelva;097.72Z;0.62;;;;;;TRUE
+Austefjordelva;094.4Z;0.59;;;;;;TRUE
+Barstadvikelva;095.4Z;0.67;;;;;18;TRUE
+Bondalselva;097.1Z;0.64;;;;;1856;TRUE
+Eidsdalselva (Ytterdalselva);099.1Z;0.54;1;;0.49;;;FALSE
+Hareidvassdraget;096.1Z;0.66;1;;0.44;;1033;FALSE
+Korsbrekkelva;098.6Z;0.58;;;;;;TRUE
+Norangdalselva;097.4Z;0.58;;;;;;TRUE
+Norddalselva (Norddal);099.2Z;0.6;1;;0.37;;;FALSE
+Norddalselva (Vanylven);093.3Z;0.54;1;;0.5;;;FALSE
+Oselva (Syvde);093.2Z;0.68;;;;;;TRUE
+Riksheimselva;097.6Z;0.58;1;;0.5;;;FALSE
+Solnørelva;101.2Z;0.59;;;;;;TRUE
+Standalselva;097.11Z;0.67;1;;0.39;;;FALSE
+Stordalselva;100.2Z;0.52;;;;;;TRUE
+Storelva (Søre Vartdal);095.3Z;0.5;;;;;;TRUE
+Strandaelva;098.3Z;0.65;;;;;;TRUE
+Tafjordelva;099.Z;0.57;1;;0.5;;;FALSE
+Tennfjordelva;101.6Z;0.66;;;;;;TRUE
+Vagsvikelva;100.3Z;0.6;1;;0.51;;;FALSE
+Valldalselva;100.Z;0.55;;;;;;TRUE
+Velledalselva (Fet);097.7Z;0.62;;;;;;TRUE
+Vikelva (Bjørke);097.2Z;0.62;;;;;;TRUE
+Vikelva (Sykkylven);097.721Z;0.59;1;;0.5;;;FALSE
+Ørskogelva;101.1Z;0.59;;;;;;TRUE
+Ørstaelva;095.Z;0.62;;;;;;TRUE
+Øyraelva (Volda);094.6Z;0.57;1;;0.44;;;FALSE
+Åheimselva;092.Z;0.61;;;;;;TRUE
+Hildreelva;102.11Z;0.58;1;;0.5;;;FALSE
+Hustadelva;107.6Z;0.62;;;;;;TRUE
+Sylteelva (Moa);107.3Z;0.62;;;;;;TRUE
+Horvenelva;143.532Z;0.57;1;;0.4;;;FALSE
+Kongsmoelva;142.3Z;0.6;;;;;;TRUE
+Kvistenelva;141.4Z;0.56;1;;0.43;;;FALSE
+Nordfolda;142.3AZ;0.62;;;;;;TRUE
+Opløyelva;141.Z;0.59;1;;0.39;;;FALSE
+Aursunda;138.5Z;0.59;;;;;;TRUE
+Bogna;138.6Z;0.6;;;;;;TRUE
+Namsen;139.Z;0.56;;;;;;TRUE
+Oksdøla;138.3Z;0.56;;;;;;TRUE
+Salvassdraget;140.Z;0.58;;;;;;TRUE
+Årgårdsvassdraget/Øyen;138.ZB;0.6;;;;;;TRUE
+Årgårdsvassdraget/Ferga;138.ZA;0.56;;;;;;TRUE
+Norddalselva;135.ZB;0.59;;;;;;TRUE
+Oldenelva;135.1Z;0.57;;;;;;TRUE
+Stordalselva;135.Z;0.59;;;;;;TRUE
+Børsa;122.1Z;0.6;;;;;;TRUE
+Figga;128.3Z;;1;;0.2;;;FALSE
+Gaula;122.Z;0.62;;;;;;TRUE
+Homla;123.4Z;0.63;;;;;;TRUE
+Levangerelva;126.6Z;0.58;;;;;;TRUE
+Nidelva;123.Z;0.55;;;;;;TRUE
+Nordelva;133.3Z;0.61;;;;;;TRUE
+Orkla;121.Z;0.62;;;;;;TRUE
+Osaelva;133.2Z;0.55;;;;;;TRUE
+Skauga;132.Z;0.6;;;;;;TRUE
+Steinkjerelva;128.Z;0.6;1;;0.2;;;FALSE
+Stjørdalselva;124.Z;0.56;;;;;;TRUE
+Verdalselva;127.Z;0.58;;;;;;TRUE
+Vigda;122.2Z;0.61;;;;;;TRUE
+Bergselva;119.4Z;0.59;0;0;;;;FALSE
+Snilldalselva;119.42Z;0.56;0;0;;;;FALSE
+Søa;119.1Z;0.65;;;;;;TRUE
+Åstelva;119.6Z;0.55;0;0;;;;FALSE
+Lauvsneselva;137.7Z;0.61;1;0;;;;FALSE
+Steinsdalselva;137.2Z;0.55;;;;;;TRUE
+Straumsvassdraget;136.52Z;0.59;1;0.22;;;;FALSE
+Teksdalselva;134.Z;0.64;;;;;;TRUE
+Åelva;116.Z;0.63;;;;;;TRUE
+Flostrandvassdraget;157.42Z;0.56;1;0.43;;;;FALSE
+Bjerka;155.4Z;0.52;0;0;;;;FALSE
+Ranavassdraget;156.Z;0.48;;;;;;TRUE
+Røssåga;155.Z;0.56;;;;;;TRUE
+Bardalselva;153.6Z;0.58;1;0;;;;FALSE
+Breilandselva;153.32Z;0.56;1;0;;;;FALSE
+Drevjavassdraget;152.2Z;0.52;1;2;;;;FALSE
+Fustavassdraget;152.Z;0.58;1;0.24;;;;FALSE
+Halsanelva;149.6Z;0.57;0;0;;;;FALSE
+Hestdalselva;149.61Z;0.6;1;0;;;;FALSE
+Hundåla;151.1Z;0.58;0;0;;;;FALSE
+Lakselvvassdraget;149.2Z;0.56;1;0;;;;FALSE
+Leirelvvassdraget;153.22Z;0.56;1;0.68;;;;FALSE
+Ranelva (Leirfjord);153.3Z;0.52;1;0;;;;FALSE
+Vefsnavassdraget;151.Z;0.49;1;;;9600;;FALSE
+Lomselva;148.Z;0.57;1;0;;;;FALSE
+Sausvassdraget;148.2Z;0.59;0;1.88;;;;FALSE
+Bogelva (Bindal);144.61Z;0.58;0;0;;;;FALSE
+Eidevassdraget;145.2Z;0.64;;;;;;TRUE
+Storelva (Tosbotn);144.7Z;0.57;;;;;;TRUE
+Terråkelva;144.4Z;0.58;1;0;;;;FALSE
+Urvollvassdraget;144.5Z;0.58;1;1;;;;FALSE
+Åbjøra (Åelva);144.Z;0.61;;;;;;TRUE
+Bogenvassdraget;175.2Z;0.58;1;0;;;;FALSE
+Elvegårdselva;174.5Z;0.53;;;;;;TRUE
+Forsåvassdraget;172.Z;0.64;;;;;;TRUE
+Heggedalselva;177.7Z;0.61;;;;;;TRUE
+Kjeldelva;173.1Z;0.63;;;;;;TRUE
+Kongsvikelva;177.6Z;0.58;0;0;;;;FALSE
+Lakselva (Beisfjord);174.2Z;0.55;1;0;;;;FALSE
+Laksåvassdraget (Evenes);175.3Z;0.57;0;0;;;;FALSE
+Muskvikelva;171.6Z;0.6;0;0;;;;FALSE
+Myklebostadvassdraget;176.2Z;0.57;0;0;;;;FALSE
+Rombakselva;174.3Z;0.6;1;0;;;;FALSE
+Rånavassdraget;173.3Z;0.6;;;;;;TRUE
+Sagvatnanvassdraget;170.Z;0.61;0;0;;;;FALSE
+Skjoma;173.Z;0.59;;;;;;TRUE
+Sneiselvvassdraget;177.73Z;0.59;0;0;;;;FALSE
+Storvatnvassdraget (Lødingen);178.112Z;0.62;1;0;;;;FALSE
+Tårstadvassdraget;175.4Z;0.61;;;;;;TRUE
+Varpavassdraget;170.5Z;0.59;;;;;;TRUE
+Bonnåga;167.3Z;0.54;;;;;;TRUE
+Kobbelvvassdraget;167.Z;0.57;1;0.58;;249;831;FALSE
+Lakselva (Valljorda);166.3Z;0.58;1;0;;;;FALSE
+Laksåga;166.5Z;0.59;;;;;;TRUE
+Stabburselva og Draugelva;171.Z;0.58;1;0.23;;;;FALSE
+Straumenvassdraget;166.4Z;0.56;1;0;;;;FALSE
+Lakselva i Valnesfjord;164.3Z;0.62;;;;;;TRUE
+Lakselva i Misvær (Bodø);162.7Z;0.53;1;0.4;;;;FALSE
+Saltdalsvassdraget;163.Z;0.56;;;;;;TRUE
+Beiarvassdraget;161.Z;0.58;;;;;;TRUE
+Brattlandsvassdraget;157.6Z;0.58;0;0;;;;FALSE
+Fjærevassdraget;165.7Z;0.64;;;;;;TRUE
+Futelva;165.2Z;0.56;1;0.32;;;;FALSE
+Færsetvassdraget;147.3Z;0.57;0;0;;;;FALSE
+Gjervalelva;159.21Z;0.46;;;;;;TRUE
+Hopsvassdraget i Bodø;165.1Z;0.57;0;0;;;;FALSE
+Hopvassdraget (Steigen);168.6Z;0.62;1;1.72;;123;311;FALSE
+Laksådalsvassdraget;160.71Z;0.6;0;0;;;;FALSE
+Lommervassdraget (Bellkjøselva);168.7Z;0.58;1;0;;;;FALSE
+Reipåvassdraget;160.43Z;0.6;;;;;;TRUE
+Silavassdraget;157.52Z;0.57;1;0.8;;;;FALSE
+Skromma;160.51Z;0.59;1;0;;;;FALSE
+Spildervassdraget;160.41Z;0.62;;;;;;TRUE
+Strandåvassdraget;165.8Z;0.61;1;0;;;;FALSE
+Sundfjordselva;161.1Z;0.57;1;0;;;;FALSE
+Alsvågvassdraget;185.1Z;0.59;;;;;;TRUE
+Bleiksvassdraget;186.62Z;0.59;1;6.44;;;;FALSE
+Blokkenvassdraget (Blokkelva);178.43Z;0.59;1;0;;;;FALSE
+Borgevassdraget;180.6Z;0.61;1;0;;;;FALSE
+Bremnesvassdraget;185.22Z;0.58;1;0;;;;FALSE
+Buksnesvassdraget;178.7Z;0.63;;;;;;TRUE
+Delpvassdraget;179.7Z;0.55;1;0;;;;FALSE
+Eidebuktvassdraget;178.55Z;0.6;1;0;;;;FALSE
+Farstadvassdraget;180.4Z;0.57;1;0.01;;;;FALSE
+Fiskebølvassdraget;179.8Z;0.56;1;0;;;;FALSE
+Fiskfjordvassdraget;178.42Z;0.57;1;5.54;;;;FALSE
+Forfjordelva;178.63Z;0.57;;;;;;TRUE
+Gryttingvassdraget;185.3Z;0.57;1;0;;;;FALSE
+Gårdselvvassdraget;178.6Z;0.6;;;;;;TRUE
+Gåsfjordvassdraget;185.23Z;0.58;1;0;;;;FALSE
+Helosvassdraget;180.11Z;0.55;1;0;;;;FALSE
+Holmstadvassdraget;185.4Z;0.58;1;0.75;;;;FALSE
+Indre Straumfjordvassdraget;185.43Z;0.56;1;0;;;;FALSE
+Kaljordvassdraget;178.3Z;0.6;1;0;;;;FALSE
+Kjerringnesvassdraget;178.51Z;0.66;;;;;;TRUE
+Klovassdraget;185.111Z;0.57;1;0;;;;FALSE
+Kobbedalselva;186.3Z;0.56;1;0;;;;FALSE
+Kongselvvassdraget;178.2Z;0.57;1;0;;;;FALSE
+Lahaugvassdraget;185.441Z;0.64;1;0;;;;FALSE
+Lifjordvassdraget;185.12Z;0.55;1;0;;;;FALSE
+Litlelvvassdraget;178.73Z;0.55;1;0;;;;FALSE
+Melavassdraget;186.51Z;0.59;1;0;;;;FALSE
+Nordsandvassdraget;185.81Z;0.55;1;0;;;;FALSE
+Nykvågvassdraget;185.71Z;0.57;1;0;;;;FALSE
+Oshaugvassdraget;185.44Z;0.57;1;0;;;;FALSE
+Osvollvassdraget;178.52Z;0.596814401;1;0.61;;;;FALSE
+Ramsåa (Gårdselva);186.1Z;0.57;1;0;;;;FALSE
+Roksdalsvassdraget;186.2Z;0.61;;;;;;TRUE
+Roksøyvassdraget;178.62Z;0.57;1;0;;;;FALSE
+Ryggedalsvassdraget;185.7Z;0.57;1;0;;;;FALSE
+Selnesvassdraget (Sortland);185.52Z;0.55;1;0.09;;;;FALSE
+Skogvollvassdraget;186.53Z;0.58;1;0.28;;;;FALSE
+Stavevassdraget;186.61Z;0.58;1;0;;;;FALSE
+Storelva (Lovik);178.74Z;0.57;1;0;;;;FALSE
+Straumevassdraget;185.6Z;0.57;1;0;;;;FALSE
+Svolværvassdraget;179.41Z;0.63;1;0;;;;FALSE
+Sørdalselva;178.54Z;0.57;1;0;;;;FALSE
+Vestpollvassdraget (Vågan);179.332Z;0.57;1;0;;;;FALSE
+Vikelva (Sortland);185.2Z;0.55;1;0;;;;FALSE
+Åseelva;186.22Z;0.55;;;;;;TRUE
+Brøstadelva;193.3Z;0.57;1;0.07;;;;FALSE
+Grasmyrvassdraget;194.4Z;0.62;;;;;;TRUE
+Laukhellevassdraget;194.Z;0.61;;;;;;TRUE
+Løksebotnvassdraget;191.4Z;0.59;1;0.78;;;;FALSE
+Rensåvassdraget;189.3Z;0.62;;;;;;TRUE
+Salangsvassdraget;191.Z;0.57;;;;;;TRUE
+Skøelvvassdraget;193.Z;0.58;;;;;;TRUE
+Spansdalselva;190.7Z;0.64;1;0;;;;FALSE
+Tennelvvassdraget;194.5Z;0.63;;;;;;TRUE
+Tennevikelva;189.2Z;0.62;1;;;;425;FALSE
+Vardnesvassdraget;194.61Z;0.56;0;0.81;;;;FALSE
+Åndervassdraget;194.6Z;0.57;;;;;;TRUE
+Lakselva i Aursfjorden;196.5Z;0.66;;;;;;TRUE
+Målselvvassdraget;196.Z;0.55;;;;;;TRUE
+Mårelva (Aursfjorden);196.4Z;0.57;1;0;;;;FALSE
+Rossfjordvassdraget;196.2Z;0.63;;;;;;TRUE
+Laksvatnvassdraget;198.52Z;0.6;1;;0.31;;;FALSE
+Nordkjoselva;198.Z;0.6;;;;;;TRUE
+Tømmerelvvassdraget (Balsfjord);198.42Z;0.64;1;;0.31;;;FALSE
+Kåfjordelva;206.Z;0.6;1;0;;;;FALSE
+Manndalselva;206.1Z;0.66;;;;;;TRUE
+Oksfjordvassdraget;208.4Z;0.6;;;;;;TRUE
+Reisavassdraget;208.Z;0.53;;;;;;TRUE
+Signaldalselva;204.Z;0.61;1;0.18;;;;FALSE
+Skibotnelva;205.Z;0.55;1;0.16;;;;FALSE
+Burfjordelva;210.Z;0.58;;;;;;TRUE
+Kvænangselva;209.Z;0.59;;;;;;TRUE
+Ballesvikvassdraget;195.51Z;0.57;1;0;;;;FALSE
+Botnelva (Kvæfjord);177.3Z;0.6;1;0;;;;FALSE
+Breivikvassdraget;203.2Z;0.64;;;;;;TRUE
+Bunkanvassdraget;195.1Z;0.6;1;0.74;;;;FALSE
+Finnsætervassdraget;195.52Z;0.56;1;0;;;;FALSE
+Jægervatnvassdraget;203.8Z;0.61;1;1.42;;;;FALSE
+Lakselva (Gullesfjord);177.1Z;0.6;1;0.15;;;;FALSE
+Langvatnvassdraget;178.9Z;0.57;1;5.11;;;;FALSE
+Lysbotnvassdraget;194.3Z;0.6;;;;;;TRUE
+Melåa;177.2Z;0.58;1;0;;;;FALSE
+Nord-Rekvikelva;207.4Z;0.6;1;0;;;;FALSE
+Oldervikelva (Tromsø);203.1Z;0.61;1;0;;;;FALSE
+Ringvatnvassdraget;200.3Z;0.58;1;0;;;;FALSE
+Rotsundelva;206.5Z;0.61;1;0.14;;;;FALSE
+Skipsfjordvassdraget;202.11Z;0.58;;;;;;TRUE
+Skittenelva;199.3Z;0.6;1;0.4;;;;FALSE
+Skogsfjordvassdraget;200.6Z;0.57;;;;;;TRUE
+Straumselvvassdraget;197.4Z;0.6;1;0.08;;;;FALSE
+Sørbotnelva;198.7Z;0.55;1;0;;;;FALSE
+Tromvikvassdraget;197.63Z;0.57;1;0.25;;;;FALSE
+Tønsvikelva;199.2Z;0.6;1;0.5;;;;FALSE
+Vannareidvassdraget;202.3Z;0.59;1;0.15;;;;FALSE
+Å-vassdraget (Tranøy);194.81Z;0.62;1;;;46;;FALSE
+Repparfjordelva;213.Z;0.51;;;;;;TRUE
+Altaelva;212.Z;0.7;;;;;;TRUE
+Halselva;212.2Z;0.5;1;0;;;;FALSE
+Russelva;218.Z;0.5;;;;;;TRUE
+Kvalsundelva;213.6Z;0.6;1;0;;;;FALSE
+Skillefjordelva;213.2Z;0.58;1;0;;;;FALSE
+Lakselv i Kviby;213.1Z;0.57;1;0;;;;FALSE
+Mathiselva;212.4Z;0.56;1;0.002;;;;FALSE
+Transfarelva;212.7Z;0.58;0;0;;;;FALSE
+Tverrelva (Alta);212.6Z;;0;0;;;;FALSE
+Børselv;225.Z;;;;;;;TRUE
+Lakselv;224.Z;0.61;;;;;;TRUE
+Stabburselv;223.Z;0.71;;;;;;TRUE
+Ytre Billefjordelv;222.7Z;0.55;1;;0.45;;;FALSE
+Tana;234.Z;0.55;;;;;;TRUE
+Langfjordelva;233.Z;0.64;;;;;;TRUE
+Karpelva;247.3Z;0.62;;;;;;TRUE
+Sandneselva;246.1Z;0.61;;;;;;TRUE
+Munkelva;244.4Z;0.59;;;;;;TRUE
+Neiden;244.Z;0.53;;;;;;TRUE
+Klokkerelva;243.Z;0.57;;;;;;TRUE
+Vesterelva;241.5Z;0.59;;;;;;TRUE
+Bergebyelva;241.Z;0.48;;;;;;TRUE
+Grense Jakobselv;247.Z;0.55;;;;;;TRUE
+Vestre Jakobselv;240.Z;0.52;;;;;;TRUE
+Skallelv;239.3Z;0.57;;;;;;TRUE
+Komagelv;239.Z;0.6;;;;;;TRUE
+Sandfjordelva (Båtsfjord);238.Z;0.55;1;0;;;;FALSE
+Syltefjordelva;237.Z;0.6;;;;;;TRUE
+Kongsfjordelva;236.Z;0.45;;;;;;TRUE
+Risfjordvassdraget;231.8Z;0.58;;;;;;TRUE
+Sandfjordelva (Gamvik);231.7Z;0.63;;;;;;TRUE
+Futelva (Gamvik);231.64Z;0.54;1;0.1;;;;FALSE
+Storelva (Kunes);228.Z;0.55;;;;;;TRUE
+Veidneselva;227.6Z;0.61;;;;;;TRUE
+Lille Porsangerelva;227.5Z;0.63;;;;;;TRUE
+Tømmervikvassdraget;227.2Z;0.57;1;0;;;;FALSE
+Hamneelva;220.5Z;0.55;1;0;;;;FALSE
+Snefjordvassdraget;220.1Z;0.55;1;0;;;;FALSE
+Sør-Tverrfjordelva;211.32Z;0.59;1;0;;;;FALSE
