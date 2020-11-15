@@ -196,16 +196,18 @@ for (i in 1:antall_elver) {
 # initier data.frame for samlede resultat og begynn å sette inn variable med resultat
 #-----------------------------------------------------------------------------------------------------------------
 
-resultat_fordeling <- data.frame(matrix(0, nrow = antall_elver * antall_aar, ncol = 35, 
+resultat_fordeling <- data.frame(matrix(0, nrow = antall_elver * antall_aar, ncol = 44, 
                                         dimnames = list(NULL, c("VdrNr", "Vassdrag", "Aar", "RegionNr", "Region", "Gyt_vekt_u3", "Gyt_vekt_37",
                                                                 "Gyt_vekt_o7", "Gyt_ant_u3", "Gyt_ant_37", "Gyt_ant_o7", "Fangst_elv_vekt_u3", 
                                                                 "Fangst_elv_vekt_37", "Fangst_elv_vekt_o7", "Fangst_elv_ant_u3", "Fangst_elv_ant_37", 
-                                                                "Fangst_elv_ant_o7", "PFA_elv_vekt_u3", "PFA_elv_vekt_37", "PFA_elv_vekt_o7",
-                                                                "PFA_elv_ant_u3", "PFA_elv_ant_37", "PFA_elv_ant_o7", "Andel_region_vekt_u3",
+                                                                "Fangst_elv_ant_o7", "Innsig_elv_vekt_u3", "Innsig_elv_vekt_37", "Innsig_elv_vekt_o7",
+                                                                "Innsig_elv_ant_u3", "Innsig_elv_ant_37", "Innsig_elv_ant_o7", "Andel_region_vekt_u3",
                                                                 "Andel_region_vekt_37", "Andel_region_vekt_o7", "Andel_region_ant_u3", 
                                                                 "Andel_region_ant_37", "Andel_region_ant_o7", "Sjofangst_vekt_u3",
                                                                 "Sjofangst_vekt_37", "Sjofangst_vekt_o7", "Sjofangst_ant_u3", "Sjofangst_ant_37",
-                                                                "Sjofangst_ant_o7"
+                                                                "Sjofangst_ant_o7", "Innsig_sjo_vekt_u3", "Innsig_sjo_vekt_37", "Innsig_sjo_vekt_o7",
+                                                                "Innsig_sjo_ant_u3", "Innsig_sjo_ant_37", "Innsig_sjo_ant_o7", "Innsig_total_hunn", 
+                                                                "Overbeskatning", "MaxSustExp"
                                                                 ))))
 i <- 1
 for (j in 1:antall_aar) {
@@ -215,26 +217,68 @@ for (j in 1:antall_aar) {
   resultat_fordeling[i:antall_elver+i-1, 4] <- elveliste$RegionNr
   resultat_fordeling[i:antall_elver+i-1, 5] <- elveliste$RegionNavn
   
-  resultat_fordeling[i:antall_elver+i-1, 6:11] <- elv_gyting[j, , 1:6]
-  resultat_fordeling[i:antall_elver+i-1, 12:17] <- elv_fangst[j, , 1:6]
+  resultat_fordeling[i:antall_elver+i-1, 6:11] <- elv_gyting[j, , 1:6] 
+  resultat_fordeling[i:antall_elver+i-1, 12:17] <- elv_fangst[j, , 1:6] 
   resultat_fordeling[i:antall_elver+i-1, 18:23] <- elv_fangst[j, , 1:6] + elv_gyting[j, , 1:6]
   
   i <- i + antall_elver
 }
 
 #-----------------------------------------------------------------------------------------------------------------
-# beregn samlet elveinnsig pr region, bruk det til å beregne hva slags fangstandel hvert vassdrag utgjør
+# beregn innsig til elv og kyst for hvert vassdrag
 #-----------------------------------------------------------------------------------------------------------------
 ddf <- resultat_fordeling %>% 
   group_by(Aar, Region) %>%
-  summarize(across(PFA_elv_vekt_u3:PFA_elv_ant_o7, sum))
+  summarize(across(PFA_elv_vekt_u3:PFA_elv_ant_o7, sum)) # beregn samlet elveinnsig pr region, bruk det til å beregne hva slags fangstandel hvert vassdrag utgjør
 
-l <- 1
+l <- 1 # indeks for vassdrag i resultat_fordeling
 for (j in 1:antall_aar) {
   for (i in 1:antall_elver) {
     k <- filter(ddf, Region == elveliste$RegionNavn[i] & Aar == aar_liste[j])
-    resultat_fordeling[l, 24:29] <- resultat_fordeling[l, 18:23] / k[1, 3:8]
-    resultat_fordeling[l, 30:35] <- resultat_fordeling[l, 24:29] * region_fangst[j, elveliste$RegionNr[i], 1:6]
+    resultat_fordeling[l, 24:29] <- resultat_fordeling[l, 18:23] / k[1, 3:8] # andel vassdrag utgjør i region
+    resultat_fordeling[l, 30:35] <- resultat_fordeling[l, 24:29] * region_fangst[j, elveliste$RegionNr[i], 1:6] # sjøfangst
+    resultat_fordeling[l, 36:41] <- resultat_fordeling[l, 30:35] + resultat_fordeling[l, 18:23]
+    
+    # totalt innsig hunn, vekt
+    if(elveliste$GytingSim[i]) {
+      m <- filter(simul_kghunnlaks, Vdrnr == elveliste$VdrNr[i] & Aar = aar_liste[j])
+      resultat_fordeling$Innsig_total_hunn[l] <- resultat_fordeling$Innsig_sjo_vekt_u3[l] * m$AndelHunnU3 +
+        resultat_fordeling$Innsig_sjo_vekt_37[l] * m$AndelHunn37 + resultat_fordeling$Innsig_sjo_vekt_o7[l] * m$AndelHunnO7
+    } else {
+      resultat_fordeling$Innsig_total_hunn[l] <- sum(resultat_fordeling[l, 36:38]) * elvedatamatrise$Andel_hunn[i]
+    }
+
+    # beregn overbeskatning
+    if(!is.na(elveliste$GBM[i])) { 
+      if(sum(resultat_fordeling[l, 30:32]) > elveliste$GBM[i]) 
+        resultat_fordeling$Overbeskatning[l] <- 0 # gytebestand nådd, ingen overbeskatning
+      else if(resultat_fordeling$Innsig_total_hunn[l] > elveliste$GBM[i]) {
+        if(elveliste$GytingSim[i]) 
+          resultat_fordeling$Overbeskatning[l] <- (elveliste$GBM[i] - sum(m[1, 7:9])) / elveliste$GBM[i]
+        else
+          resultat_fordeling$Overbeskatning[l] <- (elveliste$GBM[i] - (sum(resultat_fordeling[l, 6:8]) * elvedatamatrise$Andel_hunn[i])) / elveliste$GBM[i]
+      } else {
+        if(elveliste$GytingSim[i])
+          resultat_fordeling$Overbeskatning[l] <- (((resultat_fordeling$Fangst_elv_vekt_u3[l] + resultat_fordeling$Sjofangst_vekt_u3[l]) * m$AndelHunnU3) +
+            ((resultat_fordeling$Fangst_elv_vekt_37[l] + resultat_fordeling$Sjofangst_vekt_37[l]) * m$AndelHunn37) + 
+            ((resultat_fordeling$Fangst_elv_vekt_o7[l] + resultat_fordeling$Sjofangst_vekt_o7[l]) * m$AndelHunnO7)) /
+            elveliste$GBM[i]
+        else
+          resultat_fordeling$Overbeskatning[l] <- ((resultat_fordeling$Fangst_elv_vekt_u3[l] + resultat_fordeling$Fangst_elv_vekt_37[l] +
+                                                     resultat_fordeling$Fangst_elv_vekt_o7[l] + resultat_fordeling$Sjofangst_vekt_u3[l] +
+                                                     resultat_fordeling$Sjofangst_vekt_37[l] + resultat_fordeling$Sjofangst_vekt_o7[l]) *
+                                                     elvedatamatrise$Andel_hunn[i]) / elveliste$GBM[i]
+      }
+    }
+    
+    # beregn maksimal bærekraftig beskatning
+    if(!is.na(elveliste$GBM[i])) {
+      if(resultat_fordeling$Innsig_total_hunn[l] > elveliste$GBM[i])
+        resultat_fordeling$MaxSustExp[l] <- (resultat_fordeling$Innsig_total_hunn[l] - elveliste$GBM[i]) / resultat_fordeling$Innsig_total_hunn[l]
+      else
+        resultat_fordeling$MaxSustExp[l] <- 0
+    }
+
     l <- l + 1
   }
 }
