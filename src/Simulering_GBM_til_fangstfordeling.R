@@ -15,10 +15,10 @@ library(stringr)
 elveliste <- read.csv("data/elveliste.csv", header = TRUE, sep = ";", fileEncoding = "UTF-8-BOM")
 antall_elver <- nrow(elveliste)
 
-for (i in 1:20) {
-  if (elveliste$GytingSim[i]) { # test om vassdraget skal inkluderes i simulering, loop til neste vassdrag dersom ikke
+for (m in 1:antall_elver) {
+  if (elveliste$GytingSim[m]) { # test om vassdraget skal inkluderes i simulering, loop til neste vassdrag dersom ikke
     
-    ElvFilNavn <- paste("data/vassdrag/", elveliste[i, "Filnavn"], ".csv", sep="")
+    ElvFilNavn <- paste("data/vassdrag/", elveliste[m, "Filnavn"], ".csv", sep="")
     d <- read.csv(ElvFilNavn, header = TRUE, sep = ";", fileEncoding = "UTF-8")
     
     #---------------------------------------------------------------------------------------------------------
@@ -474,8 +474,8 @@ for (i in 1:20) {
       FangstAnd <- ifelse(!is.na(FangstAnd) | (is.na(FangstAnd) & (is.na(Exp)| Exp == 0)), FangstAnd,
                           (Laks_ant + Gjen_ant)/(Laks_ant/Exp))
     }
-    
-    
+
+
     d$FangstAndSmallMed  <- with(d, FangstAndel(Laks_ant_u3kg, Gjen_ant_u3kg, FangstAndSmallMed, ExpSmallMed))
     d$FangstAndSmallMin <- with(d, FangstAndel(Laks_ant_u3kg, Gjen_ant_u3kg, FangstAndSmallMin, ExpSmallMin))
     d$FangstAndSmallMax <- with(d, FangstAndel(Laks_ant_u3kg, Gjen_ant_u3kg, FangstAndSmallMax, ExpSmallMax))
@@ -596,9 +596,9 @@ for (i in 1:20) {
     
     for(s in 1:n.sim){
       for (i in 1:n.years){
-        AntOppdrSmaa[i,s]<- if(Oppdrettsmaa[i,s] > 0 & Expsmall[i,s] > 0) (Oppdrettsmaa[i,s]/Expsmall[i,s]) else 0
-        AntOppdrMel[i,s]<-  if(Oppdrettmel[i,s] > 0 & Expmellom[i,s] > 0) (Oppdrettmel[i,s]/Expmellom[i,s]) else 0
-        AntOppdrStor[i,s]<- if(Oppdrettstor[i,s] > 0 & Expstor[i,s] > 0) (Oppdrettstor[i,s]/Expstor[i,s]) else 0
+        AntOppdrSmaa[i,s]<- if(Oppdrettsmaa[i,s] > 0 & Expsmall[i,s] > 0 & !is.na(Expsmall[i,s])) (Oppdrettsmaa[i,s]/Expsmall[i,s]) else 0
+        AntOppdrMel[i,s]<-  if(Oppdrettmel[i,s] > 0 & Expmellom[i,s] > 0 & !is.na(Expmellom[i,s])) (Oppdrettmel[i,s]/Expmellom[i,s]) else 0
+        AntOppdrStor[i,s]<- if(Oppdrettstor[i,s] > 0 & Expstor[i,s] > 0 & !is.na(Expstor[i,s])) (Oppdrettstor[i,s]/Expstor[i,s]) else 0
         AntOppdr[i,s]<-AntOppdrSmaa[i,s]+AntOppdrMel[i,s]+AntOppdrStor[i,s]
       }
     }
