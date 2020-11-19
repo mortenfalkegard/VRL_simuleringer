@@ -306,20 +306,19 @@ for (j in 1:antall_aar) {
       m <- filter(simul_kghunnlaks, Vdrnr == elveliste$VdrNr[i] & Aar == aar_liste[j])
       resultat_fordeling$Innsig_total_hunn[l] <- resultat_fordeling$Innsig_sjo_vekt_u3[l] * m$AndelHunnU3 +
         resultat_fordeling$Innsig_sjo_vekt_37[l] * m$AndelHunn37 + resultat_fordeling$Innsig_sjo_vekt_o7[l] * m$AndelHunnO7
+      samlet_gytebestand_hunn <- m$GytingHunnU3 + m$GytingHunn37 + m$GytingHunnO7
     } else {
       resultat_fordeling$Innsig_total_hunn[l] <- sum(resultat_fordeling[l, 36:38]) * elvedatamatrise$Andel_hunn[i]
+      samlet_gytebestand_hunn <- sum(resultat_fordeling[l, 6:8]) * elvedatamatrise$Andel_hunn[i]
     }
 
     # beregn overbeskatning
     if(!is.na(elveliste$GBM[i])) { 
-      if(sum(resultat_fordeling[l, 30:32]) > elveliste$GBM[i]) 
+      if(samlet_gytebestand_hunn > elveliste$GBM[i]) 
         resultat_fordeling$Overbeskatning[l] <- 0 # gytebestand nådd, ingen overbeskatning
-      else if(resultat_fordeling$Innsig_total_hunn[l] > elveliste$GBM[i]) {
-        if(elveliste$GytingSim[i]) 
-          resultat_fordeling$Overbeskatning[l] <- (elveliste$GBM[i] - sum(m[1, 7:9])) / elveliste$GBM[i]
-        else
-          resultat_fordeling$Overbeskatning[l] <- (elveliste$GBM[i] - (sum(resultat_fordeling[l, 6:8]) * elvedatamatrise$Andel_hunn[i])) / elveliste$GBM[i]
-      } else {
+      else if(resultat_fordeling$Innsig_total_hunn[l] > elveliste$GBM[i]) { # innsig større enn gytebestand vil si noe beskattbart overskudd
+        resultat_fordeling$Overbeskatning[l] <- (elveliste$GBM[i] - samlet_gytebestand_hunn) / elveliste$GBM[i] # bare beskatning nedenfor GBM er overbeskatning
+      } else { # intet beskattbart overskudd, alt fiske er overbeskatning
         if(elveliste$GytingSim[i])
           resultat_fordeling$Overbeskatning[l] <- (((resultat_fordeling$Fangst_elv_vekt_u3[l] + resultat_fordeling$Sjofangst_vekt_u3[l]) * m$AndelHunnU3) +
             ((resultat_fordeling$Fangst_elv_vekt_37[l] + resultat_fordeling$Sjofangst_vekt_37[l]) * m$AndelHunn37) + 
