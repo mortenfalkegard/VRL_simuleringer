@@ -29,7 +29,7 @@ Fuglestadelva;027.7Z;21;Jæren;Fuglestad;387;290;483;0.921875903;TRUE;;TRUE
 Hellelandselva;027.3Z;21;Jæren;;123;92;185;0.909831888;FALSE;;TRUE
 Håelva;028.3Z;21;Jæren;Haaelv;1821;1366;2276;0.950105153;TRUE;;TRUE
 Kvassheimelva;028.1Z;21;Jæren;Kvassheim;67;56;78;0.689489802;TRUE;;TRUE
-Nordre Varhaugselva;028.21Z;21;Jæren;Nvarhaug;73;54;91;0.35;TRUE;;TRUE
+Nordre Varhaugselva;028.22Z;21;Jæren;Nvarhaug;73;54;91;0.35;TRUE;;TRUE
 Ogna;027.6Z;21;Jæren;Ogna;1162;968;1356;0.894614862;TRUE;;TRUE
 Sokndalselva;026.4Z;21;Jæren;Sokndal;861;646;1076;0.913576846;TRUE;;TRUE
 Søndre Varhaugselva;028.21Z;21;Jæren;Svarhaug;73;54;91;0.35;TRUE;;TRUE
@@ -148,7 +148,7 @@ Bondalselva;097.1Z;15;Fjordene_i_Møre_og_Romsdal;Bondal;582;437;728;0.95;TRUE;S
 Eidsdalselva (Ytterdalselva);099.1Z;15;Fjordene_i_Møre_og_Romsdal;;172;129;258;0.909739188;FALSE;Sunnmørsfjordene;FALSE
 Hareidvassdraget;096.1Z;15;Fjordene_i_Møre_og_Romsdal;;388;291;485;0.83;FALSE;Sunnmørsfjordene;FALSE
 Korsbrekkelva;098.6Z;15;Fjordene_i_Møre_og_Romsdal;Korsbrekk;161;134;188;0.973470555;TRUE;Sunnmørsfjordene;FALSE
-Norangdalselva;097.4Z;15;Fjordene_i_Møre_og_Romsdal;Norangdal;127;95;159;0.98;TRUE;Sunnmørsfjordene;FALSE
+Norangdalselva;097.4Z;15;Fjordene_i_Møre_og_Romsdal;Norangdal;127;95;159;0.98;FALSE;Sunnmørsfjordene;FALSE
 Norddalselva (Norddal);099.2Z;15;Fjordene_i_Møre_og_Romsdal;;86;65;108;0.97752724;FALSE;Sunnmørsfjordene;FALSE
 Norddalselva (Vanylven);093.3Z;15;Fjordene_i_Møre_og_Romsdal;;32;24;40;1;FALSE;Sunnmørsfjordene;FALSE
 Oselva (Syvde);093.2Z;15;Fjordene_i_Møre_og_Romsdal;OsSyvde;173;130;224;0.928008664;TRUE;Sunnmørsfjordene;FALSE
