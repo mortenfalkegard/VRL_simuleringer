@@ -66,7 +66,7 @@ for (j in 1:antall_aar) {
 #simul_gyting <- read.table(sim_gyt_filnavn, stringsAsFactors = FALSE, header = TRUE)
 #simul_villoppdrett <- read.table(sim_villOppdr_filnavn, stringsAsFactors = FALSE, header = TRUE)
 simul_kghunnlaks <- read.table(sim_kghunnlaks_filnavn, stringsAsFactors = FALSE, header = TRUE)
-
+simul_kghunnlaks[is.na(simul_kghunnlaks)] <- 0
 elvedatamatrise <- read.table("data/elvedata_2019.csv", sep = ";", stringsAsFactors = FALSE, header = TRUE, fileEncoding = "UTF-8-BOM")
 elvefangst_ssb <- read.table("data/ssb_elv_2010-2019.csv", sep = ";", stringsAsFactors = FALSE, header = TRUE, fileEncoding = "UTF-8")
 
@@ -78,15 +78,17 @@ for (i in 1:antall_elver) {
 
   elv_vdrnr <- elveliste$VdrNr[i]
   
-  if(!is.na(elveliste[i, "Filnavn"])) { # vassdrag har filnavn, hent data fra simulering og vassdragsfil
+  if(elveliste$GytingSim[i]) { # vassdrag har filnavn, hent data fra simulering og vassdragsfil
     
     elv_filnavn <- paste("data/vassdrag/", elveliste[i, "Filnavn"], ".csv", sep="")
     elv_grunnlag <- read.table(elv_filnavn, header = TRUE, sep = ";", stringsAsFactors = FALSE, fileEncoding = "UTF-8")
-    elv_vdrnr <- elveliste$VdrNr[i]
-    
+    elv_grunnlag <- elv_grunnlag %>% rename(Gjen_vekt_o7kg = Gjen_vekto7kg)
+
     for (j in 1:antall_aar) {
       df <- filter(simul_kghunnlaks, Aar == aar_liste[j], Vdrnr == elveliste$VdrNr[i])
       df2 <- filter(elv_grunnlag, Aar == aar_liste[j])
+      df3 <- filter(elvefangst_ssb, Aar == aar_liste[j])
+      fangst_elv_ssb <- filter(elvefangst_ssb, Aar == aar_liste[j], VdrNr == elveliste$VdrNr[i])
       
       elv_hunnproporsjon[j, i, 1] <- df$AndelHunnU3
       elv_hunnproporsjon[j, i, 2] <- df$AndelHunn37
@@ -97,22 +99,35 @@ for (i in 1:antall_elver) {
       elv_fangst[j, i, 2] <- df$FangstHunn37_Justert / df$AndelHunn37
       elv_fangst[j, i, 3] <- df$FangstHunnO7_Justert / df$AndelHunnO7
       
+      # bruk simulert gyting hunn og andel hunn til å beregne gyting hann+hunn 
       elv_gyting[j, i, 1] <- df$GytingHunnU3 / df$AndelHunnU3
       elv_gyting[j, i, 2] <- df$GytingHunn37 / df$AndelHunn37
       elv_gyting[j, i, 3] <- df$GytingHunnO7 / df$AndelHunnO7
       
       # bruk snittvekt til å estimere fangst og gyting i antall, gitt i kolonne 4-6
-      snittvekt[1] <- df2$Laks_vekt_u3kg / df2$Laks_ant_u3kg
-      snittvekt[2] <- df2$Laks_vekt_o3u7kg / df2$Laks_ant_o3u7kg
-      snittvekt[3] <- df2$Laks_vekt_o7kg / df2$Laks_ant_o7kg
+      if(df2$Laks_ant_u3kg + df2$Gjen_ant_u3kg > 4) {
+        snittvekt_u3 <- (df2$Laks_vekt_u3kg + df2$Gjen_vekt_u3kg) / (df2$Laks_ant_u3kg + df2$Gjen_ant_u3kg)
+      } else {
+        snittvekt_u3 <- sum(df3$Laks_vekt_u3kg) / sum(df3$Laks_ant_u3kg) # nasjonalt snitt hvis færre enn 5 laks
+      }
+      if(df2$Laks_ant_o3u7kg + df2$Gjen_ant_o3u7kg > 4) {
+        snittvekt_37 <- (df2$Laks_vekt_o3u7kg + df2$Gjen_vekt_o3u7kg) / (df2$Laks_ant_o3u7kg + df2$Gjen_ant_o3u7kg)
+      } else {
+        snittvekt_37 <- sum(df3$Laks_vekt_o3u7kg) / sum(df3$Laks_ant_o3u7kg) # nasjonalt snitt hvis færre enn 5 laks
+      }
+      if(df2$Laks_ant_o7kg + df2$Gjen_ant_o7kg > 4) {
+        snittvekt_o7 <- (df2$Laks_vekt_o7kg + df2$Gjen_vekt_o7kg) / (df2$Laks_ant_o7kg + df2$Gjen_ant_o7kg)
+      } else {
+        snittvekt_o7 <- sum(df3$Laks_vekt_o7kg) / sum(df3$Laks_ant_o7kg) # nasjonalt snitt hvis færre enn 5 laks
+      }
       
-      elv_fangst[j, i, 4] <- elv_fangst[j, i, 1] / snittvekt[1]
-      elv_fangst[j, i, 5] <- elv_fangst[j, i, 2] / snittvekt[2]
-      elv_fangst[j, i, 6] <- elv_fangst[j, i, 3] / snittvekt[3]
+      elv_fangst[j, i, 4] <- if(snittvekt_u3 > 0) (elv_fangst[j, i, 1] / snittvekt_u3) else 0
+      elv_fangst[j, i, 5] <- if(snittvekt_37 > 0) (elv_fangst[j, i, 2] / snittvekt_37) else 0
+      elv_fangst[j, i, 6] <- if(snittvekt_o7 > 0) (elv_fangst[j, i, 3] / snittvekt_o7) else 0
       
-      elv_gyting[j, i, 4] <- elv_gyting[j, i, 1] / snittvekt[1]
-      elv_gyting[j, i, 5] <- elv_gyting[j, i, 2] / snittvekt[2]
-      elv_gyting[j, i, 6] <- elv_gyting[j, i, 3] / snittvekt[3]
+      elv_gyting[j, i, 4] <- if(snittvekt_u3 > 0) (elv_gyting[j, i, 1] / snittvekt_u3) else 0
+      elv_gyting[j, i, 5] <- if(snittvekt_37 > 0) (elv_gyting[j, i, 2] / snittvekt_37) else 0
+      elv_gyting[j, i, 6] <- if(snittvekt_o7 > 0) (elv_gyting[j, i, 3] / snittvekt_o7) else 0
       
       elv_innsig[j, i, ] <- elv_fangst[j, i, ] + elv_gyting[j, i, ]
     }
@@ -122,39 +137,87 @@ for (i in 1:antall_elver) {
     for (j in 1:antall_aar) {
       df <- filter(elvedatamatrise, VdrNr == elv_vdrnr)
       df2 <- filter(elvefangst_ssb, VdrNr == elv_vdrnr, Aar == aar_liste[j])
+      df3 <- filter(elvefangst_ssb, Aar == aar_liste[j])
       
-      if(is.na(df$Fangst) | (df2$Laks_vekt_u3kg + df2$Laks_vekt_o3u7kg + df2$Laks_vekt_o7kg) == 0) { # elv uten fangst, bruk alternativ fra elvedatamatrise
-        elv_fangst[j, i, 1] <- 0
-        elv_fangst[j, i, 2] <- 0
-        elv_fangst[j, i, 3] <- 0
-        elv_fangst[j, i, 4] <- 0
-        elv_fangst[j, i, 5] <- 0
-        elv_fangst[j, i, 6] <- 0
+      snittvekt_u3 <- sum(df3$Laks_vekt_u3kg) / sum(df3$Laks_ant_u3kg)
+      snittvekt_37 <- sum(df3$Laks_vekt_o3u7kg) / sum(df3$Laks_ant_o3u7kg)
+      snittvekt_o7 <- sum(df3$Laks_vekt_o7kg) / sum(df3$Laks_ant_o7kg)
+      
+      andel_ant_u3 <- sum(df3$Laks_ant_u3kg) / sum(df3$Laks_ant_u3kg, df3$Laks_ant_o3u7kg, df3$Laks_ant_o7kg)
+      andel_ant_37 <- sum(df3$Laks_ant_o3u7kg) / sum(df3$Laks_ant_u3kg, df3$Laks_ant_o3u7kg, df3$Laks_ant_o7kg)
+      andel_ant_o7 <- sum(df3$Laks_ant_o7kg) / sum(df3$Laks_ant_u3kg, df3$Laks_ant_o3u7kg, df3$Laks_ant_o7kg)
+      
+      andel_vekt_u3 <- sum(df3$Laks_vekt_u3kg) / sum(df3$Laks_vekt_u3kg, df3$Laks_vekt_o3u7kg, df3$Laks_vekt_o7kg)
+      andel_vekt_37 <- sum(df3$Laks_vekt_o3u7kg) / sum(df3$Laks_vekt_u3kg, df3$Laks_vekt_o3u7kg, df3$Laks_vekt_o7kg)
+      andel_vekt_o7 <- sum(df3$Laks_vekt_o7kg) / sum(df3$Laks_vekt_u3kg, df3$Laks_vekt_o3u7kg, df3$Laks_vekt_o7kg)
+      
+      if(!is.na(df$Maloppnaelse)) { # vassdrag med GBM og estimert måloppnåelse
         
-        if(!is.na(df$Maloppnaelse)) { # vassdrag med GBM og estimert måloppnåelse
-          
-          # her må det gjøres en jobb med å sette opp antatt størrelsesfordeling i vassdraget, for eksempel i elvedatamatrisen
-          
-        } else if(!is.na(df$Elvinnsig)) { # vassdrag med telling, for eksempel video
-          
-          # her må det gjøres en jobb med å sette opp antatt størrelsesfordeling i vassdraget, for eksempel i elvedatamatrisen
-          
-        } else if(!is.na(df$Gytebestand)) { # vassdrag med gytefisktelling
+        # her må det gjøres en jobb med å sette opp antatt størrelsesfordeling i vassdraget, for eksempel i elvedatamatrisen
+        # inntil videre brukes snittverdier for størrelsesfordeling fra nasjonal fangst
         
-          # her må det gjøres en jobb med å sette opp antatt størrelsesfordeling i vassdraget, for eksempel i elvedatamatrisen
-
-        } else { # data mangler helt, sett gyting og fangst til 0
-          
-          elv_gyting[j, i, 1] <- 0
-          elv_gyting[j, i, 2] <- 0
-          elv_gyting[j, i, 3] <- 0
-          elv_gyting[j, i, 4] <- 0
-          elv_gyting[j, i, 5] <- 0
-          elv_gyting[j, i, 6] <- 0
-          
+        elv_gyting[j, i, 1] <- elveliste$GBM[i] * df$Maloppnaelse * andel_vekt_u3
+        elv_gyting[j, i, 2] <- elveliste$GBM[i] * df$Maloppnaelse * andel_vekt_37
+        elv_gyting[j, i, 3] <- elveliste$GBM[i] * df$Maloppnaelse * andel_vekt_o7
+        elv_gyting[j, i, 4] <- elv_gyting[j, i, 1] / snittvekt_u3
+        elv_gyting[j, i, 5] <- elv_gyting[j, i, 2] / snittvekt_37
+        elv_gyting[j, i, 6] <- elv_gyting[j, i, 3] / snittvekt_o7
+        
+        if((df2$Laks_vekt_u3kg + df2$Laks_vekt_o3u7kg + df2$Laks_vekt_o7kg) == 0) elv_fangst[j, i, ] <- 0
+        else {
+          elv_fangst[j, i, 1] <- df2$Laks_vekt_u3kg
+          elv_fangst[j, i, 2] <- df2$Laks_vekt_o3u7kg
+          elv_fangst[j, i, 3] <- df2$Laks_vekt_o7kg
+          elv_fangst[j, i, 4] <- df2$Laks_ant_u3kg
+          elv_fangst[j, i, 5] <- df2$Laks_ant_o3u7kg
+          elv_fangst[j, i, 6] <- df2$Laks_ant_o7kg
         }
         
-      } else { # elv med fangst, sjekk elvedatamatrise for evt ekstra kunnskap
+      } else if(!is.na(df$Gytebestand)) { # vassdrag med estimat på gytebestand
+
+        # her må det gjøres en jobb med å sette opp antatt størrelsesfordeling i vassdraget, for eksempel i elvedatamatrisen
+        # inntil videre brukes snittverdier for størrelsesfordeling fra nasjonal fangst
+        
+        elv_gyting[j, i, 1] <- df$Gytebestand * andel_ant_u3 * snittvekt_u3
+        elv_gyting[j, i, 2] <- df$Gytebestand * andel_ant_37 * snittvekt_37
+        elv_gyting[j, i, 3] <- df$Gytebestand * andel_ant_o7 * snittvekt_o7
+        elv_gyting[j, i, 4] <- df$Gytebestand * andel_ant_u3
+        elv_gyting[j, i, 5] <- df$Gytebestand * andel_ant_37
+        elv_gyting[j, i, 6] <- df$Gytebestand * andel_ant_o7
+        
+        if((df2$Laks_vekt_u3kg + df2$Laks_vekt_o3u7kg + df2$Laks_vekt_o7kg) == 0) elv_fangst[j, i, ] <- 0
+        else {
+          elv_fangst[j, i, 1] <- df2$Laks_vekt_u3kg
+          elv_fangst[j, i, 2] <- df2$Laks_vekt_o3u7kg
+          elv_fangst[j, i, 3] <- df2$Laks_vekt_o7kg
+          elv_fangst[j, i, 4] <- df2$Laks_ant_u3kg
+          elv_fangst[j, i, 5] <- df2$Laks_ant_o3u7kg
+          elv_fangst[j, i, 6] <- df2$Laks_ant_o7kg
+        }
+        
+      } else if(!is.na(df$Elvinnsig)) { # vassdrag med telling av oppvandrende laks, for eksempel video
+        
+        # her må det gjøres en jobb med å sette opp antatt størrelsesfordeling i vassdraget, for eksempel i elvedatamatrisen
+        # inntil videre brukes snittverdier for størrelsesfordeling fra nasjonal fangst
+        
+        elv_gyting[j, i, 1] <- df$Elvinnsig * andel_ant_u3 * snittvekt_u3
+        elv_gyting[j, i, 2] <- df$Elvinnsig * andel_ant_37 * snittvekt_37
+        elv_gyting[j, i, 3] <- df$Elvinnsig * andel_ant_o7 * snittvekt_o7
+        elv_gyting[j, i, 4] <- df$Elvinnsig * andel_ant_u3
+        elv_gyting[j, i, 5] <- df$Elvinnsig * andel_ant_37
+        elv_gyting[j, i, 6] <- df$Elvinnsig * andel_ant_o7
+        
+        if((df2$Laks_vekt_u3kg + df2$Laks_vekt_o3u7kg + df2$Laks_vekt_o7kg) == 0) elv_fangst[j, i, ] <- 0
+        else {
+          elv_fangst[j, i, 1] <- df2$Laks_vekt_u3kg
+          elv_fangst[j, i, 2] <- df2$Laks_vekt_o3u7kg
+          elv_fangst[j, i, 3] <- df2$Laks_vekt_o7kg
+          elv_fangst[j, i, 4] <- df2$Laks_ant_u3kg
+          elv_fangst[j, i, 5] <- df2$Laks_ant_o3u7kg
+          elv_fangst[j, i, 6] <- df2$Laks_ant_o7kg
+        }
+        
+      } else if((df2$Laks_vekt_u3kg + df2$Laks_vekt_o3u7kg + df2$Laks_vekt_o7kg) > 0) { # vassdrag med fangst
         
         elv_fangst[j, i, 1] <- df2$Laks_vekt_u3kg
         elv_fangst[j, i, 2] <- df2$Laks_vekt_o3u7kg
@@ -162,25 +225,24 @@ for (i in 1:antall_elver) {
         elv_fangst[j, i, 4] <- df2$Laks_ant_u3kg
         elv_fangst[j, i, 5] <- df2$Laks_ant_o3u7kg
         elv_fangst[j, i, 6] <- df2$Laks_ant_o7kg
-
-        snittvekt[1] <- df2$Laks_vekt_u3kg / df2$Laks_ant_u3kg
-        snittvekt[2] <- df2$Laks_vekt_o3u7kg / df2$Laks_ant_o3u7kg
-        snittvekt[3] <- df2$Laks_vekt_o7kg / df2$Laks_ant_o7kg
-
+        
         if(is.na(df$Fangstrate)) { # hvis estimat finnes, bruk dette, dersom ikke bruk fangstrate 0.5 foreløpig, inntil vi har bedre kontroll på alternative tilnærminger
           df$Fangstrate <- 0.5
         }
         
-        elv_beskatningsrate[j, i, 1] <- df$Fangstrate
-        elv_beskatningsrate[j, i, 2] <- df$Fangstrate
-        elv_beskatningsrate[j, i, 3] <- df$Fangstrate
-
+        elv_beskatningsrate[j, i, ] <- df$Fangstrate
+        
         elv_gyting[j, i, 1] <- (df2$Laks_vekt_u3kg / df$Fangstrate) - df2$Laks_vekt_u3kg
         elv_gyting[j, i, 2] <- (df2$Laks_vekt_o3u7kg / df$Fangstrate) - df2$Laks_vekt_o3u7kg
         elv_gyting[j, i, 3] <- (df2$Laks_vekt_o7kg / df$Fangstrate) - df2$Laks_vekt_o7kg
         elv_gyting[j, i, 4] <- (df2$Laks_ant_u3kg / df$Fangstrate) - df2$Laks_ant_u3kg
         elv_gyting[j, i, 5] <- (df2$Laks_ant_o3u7kg / df$Fangstrate) - df2$Laks_ant_o3u7kg
         elv_gyting[j, i, 6] <- (df2$Laks_ant_o7kg / df$Fangstrate) - df2$Laks_ant_o7kg
+        
+      } else { # data mangler helt, sett gyting og fangst til 0
+        
+        elv_gyting[j, i, ] <- 0
+        elv_fangst[j, i, ] <- 0
         
       }
 
@@ -229,7 +291,7 @@ for (j in 1:antall_aar) {
 #-----------------------------------------------------------------------------------------------------------------
 ddf <- resultat_fordeling %>% 
   group_by(Aar, Region) %>%
-  summarize(across(PFA_elv_vekt_u3:PFA_elv_ant_o7, sum)) # beregn samlet elveinnsig pr region, bruk det til å beregne hva slags fangstandel hvert vassdrag utgjør
+  summarize(across(Innsig_elv_vekt_u3:Innsig_elv_ant_o7, sum)) # beregn samlet elveinnsig pr region, bruk det til å beregne hva slags fangstandel hvert vassdrag utgjør
 
 l <- 1 # indeks for vassdrag i resultat_fordeling
 for (j in 1:antall_aar) {
@@ -237,11 +299,11 @@ for (j in 1:antall_aar) {
     k <- filter(ddf, Region == elveliste$RegionNavn[i] & Aar == aar_liste[j])
     resultat_fordeling[l, 24:29] <- resultat_fordeling[l, 18:23] / k[1, 3:8] # andel vassdrag utgjør i region
     resultat_fordeling[l, 30:35] <- resultat_fordeling[l, 24:29] * region_fangst[j, elveliste$RegionNr[i], 1:6] # sjøfangst
-    resultat_fordeling[l, 36:41] <- resultat_fordeling[l, 30:35] + resultat_fordeling[l, 18:23]
+    resultat_fordeling[l, 36:41] <- resultat_fordeling[l, 30:35] + resultat_fordeling[l, 18:23] # innsig totalt
     
     # totalt innsig hunn, vekt
     if(elveliste$GytingSim[i]) {
-      m <- filter(simul_kghunnlaks, Vdrnr == elveliste$VdrNr[i] & Aar = aar_liste[j])
+      m <- filter(simul_kghunnlaks, Vdrnr == elveliste$VdrNr[i] & Aar == aar_liste[j])
       resultat_fordeling$Innsig_total_hunn[l] <- resultat_fordeling$Innsig_sjo_vekt_u3[l] * m$AndelHunnU3 +
         resultat_fordeling$Innsig_sjo_vekt_37[l] * m$AndelHunn37 + resultat_fordeling$Innsig_sjo_vekt_o7[l] * m$AndelHunnO7
     } else {
@@ -283,3 +345,4 @@ for (j in 1:antall_aar) {
   }
 }
 
+write.table(resultat_fordeling, "results/resultat_fordeling.csv", sep = ";", row.names = FALSE, fileEncoding = "UTF-8")
