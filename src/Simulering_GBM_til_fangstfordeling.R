@@ -20,6 +20,7 @@ for (m in 1:antall_elver) {
     
     ElvFilNavn <- paste("data/vassdrag/", elveliste[m, "Filnavn"], ".csv", sep="")
     d <- read.csv(ElvFilNavn, header = TRUE, sep = ";", fileEncoding = "UTF-8")
+    d$Vdrnr <- elveliste$VdrNr[m] # erstatt vassdragsnummer slik at vi er sikker på at vi har med oss riktig nr videre
     
     #---------------------------------------------------------------------------------------------------------
     # her starter det originale skriptet til Astrid
@@ -490,34 +491,34 @@ for (m in 1:antall_elver) {
     
     # Fil med beskatningsrate og fangstandel 
     
-    Beskatning_og_fangstandel <-  d %>% select(Vassdrag, Vdrnr, Aar, 
-                                               ExpSmallMin, FangstAndSmallMin, 
-                                               ExpSmallMed, FangstAndSmallMed,
-                                               ExpSmallMax, FangstAndSmallMax,
-                                               ExpMellomMin, FangstAndMellomMin,
-                                               ExpMellomMed, FangstAndMellomMed,
-                                               ExpMellomMax, FangstAndMellomMax,
-                                               ExpStorMin, FangstAndStorMin,
-                                               ExpStorMed, FangstAndStorMed,
-                                               ExpStorMax, FangstAndStorMax
-    )
+#    Beskatning_og_fangstandel <-  d %>% select(Vassdrag, Vdrnr, Aar, 
+#                                               ExpSmallMin, FangstAndSmallMin, 
+#                                               ExpSmallMed, FangstAndSmallMed,
+#                                               ExpSmallMax, FangstAndSmallMax,
+#                                               ExpMellomMin, FangstAndMellomMin,
+#                                               ExpMellomMed, FangstAndMellomMed,
+#                                               ExpMellomMax, FangstAndMellomMax,
+#                                               ExpStorMin, FangstAndStorMin,
+#                                               ExpStorMed, FangstAndStorMed,
+#                                               ExpStorMax, FangstAndStorMax
+#    )
     
-    Beskatning_og_fangstandel %>% filter(Aar == 1993)
+#    Beskatning_og_fangstandel %>% filter(Aar == 1993)
     
     # Dersom fila allerede finnes, s? legges talla inn i eksisterende fil, hvis ikke, opprettes det en ny fil. 
     
-    if(paste("Beskatning_FangstAndel", d$Aar[max(n.years)], ".txt", sep = "") %in% list.files("results")) {
-      write.table(Beskatning_og_fangstandel, paste("results/Beskatning_FangstAndel", d$Aar[max(n.years)], ".txt", sep = ""), row.names=FALSE,
-                  col.names=FALSE, append=TRUE)
-    } else {
-      write.table(Beskatning_og_fangstandel, paste("results/Beskatning_FangstAndel", d$Aar[max(n.years)], ".txt", sep = ""), row.names=FALSE)
-    }
+#    if(paste("Beskatning_FangstAndel", d$Aar[max(n.years)], ".txt", sep = "") %in% list.files("results")) {
+#      write.table(Beskatning_og_fangstandel, paste("results/Beskatning_FangstAndel", d$Aar[max(n.years)], ".txt", sep = ""), row.names=FALSE,
+#                  col.names=FALSE, append=TRUE)
+#    } else {
+#      write.table(Beskatning_og_fangstandel, paste("results/Beskatning_FangstAndel", d$Aar[max(n.years)], ".txt", sep = ""), row.names=FALSE)
+#    }
     
     # Fjerne duplikater
-    Beskatning_og_fangstandel <- read.table(paste("results/Beskatning_FangstAndel", d$Aar[max(n.years)], ".txt", sep = ""), header = T)
-    Beskatning_og_fangstandel <- Beskatning_og_fangstandel[ !duplicated(Beskatning_og_fangstandel[, c("Vassdrag", "Aar")], fromLast=T),]
+#    Beskatning_og_fangstandel <- read.table(paste("results/Beskatning_FangstAndel", d$Aar[max(n.years)], ".txt", sep = ""), header = T)
+#    Beskatning_og_fangstandel <- Beskatning_og_fangstandel[ !duplicated(Beskatning_og_fangstandel[, c("Vassdrag", "Aar")], fromLast=T),]
     
-    write.table(Beskatning_og_fangstandel, paste("results/Beskatning_FangstAndel", d$Aar[max(n.years)], ".txt", sep = ""), append = FALSE, row.names = FALSE)
+#    write.table(Beskatning_og_fangstandel, paste("results/Beskatning_FangstAndel", d$Aar[max(n.years)], ".txt", sep = ""), append = FALSE, row.names = FALSE)
     
     
     
@@ -787,50 +788,50 @@ for (m in 1:antall_elver) {
     # Fil med antall oppdrett og villfisk 
     # S?rge for at det blir NA der det skal v?re NA 
     
-    TilfilAntallVillogOppdrett <- data_frame(ElvebestVillSma025, ElvebestVillSma25, ElvebestVillSma50, ElvebestVillSma75, ElvebestVillSma975,
-                                             ElvebestVillMel025, ElvebestVillMel25, ElvebestVillMel50, ElvebestVillMel75, ElvebestVillMel975,
-                                             ElvebestVillStor025, ElvebestVillStor25, ElvebestVillStor50, ElvebestVillStor75, ElvebestVillStor975,
-                                             ElvebestVillTot025, ElvebestVillTot25, ElvebestVillTot50, ElvebestVillTot75, ElvebestVillTot975,
-                                             OppdrettAntall025, OppdrettAntall25, OppdrettAntall50, OppdrettAntall75, OppdrettAntall975,
-                                             AntOppdr025, AntOppdr25, AntOppdr50, AntOppdr75, AntOppdr975) %>%
-      mutate(Vassdrag = d$Vassdrag) %>% 
-      mutate(Vdrnr = d$Vdrnr) %>%
-      mutate(Kommune = d$Kommune) %>% 
-      mutate(Aar = d$Aar) %>% 
-      mutate(GBMkghunner = d$GBMkghunner)%>%
-      select(Vassdrag:GBMkghunner, everything())   # Flytte kolonner Vassdrag til GBMkghunner fremst i datasettet 
+#    TilfilAntallVillogOppdrett <- data_frame(ElvebestVillSma025, ElvebestVillSma25, ElvebestVillSma50, ElvebestVillSma75, ElvebestVillSma975,
+#                                             ElvebestVillMel025, ElvebestVillMel25, ElvebestVillMel50, ElvebestVillMel75, ElvebestVillMel975,
+#                                             ElvebestVillStor025, ElvebestVillStor25, ElvebestVillStor50, ElvebestVillStor75, ElvebestVillStor975,
+#                                             ElvebestVillTot025, ElvebestVillTot25, ElvebestVillTot50, ElvebestVillTot75, ElvebestVillTot975,
+#                                             OppdrettAntall025, OppdrettAntall25, OppdrettAntall50, OppdrettAntall75, OppdrettAntall975,
+#                                             AntOppdr025, AntOppdr25, AntOppdr50, AntOppdr75, AntOppdr975) %>%
+#      mutate(Vassdrag = d$Vassdrag) %>% 
+#      mutate(Vdrnr = d$Vdrnr) %>%
+#      mutate(Kommune = d$Kommune) %>% 
+#      mutate(Aar = d$Aar) %>% 
+#      mutate(GBMkghunner = d$GBMkghunner)%>%
+#      select(Vassdrag:GBMkghunner, everything())   # Flytte kolonner Vassdrag til GBMkghunner fremst i datasettet 
     
     # Sette ?r uten grunnlag for vurdering til NA 
     
     # Vill elvebestand sm?laks, mellomlaks og storlaks til NA i ?r der beskatningsrate er NA
-    TilfilAntallVillogOppdrett[which(is.na(d$ExpSmallMin)), 6:10] <- NA
-    TilfilAntallVillogOppdrett[which(is.na(d$ExpMellomMin)), 11:15] <- NA
-    TilfilAntallVillogOppdrett[which(is.na(d$ExpStorMin)), 16:20] <- NA
+#    TilfilAntallVillogOppdrett[which(is.na(d$ExpSmallMin)), 6:10] <- NA
+#    TilfilAntallVillogOppdrett[which(is.na(d$ExpMellomMin)), 11:15] <- NA
+#    TilfilAntallVillogOppdrett[which(is.na(d$ExpStorMin)), 16:20] <- NA
     
     # Total elvebestand satt til NA dersom der ikke er avliva eller gjenutsatt fangst og ikke telling
-    TilfilAntallVillogOppdrett[which(d$Laks_ant == 0 & d$Gjen_ant == 0 & d$telling == 0), 21:25] <- NA
+#    TilfilAntallVillogOppdrett[which(d$Laks_ant == 0 & d$Gjen_ant == 0 & d$telling == 0), 21:25] <- NA
     
     # Oppdrettantall og AntOppdr satt til NA dersom det ikke er avliva fangst
-    TilfilAntallVillogOppdrett[which(d$Laks_ant == 0), 26:35] <- NA
+#    TilfilAntallVillogOppdrett[which(d$Laks_ant == 0), 26:35] <- NA
     
     
     # Dersom fila allerede finnes, s? legges talla inn i eksisterende fil, hvis ikke, opprettes det en ny fil. 
     
-    if(paste("AntVillogOppdrettElvEstimater", d$Aar[max(n.years)], ".txt", sep = "") %in% list.files("results")) {
-      write.table(TilfilAntallVillogOppdrett, paste("results/AntVillogOppdrettElvEstimater", d$Aar[max(n.years)], ".txt", sep = ""), row.names=FALSE,
-                  col.names=FALSE, append=TRUE)
-    } else {
-      write.table(TilfilAntallVillogOppdrett, paste("results/AntVillogOppdrettElvEstimater", d$Aar[max(n.years)], ".txt", sep = ""), row.names=FALSE)
-    }
+#    if(paste("AntVillogOppdrettElvEstimater", d$Aar[max(n.years)], ".txt", sep = "") %in% list.files("results")) {
+#      write.table(TilfilAntallVillogOppdrett, paste("results/AntVillogOppdrettElvEstimater", d$Aar[max(n.years)], ".txt", sep = ""), row.names=FALSE,
+#                  col.names=FALSE, append=TRUE)
+#    } else {
+#      write.table(TilfilAntallVillogOppdrett, paste("results/AntVillogOppdrettElvEstimater", d$Aar[max(n.years)], ".txt", sep = ""), row.names=FALSE)
+#    }
     
     
     # Fjerner duplikater:  beholder bare det som ble kj?rt sist 
     
-    AntVillogOpp <- read.table(paste("results/AntVillogOppdrettElvEstimater", d$Aar[max(n.years)], ".txt", sep = ""), header = T)
-    AntVillogOpp <- AntVillogOpp[ !duplicated(AntVillogOpp[, c("Vassdrag", "Aar")], fromLast=T),]
+#    AntVillogOpp <- read.table(paste("results/AntVillogOppdrettElvEstimater", d$Aar[max(n.years)], ".txt", sep = ""), header = T)
+#    AntVillogOpp <- AntVillogOpp[ !duplicated(AntVillogOpp[, c("Vassdrag", "Aar")], fromLast=T),]
     
     
-    write.table(AntVillogOpp, paste("results/AntVillogOppdrettElvEstimater", d$Aar[max(n.years)], ".txt", sep = ""), append = FALSE, row.names = FALSE)
+#    write.table(AntVillogOpp, paste("results/AntVillogOppdrettElvEstimater", d$Aar[max(n.years)], ".txt", sep = ""), append = FALSE, row.names = FALSE)
     
     
     
@@ -996,11 +997,11 @@ for (m in 1:antall_elver) {
     }
     
     # Fjerne duplikater 
-    KgHunnlaksFil <- read.table(paste("results/KgHunnlaks", d$Aar[max(n.years)], ".txt", sep = ""), header = T)
+#    KgHunnlaksFil <- read.table(paste("results/KgHunnlaks", d$Aar[max(n.years)], ".txt", sep = ""), header = T)
   
-    KgHunnlaksFil <- KgHunnlaksFil[ !duplicated(KgHunnlaksFil[, c("Vassdrag", "Aar")], fromLast=T),]
+#    KgHunnlaksFil <- KgHunnlaksFil[ !duplicated(KgHunnlaksFil[, c("Vassdrag", "Aar")], fromLast=T),]
     
-    write.table(KgHunnlaksFil, paste("results/KgHunnlaks", d$Aar[max(n.years)], ".txt", sep = ""), append = FALSE, row.names = FALSE)
+#    write.table(KgHunnlaksFil, paste("results/KgHunnlaks", d$Aar[max(n.years)], ".txt", sep = ""), append = FALSE, row.names = FALSE)
     
     #--------------------------------------------------------------------------------------------------------------
     # SLUTT NY SEKSJON. Nedenfor fortsetter originalskriptet fra Astrid
@@ -1112,27 +1113,27 @@ for (m in 1:antall_elver) {
     
     # Fil med m?loppn?else 
     
-    Tilfilmaaloppnaelse <- data_frame(Prosnaad, Prosnaadsistefire, prosmaaloppnaaelse, prosmaaloppnaaelsesistefire, prosmaaloppnaaelseutrunk, Utrunksistefire) %>% 
-      mutate(Vassdrag = d$Vassdrag) %>% 
-      mutate(Vdrnr = d$Vdrnr) %>% 
-      mutate(Aar = d$Aar) %>% 
-      select(Vassdrag:Aar, everything())
+#    Tilfilmaaloppnaelse <- data_frame(Prosnaad, Prosnaadsistefire, prosmaaloppnaaelse, prosmaaloppnaaelsesistefire, prosmaaloppnaaelseutrunk, Utrunksistefire) %>% 
+#      mutate(Vassdrag = d$Vassdrag) %>% 
+#      mutate(Vdrnr = d$Vdrnr) %>% 
+#      mutate(Aar = d$Aar) %>% 
+#      select(Vassdrag:Aar, everything())
     
     
-    if(paste("Maaloppnaaelse", d$Aar[max(n.years)], ".txt", sep = "") %in% list.files("results")) {
-      write.table(Tilfilmaaloppnaelse, paste("results/Maaloppnaaelse", d$Aar[max(n.years)], ".txt", sep = ""), row.names=FALSE,
-                  col.names=FALSE, append=TRUE)
-    } else {
-      write.table(Tilfilmaaloppnaelse, paste("results/Maaloppnaaelse", d$Aar[max(n.years)], ".txt", sep = ""), row.names=FALSE)
-    }
+#    if(paste("Maaloppnaaelse", d$Aar[max(n.years)], ".txt", sep = "") %in% list.files("results")) {
+#      write.table(Tilfilmaaloppnaelse, paste("results/Maaloppnaaelse", d$Aar[max(n.years)], ".txt", sep = ""), row.names=FALSE,
+#                  col.names=FALSE, append=TRUE)
+#    } else {
+#      write.table(Tilfilmaaloppnaelse, paste("results/Maaloppnaaelse", d$Aar[max(n.years)], ".txt", sep = ""), row.names=FALSE)
+#    }
     
     
     # Fjerne duplikater 
-    Maaloppnaaelse <- read.table(paste("results/Maaloppnaaelse", d$Aar[max(n.years)], ".txt", sep = ""), header = T)
+#    Maaloppnaaelse <- read.table(paste("results/Maaloppnaaelse", d$Aar[max(n.years)], ".txt", sep = ""), header = T)
     
-    Maaloppnaaelse <- Maaloppnaaelse[ !duplicated(Maaloppnaaelse[, c("Vassdrag", "Aar")], fromLast=T),]
+#    Maaloppnaaelse <- Maaloppnaaelse[ !duplicated(Maaloppnaaelse[, c("Vassdrag", "Aar")], fromLast=T),]
     
-    write.table(Maaloppnaaelse, paste("results/Maaloppnaaelse", d$Aar[max(n.years)], ".txt", sep = ""), append = FALSE, row.names = FALSE)
+#    write.table(Maaloppnaaelse, paste("results/Maaloppnaaelse", d$Aar[max(n.years)], ".txt", sep = ""), append = FALSE, row.names = FALSE)
 
 
     
@@ -1159,17 +1160,6 @@ for (i in 1:antall_elver) {
 }
 
 #------------------------------------------------------------------------------------------------------------
-# subrutine for å teste csv-filer (noen får dessverre feil fra write.table)
-#------------------------------------------------------------------------------------------------------------
-
-for (i in 1:antall_elver) {
-  if (elveliste$GytingSim[i]) {
-    ElvFilNavn <- paste("data/vassdrag/", elveliste[i, "Filnavn"], ".csv", sep="")
-    d <- read.table(ElvFilNavn, header = TRUE, sep = ";", fileEncoding = "UTF-8")
-  }
-}
-
-#------------------------------------------------------------------------------------------------------------
 # subrutine for å konvertere SSB fangstfil
 #------------------------------------------------------------------------------------------------------------
 ssb_fangst <- read.xlsx("ssb elv 2010-2019.xlsx", sheet = 1, startRow = 1, colNames = TRUE)
@@ -1178,6 +1168,8 @@ ssb_fangst <- read.xlsx("ssb elv 2010-2019.xlsx", sheet = 1, startRow = 1, colNa
 ssb_fangst$VdrNr <- str_replace(ssb_fangst$VdrNr, "X1", "X1Z")
 ssb_fangst$VdrNr <- str_replace(ssb_fangst$VdrNr, "246.1A", "246.1AZ")
 ssb_filtrert <- filter(ssb_fangst, str_detect(VdrNr, "Z"))
+
+ssb_filtrert <- subset(ssb_filtrert, VdrNr != "12041.21Z")
 
 # fjern fylkeskoder fra vassdragsnr
 ssb_filtrert$VdrNr <- str_replace(ssb_filtrert$VdrNr, "02-", "")
@@ -1197,3 +1189,18 @@ ssb_filtrert$VdrNr <- str_replace(ssb_filtrert$VdrNr, "179.32Z", "179.5Z")
 ssb_filtrert$VdrNr <- str_replace(ssb_filtrert$VdrNr, "185.442X1Z", "185.441Z")
 
 write.table(ssb_filtrert, "data/ssb_elv_2010-2019.csv", sep = ";", row.names = FALSE, fileEncoding = "UTF-8")
+
+#------------------------------------------------------------------------------------------------------------
+# subrutine for å sjekke hvilke vassdrag som kom gjennom simuleringen og om noen mangler
+#------------------------------------------------------------------------------------------------------------
+
+sim_kghunnlaks_filnavn <- "results/KgHunnlaks2019.txt"
+vassdrag_mangler <- vector()
+sim_kghunnlaks <- read.table(sim_kghunnlaks_filnavn, stringsAsFactors = FALSE, header = TRUE)
+for (i in 1:antall_elver) {
+  if(elveliste$GytingSim[i]) {
+    m <- which(sim_kghunnlaks$Vdrnr == elveliste$VdrNr[i])
+    if(length(m) == 0) vassdrag_mangler[i] <- elveliste$VdrNr[i]
+  }
+}
+
