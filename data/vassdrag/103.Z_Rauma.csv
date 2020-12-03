@@ -1,0 +1,9 @@
+Vassdrag,VdrNr,Aar,Andel_hunn,Fangst_storstygg,Maloppnaelse,Fangstrate,Gytebestand,Elvinnsig,GytingSim,Laks_vekt_u3kg,Laks_vekt_o3u7kg,Laks_vekt_o7kg,Laks_ant_u3kg,Laks_ant_o3u7kg,Laks_ant_o7kg,Gjen_vekt_u3kg,Gjen_vekt_o3u7kg,Gjen_vekto7kg,Gjen_ant_u3kg,Gjen_ant_o3u7kg,Gjen_ant_o7kg
+Rauma,103.Z,2012,0.52,872.2,,0.26,,,FALSE,71,327,268,38,68,29,0,0,0,0,0,0
+Rauma,103.Z,2013,0.52,354,,0.26,,,FALSE,73,157,124,43,34,14,0,0,0,0,0,0
+Rauma,103.Z,2014,0.52,153,,0.26,,,FALSE,61,67,24,32,15,3,0,0,0,0,0,0
+Rauma,103.Z,2015,0.52,387,,0.26,,,FALSE,97,218,72,46,45,9,0,13,152,0,2,18
+Rauma,103.Z,2016,0.52,381,,0.26,,,FALSE,26,265,90,13,57,10,18,0,0,8,0,0
+Rauma,103.Z,2017,0.52,180,,0.26,,,FALSE,35,99,46,18,21,5,112,154,15,57,36,2
+Rauma,103.Z,2018,0.52,1,,0.26,,,FALSE,0,0,0,0,0,0,451,411,66,251,94,8
+Rauma,103.Z,2019,0.52,394,,0.26,,,FALSE,89,201,104,54,43,13,688,1038,272,411,220,32

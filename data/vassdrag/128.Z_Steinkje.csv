@@ -1,0 +1,9 @@
+Vassdrag,VdrNr,Aar,Andel_hunn,Fangst_storstygg,Maloppnaelse,Fangstrate,Gytebestand,Elvinnsig,GytingSim,Laks_vekt_u3kg,Laks_vekt_o3u7kg,Laks_vekt_o7kg,Laks_ant_u3kg,Laks_ant_o3u7kg,Laks_ant_o7kg,Gjen_vekt_u3kg,Gjen_vekt_o3u7kg,Gjen_vekto7kg,Gjen_ant_u3kg,Gjen_ant_o3u7kg,Gjen_ant_o7kg
+Steinkjerelva,128.Z,2012,,0,,,,,FALSE,0,0,0,0,0,0,0,0,0,0,0,0
+Steinkjerelva,128.Z,2013,0.6,0,,,,,FALSE,0,0,0,0,0,0,0,0,0,0,0,0
+Steinkjerelva,128.Z,2014,0.6,400,,0.2,,,FALSE,100,200,100,55,39,12,0,0,0,0,0,0
+Steinkjerelva,128.Z,2015,0.6,881,,0.2,,,FALSE,65,638,178,44,128,21,0,0,0,0,0,0
+Steinkjerelva,128.Z,2016,0.6,919,,0.2,,,FALSE,70,560,289,43,118,35,3,6,0,2,1,0
+Steinkjerelva,128.Z,2017,0.6,942,,0.2,,,FALSE,238,477,227,131,104,28,23,43,0,14,11,0
+Steinkjerelva,128.Z,2018,0.6,889,,0.2,,,FALSE,42,615,232,20,117,28,5,62,35,2,13,4
+Steinkjerelva,128.Z,2019,0.6,117,,0.2,,,FALSE,19,75,24,13,17,3,5,4,7,3,1,1
