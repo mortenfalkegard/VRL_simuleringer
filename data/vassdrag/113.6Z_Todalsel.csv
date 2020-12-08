@@ -1,9 +1,9 @@
-Vassdrag,VdrNr,Aar,Andel_hunn,Fangst_storstygg,Maloppnaelse,Fangstrate,Gytebestand,Elvinnsig,GytingSim,Laks_vekt_u3kg,Laks_vekt_o3u7kg,Laks_vekt_o7kg,Laks_ant_u3kg,Laks_ant_o3u7kg,Laks_ant_o7kg,Gjen_vekt_u3kg,Gjen_vekt_o3u7kg,Gjen_vekto7kg,Gjen_ant_u3kg,Gjen_ant_o3u7kg,Gjen_ant_o7kg
-Todalselva (Aure),113.6Z,2012,0.57,17,,0.56,,,FALSE,13,4,0,9,1,0,0,0,0,0,0,0
-Todalselva (Aure),113.6Z,2013,0.57,40,,0.5,,,FALSE,36,3,0,29,1,0,0,0,0,0,0,0
-Todalselva (Aure),113.6Z,2014,0.57,1,,0.5,,,FALSE,0,0,0,0,0,0,0,0,0,0,0,0
-Todalselva (Aure),113.6Z,2015,0.57,37,,0.5,,,FALSE,30,7,0,24,2,0,1,4,0,1,1,0
-Todalselva (Aure),113.6Z,2016,0.57,32,,0.5,,,FALSE,17,15,0,9,4,0,4,3,0,3,1,0
-Todalselva (Aure),113.6Z,2017,0.57,56,,0.5,,,FALSE,45,11,0,30,3,0,0,0,0,0,0,0
-Todalselva (Aure),113.6Z,2018,0.57,26,,0.5,,,FALSE,7,19,0,5,5,0,2,6,0,2,1,0
-Todalselva (Aure),113.6Z,2019,0.57,37,,0.5,,,FALSE,17,19,0,14,5,0,3,0,0,2,0,0
+﻿Vassdrag;VdrNr;Aar;Andel_hunn;Fangst_storstygg;Maloppnaelse;Fangstrate;Gytebestand;Elvinnsig;GytingSim;Laks_vekt_u3kg;Laks_vekt_o3u7kg;Laks_vekt_o7kg;Laks_ant_u3kg;Laks_ant_o3u7kg;Laks_ant_o7kg;Gjen_vekt_u3kg;Gjen_vekt_o3u7kg;Gjen_vekto7kg;Gjen_ant_u3kg;Gjen_ant_o3u7kg;Gjen_ant_o7kg
+Todalselva (Aure);113.6Z;2012;0.57;17;;0.56;;;FALSE;13;4;0;9;1;0;0;0;0;0;0;0
+Todalselva (Aure);113.6Z;2013;0.57;40;;0.5;;;FALSE;36;3;0;29;1;0;0;0;0;0;0;0
+Todalselva (Aure);113.6Z;2014;0.57;1;;0.5;;;FALSE;0;0;0;0;0;0;0;0;0;0;0;0
+Todalselva (Aure);113.6Z;2015;0.57;37;;0.5;;;FALSE;30;7;0;24;2;0;1;4;0;1;1;0
+Todalselva (Aure);113.6Z;2016;0.57;32;;0.5;;;FALSE;17;15;0;9;4;0;4;3;0;3;1;0
+Todalselva (Aure);113.6Z;2017;0.57;56;;0.5;;;FALSE;45;11;0;30;3;0;0;0;0;0;0;0
+Todalselva (Aure);113.6Z;2018;0.57;26;;0.5;;;FALSE;7;19;0;5;5;0;2;6;0;2;1;0
+Todalselva (Aure);113.6Z;2019;0.57;37;;0.5;;;FALSE;17;19;0;14;5;0;3;0;0;2;0;0

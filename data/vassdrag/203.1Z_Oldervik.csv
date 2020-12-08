@@ -1,9 +1,9 @@
-Vassdrag,VdrNr,Aar,Andel_hunn,Fangst_storstygg,Maloppnaelse,Fangstrate,Gytebestand,Elvinnsig,GytingSim,Laks_vekt_u3kg,Laks_vekt_o3u7kg,Laks_vekt_o7kg,Laks_ant_u3kg,Laks_ant_o3u7kg,Laks_ant_o7kg,Gjen_vekt_u3kg,Gjen_vekt_o3u7kg,Gjen_vekto7kg,Gjen_ant_u3kg,Gjen_ant_o3u7kg,Gjen_ant_o7kg
-Oldervikelva (Tromsø),203.1Z,2012,0.61,29,,0.6,,,FALSE,41,31,0,24,8,0,0,0,0,0,0,0
-Oldervikelva (Tromsø),203.1Z,2013,0.61,46,,0.6,,,FALSE,26,20,0,14,5,0,2,0,0,1,0,0
-Oldervikelva (Tromsø),203.1Z,2014,0.61,33,,0.6,,,FALSE,24,9,0,15,3,0,0,0,0,0,0,0
-Oldervikelva (Tromsø),203.1Z,2015,0.61,47,,0.6,,,FALSE,32,15,0,20,4,0,2,0,0,1,0,0
-Oldervikelva (Tromsø),203.1Z,2016,0.61,110,,0.6,,,FALSE,42,68,0,23,17,0,8,7,0,5,2,0
-Oldervikelva (Tromsø),203.1Z,2017,0.61,112,,0.6,,,FALSE,34,78,0,17,20,0,4,0,0,2,0,0
-Oldervikelva (Tromsø),203.1Z,2018,0.61,63,,0.6,,,FALSE,13,50,0,8,13,0,5,7,0,4,2,0
-Oldervikelva (Tromsø),203.1Z,2019,0.61,39,,0.6,,,FALSE,14,25,0,8,7,0,3,0,0,2,0,0
+﻿Vassdrag;VdrNr;Aar;Andel_hunn;Fangst_storstygg;Maloppnaelse;Fangstrate;Gytebestand;Elvinnsig;GytingSim;Laks_vekt_u3kg;Laks_vekt_o3u7kg;Laks_vekt_o7kg;Laks_ant_u3kg;Laks_ant_o3u7kg;Laks_ant_o7kg;Gjen_vekt_u3kg;Gjen_vekt_o3u7kg;Gjen_vekto7kg;Gjen_ant_u3kg;Gjen_ant_o3u7kg;Gjen_ant_o7kg
+Oldervikelva (Tromsø);203.1Z;2012;0.61;29;;0.6;;;FALSE;41;31;0;24;8;0;0;0;0;0;0;0
+Oldervikelva (Tromsø);203.1Z;2013;0.61;46;;0.6;;;FALSE;26;20;0;14;5;0;2;0;0;1;0;0
+Oldervikelva (Tromsø);203.1Z;2014;0.61;33;;0.6;;;FALSE;24;9;0;15;3;0;0;0;0;0;0;0
+Oldervikelva (Tromsø);203.1Z;2015;0.61;47;;0.6;;;FALSE;32;15;0;20;4;0;2;0;0;1;0;0
+Oldervikelva (Tromsø);203.1Z;2016;0.61;110;;0.6;;;FALSE;42;68;0;23;17;0;8;7;0;5;2;0
+Oldervikelva (Tromsø);203.1Z;2017;0.61;112;;0.6;;;FALSE;34;78;0;17;20;0;4;0;0;2;0;0
+Oldervikelva (Tromsø);203.1Z;2018;0.61;63;;0.6;;;FALSE;13;50;0;8;13;0;5;7;0;4;2;0
+Oldervikelva (Tromsø);203.1Z;2019;0.61;39;;0.6;;;FALSE;14;25;0;8;7;0;3;0;0;2;0;0

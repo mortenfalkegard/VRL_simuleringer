@@ -1,9 +1,9 @@
-Vassdrag,VdrNr,Aar,Andel_hunn,Fangst_storstygg,Maloppnaelse,Fangstrate,Gytebestand,Elvinnsig,GytingSim,Laks_vekt_u3kg,Laks_vekt_o3u7kg,Laks_vekt_o7kg,Laks_ant_u3kg,Laks_ant_o3u7kg,Laks_ant_o7kg,Gjen_vekt_u3kg,Gjen_vekt_o3u7kg,Gjen_vekto7kg,Gjen_ant_u3kg,Gjen_ant_o3u7kg,Gjen_ant_o7kg
-Istadelva (Olterelva),105.3Z,2012,0.57,23.8,,0.43,,,FALSE,24,6,0,23,2,0,4,0,0,4,0,0
-Istadelva (Olterelva),105.3Z,2013,0.57,1,,0.43,,,FALSE,0,0,0,0,0,0,0,0,0,0,0,0
-Istadelva (Olterelva),105.3Z,2014,0.57,1,,0.43,,,FALSE,0,0,0,0,0,0,0,0,0,0,0,0
-Istadelva (Olterelva),105.3Z,2015,0.57,1,,0.43,,,FALSE,9,0,0,6,0,0,0,0,0,0,0,0
-Istadelva (Olterelva),105.3Z,2016,0.57,1,,0.43,,,FALSE,0,0,0,0,0,0,0,0,0,0,0,0
-Istadelva (Olterelva),105.3Z,2017,0.57,1,,0.43,,,FALSE,13,3,0,9,1,0,0,0,0,0,0,0
-Istadelva (Olterelva),105.3Z,2018,0.57,3,,0.43,,,FALSE,3,0,0,2,0,0,0,0,0,0,0,0
-Istadelva (Olterelva),105.3Z,2019,0.57,21,,0.43,,,FALSE,14,7,0,11,2,0,0,0,0,0,0,0
+﻿Vassdrag;VdrNr;Aar;Andel_hunn;Fangst_storstygg;Maloppnaelse;Fangstrate;Gytebestand;Elvinnsig;GytingSim;Laks_vekt_u3kg;Laks_vekt_o3u7kg;Laks_vekt_o7kg;Laks_ant_u3kg;Laks_ant_o3u7kg;Laks_ant_o7kg;Gjen_vekt_u3kg;Gjen_vekt_o3u7kg;Gjen_vekto7kg;Gjen_ant_u3kg;Gjen_ant_o3u7kg;Gjen_ant_o7kg
+Istadelva (Olterelva);105.3Z;2012;0.57;23.8;;0.43;;;FALSE;24;6;0;23;2;0;4;0;0;4;0;0
+Istadelva (Olterelva);105.3Z;2013;0.57;1;;0.43;;;FALSE;0;0;0;0;0;0;0;0;0;0;0;0
+Istadelva (Olterelva);105.3Z;2014;0.57;1;;0.43;;;FALSE;0;0;0;0;0;0;0;0;0;0;0;0
+Istadelva (Olterelva);105.3Z;2015;0.57;1;;0.43;;;FALSE;9;0;0;6;0;0;0;0;0;0;0;0
+Istadelva (Olterelva);105.3Z;2016;0.57;1;;0.43;;;FALSE;0;0;0;0;0;0;0;0;0;0;0;0
+Istadelva (Olterelva);105.3Z;2017;0.57;1;;0.43;;;FALSE;13;3;0;9;1;0;0;0;0;0;0;0
+Istadelva (Olterelva);105.3Z;2018;0.57;3;;0.43;;;FALSE;3;0;0;2;0;0;0;0;0;0;0;0
+Istadelva (Olterelva);105.3Z;2019;0.57;21;;0.43;;;FALSE;14;7;0;11;2;0;0;0;0;0;0;0

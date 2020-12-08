@@ -1,9 +1,9 @@
-Vassdrag,VdrNr,Aar,Andel_hunn,Fangst_storstygg,Maloppnaelse,Fangstrate,Gytebestand,Elvinnsig,GytingSim,Laks_vekt_u3kg,Laks_vekt_o3u7kg,Laks_vekt_o7kg,Laks_ant_u3kg,Laks_ant_o3u7kg,Laks_ant_o7kg,Gjen_vekt_u3kg,Gjen_vekt_o3u7kg,Gjen_vekto7kg,Gjen_ant_u3kg,Gjen_ant_o3u7kg,Gjen_ant_o7kg
-Tømmerelvvassdraget (Balsfjord),198.42Z,2012,0.64,5,,0.31,,,FALSE,6,17,0,3,4,0,0,0,0,0,0,0
-Tømmerelvvassdraget (Balsfjord),198.42Z,2013,0.64,2,,0.31,,,FALSE,2,0,0,2,0,0,0,0,0,0,0,0
-Tømmerelvvassdraget (Balsfjord),198.42Z,2014,0.64,11,,0.31,,,FALSE,4,7,0,2,2,0,0,0,0,0,0,0
-Tømmerelvvassdraget (Balsfjord),198.42Z,2015,0.64,47,,0.31,,,FALSE,27,12,8,14,3,1,0,0,0,0,0,0
-Tømmerelvvassdraget (Balsfjord),198.42Z,2016,0.64,91,,0.31,,,FALSE,24,43,24,14,11,3,0,0,0,0,0,0
-Tømmerelvvassdraget (Balsfjord),198.42Z,2017,0.64,67,,0.31,,,FALSE,20,47,0,10,11,0,0,0,0,0,0,0
-Tømmerelvvassdraget (Balsfjord),198.42Z,2018,0.64,35,,0.31,,,FALSE,11,9,15,8,2,2,0,0,0,0,0,0
-Tømmerelvvassdraget (Balsfjord),198.42Z,2019,0.64,1,,0.31,,,FALSE,0,0,0,0,0,0,0,0,0,0,0,0
+﻿Vassdrag;VdrNr;Aar;Andel_hunn;Fangst_storstygg;Maloppnaelse;Fangstrate;Gytebestand;Elvinnsig;GytingSim;Laks_vekt_u3kg;Laks_vekt_o3u7kg;Laks_vekt_o7kg;Laks_ant_u3kg;Laks_ant_o3u7kg;Laks_ant_o7kg;Gjen_vekt_u3kg;Gjen_vekt_o3u7kg;Gjen_vekto7kg;Gjen_ant_u3kg;Gjen_ant_o3u7kg;Gjen_ant_o7kg
+Tømmerelvvassdraget (Balsfjord);198.42Z;2012;0.64;5;;0.31;;;FALSE;6;17;0;3;4;0;0;0;0;0;0;0
+Tømmerelvvassdraget (Balsfjord);198.42Z;2013;0.64;2;;0.31;;;FALSE;2;0;0;2;0;0;0;0;0;0;0;0
+Tømmerelvvassdraget (Balsfjord);198.42Z;2014;0.64;11;;0.31;;;FALSE;4;7;0;2;2;0;0;0;0;0;0;0
+Tømmerelvvassdraget (Balsfjord);198.42Z;2015;0.64;47;;0.31;;;FALSE;27;12;8;14;3;1;0;0;0;0;0;0
+Tømmerelvvassdraget (Balsfjord);198.42Z;2016;0.64;91;;0.31;;;FALSE;24;43;24;14;11;3;0;0;0;0;0;0
+Tømmerelvvassdraget (Balsfjord);198.42Z;2017;0.64;67;;0.31;;;FALSE;20;47;0;10;11;0;0;0;0;0;0;0
+Tømmerelvvassdraget (Balsfjord);198.42Z;2018;0.64;35;;0.31;;;FALSE;11;9;15;8;2;2;0;0;0;0;0;0
+Tømmerelvvassdraget (Balsfjord);198.42Z;2019;0.64;1;;0.31;;;FALSE;0;0;0;0;0;0;0;0;0;0;0;0

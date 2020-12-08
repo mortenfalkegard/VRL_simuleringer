@@ -1,9 +1,9 @@
-Vassdrag,VdrNr,Aar,Andel_hunn,Fangst_storstygg,Maloppnaelse,Fangstrate,Gytebestand,Elvinnsig,GytingSim,Laks_vekt_u3kg,Laks_vekt_o3u7kg,Laks_vekt_o7kg,Laks_ant_u3kg,Laks_ant_o3u7kg,Laks_ant_o7kg,Gjen_vekt_u3kg,Gjen_vekt_o3u7kg,Gjen_vekto7kg,Gjen_ant_u3kg,Gjen_ant_o3u7kg,Gjen_ant_o7kg
-Norddalselva (Flora),085.5Z,2012,0.58,146,,0.27,,,FALSE,24,98,24,19,24,3,0,0,0,0,0,0
-Norddalselva (Flora),085.5Z,2013,0.58,142,,0.27,,,FALSE,49,66,27,33,18,3,0,0,0,0,0,0
-Norddalselva (Flora),085.5Z,2014,0.58,145,,0.27,,,FALSE,39,57,49,24,14,6,0,0,0,0,0,0
-Norddalselva (Flora),085.5Z,2015,0.58,123,,0.27,,,FALSE,25,65,33,15,18,4,0,0,0,0,0,0
-Norddalselva (Flora),085.5Z,2016,0.58,67,,0.27,,,FALSE,8,59,0,4,14,0,0,0,0,0,0,0
-Norddalselva (Flora),085.5Z,2017,0.58,93,,0.27,,,FALSE,0,75,18,0,16,2,0,0,0,0,0,0
-Norddalselva (Flora),085.5Z,2018,0.58,69,,0.27,,,FALSE,14,32,23,6,7,3,0,0,0,0,0,0
-Norddalselva (Flora),085.5Z,2019,0.58,26,,0.27,,,FALSE,4,26,22,2,4,3,0,0,0,0,0,0
+﻿Vassdrag;VdrNr;Aar;Andel_hunn;Fangst_storstygg;Maloppnaelse;Fangstrate;Gytebestand;Elvinnsig;GytingSim;Laks_vekt_u3kg;Laks_vekt_o3u7kg;Laks_vekt_o7kg;Laks_ant_u3kg;Laks_ant_o3u7kg;Laks_ant_o7kg;Gjen_vekt_u3kg;Gjen_vekt_o3u7kg;Gjen_vekto7kg;Gjen_ant_u3kg;Gjen_ant_o3u7kg;Gjen_ant_o7kg
+Norddalselva (Flora);085.5Z;2012;0.58;146;;0.27;;;FALSE;24;98;24;19;24;3;0;0;0;0;0;0
+Norddalselva (Flora);085.5Z;2013;0.58;142;;0.27;;;FALSE;49;66;27;33;18;3;0;0;0;0;0;0
+Norddalselva (Flora);085.5Z;2014;0.58;145;;0.27;;;FALSE;39;57;49;24;14;6;0;0;0;0;0;0
+Norddalselva (Flora);085.5Z;2015;0.58;123;;0.27;;;FALSE;25;65;33;15;18;4;0;0;0;0;0;0
+Norddalselva (Flora);085.5Z;2016;0.58;67;;0.27;;;FALSE;8;59;0;4;14;0;0;0;0;0;0;0
+Norddalselva (Flora);085.5Z;2017;0.58;93;;0.27;;;FALSE;0;75;18;0;16;2;0;0;0;0;0;0
+Norddalselva (Flora);085.5Z;2018;0.58;69;;0.27;;;FALSE;14;32;23;6;7;3;0;0;0;0;0;0
+Norddalselva (Flora);085.5Z;2019;0.58;26;;0.27;;;FALSE;4;26;22;2;4;3;0;0;0;0;0;0

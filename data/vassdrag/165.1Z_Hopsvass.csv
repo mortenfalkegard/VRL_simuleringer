@@ -1,9 +1,9 @@
-Vassdrag,VdrNr,Aar,Andel_hunn,Fangst_storstygg,Maloppnaelse,Fangstrate,Gytebestand,Elvinnsig,GytingSim,Laks_vekt_u3kg,Laks_vekt_o3u7kg,Laks_vekt_o7kg,Laks_ant_u3kg,Laks_ant_o3u7kg,Laks_ant_o7kg,Gjen_vekt_u3kg,Gjen_vekt_o3u7kg,Gjen_vekto7kg,Gjen_ant_u3kg,Gjen_ant_o3u7kg,Gjen_ant_o7kg
-Hopsvassdraget i Bodø,165.1Z,2012,0.57,15,,0.28,,,FALSE,29,41,26,18,8,3,0,0,0,0,0,0
-Hopsvassdraget i Bodø,165.1Z,2013,0.57,90,,0.28,,,FALSE,13,16,61,8,4,6,0,0,0,0,0,0
-Hopsvassdraget i Bodø,165.1Z,2014,0.57,23,,0.28,,,FALSE,4,4,15,3,1,2,0,0,0,0,0,0
-Hopsvassdraget i Bodø,165.1Z,2015,0.57,49,,0.28,,,FALSE,28,21,0,19,4,0,0,0,0,0,0,0
-Hopsvassdraget i Bodø,165.1Z,2016,0.57,67,,0.28,,,FALSE,34,17,16,23,4,2,0,0,0,0,0,0
-Hopsvassdraget i Bodø,165.1Z,2017,0.57,38,,0.5,,,FALSE,23,15,0,13,3,0,0,0,0,0,0,0
-Hopsvassdraget i Bodø,165.1Z,2018,0.57,0,,0.5,,,FALSE,0,0,0,0,0,0,0,0,0,0,0,0
-Hopsvassdraget i Bodø,165.1Z,2019,0.57,0,,0.5,,,FALSE,0,0,0,0,0,0,0,0,0,0,0,0
+﻿Vassdrag;VdrNr;Aar;Andel_hunn;Fangst_storstygg;Maloppnaelse;Fangstrate;Gytebestand;Elvinnsig;GytingSim;Laks_vekt_u3kg;Laks_vekt_o3u7kg;Laks_vekt_o7kg;Laks_ant_u3kg;Laks_ant_o3u7kg;Laks_ant_o7kg;Gjen_vekt_u3kg;Gjen_vekt_o3u7kg;Gjen_vekto7kg;Gjen_ant_u3kg;Gjen_ant_o3u7kg;Gjen_ant_o7kg
+Hopsvassdraget i Bodø;165.1Z;2012;0.57;15;;0.28;;;FALSE;29;41;26;18;8;3;0;0;0;0;0;0
+Hopsvassdraget i Bodø;165.1Z;2013;0.57;90;;0.28;;;FALSE;13;16;61;8;4;6;0;0;0;0;0;0
+Hopsvassdraget i Bodø;165.1Z;2014;0.57;23;;0.28;;;FALSE;4;4;15;3;1;2;0;0;0;0;0;0
+Hopsvassdraget i Bodø;165.1Z;2015;0.57;49;;0.28;;;FALSE;28;21;0;19;4;0;0;0;0;0;0;0
+Hopsvassdraget i Bodø;165.1Z;2016;0.57;67;;0.28;;;FALSE;34;17;16;23;4;2;0;0;0;0;0;0
+Hopsvassdraget i Bodø;165.1Z;2017;0.57;38;;0.5;;;FALSE;23;15;0;13;3;0;0;0;0;0;0;0
+Hopsvassdraget i Bodø;165.1Z;2018;0.57;0;;0.5;;;FALSE;0;0;0;0;0;0;0;0;0;0;0;0
+Hopsvassdraget i Bodø;165.1Z;2019;0.57;0;;0.5;;;FALSE;0;0;0;0;0;0;0;0;0;0;0;0

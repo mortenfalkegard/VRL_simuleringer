@@ -1,9 +1,9 @@
-Vassdrag,VdrNr,Aar,Andel_hunn,Fangst_storstygg,Maloppnaelse,Fangstrate,Gytebestand,Elvinnsig,GytingSim,Laks_vekt_u3kg,Laks_vekt_o3u7kg,Laks_vekt_o7kg,Laks_ant_u3kg,Laks_ant_o3u7kg,Laks_ant_o7kg,Gjen_vekt_u3kg,Gjen_vekt_o3u7kg,Gjen_vekto7kg,Gjen_ant_u3kg,Gjen_ant_o3u7kg,Gjen_ant_o7kg
-Skorgeelva (Vestnes),102.5Z,2012,0.6,26,,0.53,,,FALSE,15,0,0,9,0,0,0,0,0,0,0,0
-Skorgeelva (Vestnes),102.5Z,2013,0.6,27,,0.53,,,FALSE,27,0,0,18,0,0,0,0,0,0,0,0
-Skorgeelva (Vestnes),102.5Z,2014,0.6,8,,0.53,,,FALSE,5,3,0,3,1,0,0,0,0,0,0,0
-Skorgeelva (Vestnes),102.5Z,2015,0.6,132,,0.53,,,FALSE,60,72,0,30,18,0,0,0,0,0,0,0
-Skorgeelva (Vestnes),102.5Z,2016,0.6,4,,0.53,,,FALSE,4,0,0,4,0,0,0,0,0,0,0,0
-Skorgeelva (Vestnes),102.5Z,2017,0.6,91,,0.53,,,FALSE,28,63,0,18,16,0,0,0,0,0,0,0
-Skorgeelva (Vestnes),102.5Z,2018,0.6,1,,0.53,,,FALSE,0,0,0,0,0,0,0,0,0,0,0,0
-Skorgeelva (Vestnes),102.5Z,2019,0.6,1,,0.53,,,FALSE,16,4,0,9,1,0,0,0,0,0,0,0
+﻿Vassdrag;VdrNr;Aar;Andel_hunn;Fangst_storstygg;Maloppnaelse;Fangstrate;Gytebestand;Elvinnsig;GytingSim;Laks_vekt_u3kg;Laks_vekt_o3u7kg;Laks_vekt_o7kg;Laks_ant_u3kg;Laks_ant_o3u7kg;Laks_ant_o7kg;Gjen_vekt_u3kg;Gjen_vekt_o3u7kg;Gjen_vekto7kg;Gjen_ant_u3kg;Gjen_ant_o3u7kg;Gjen_ant_o7kg
+Skorgeelva (Vestnes);102.5Z;2012;0.6;26;;0.53;;;FALSE;15;0;0;9;0;0;0;0;0;0;0;0
+Skorgeelva (Vestnes);102.5Z;2013;0.6;27;;0.53;;;FALSE;27;0;0;18;0;0;0;0;0;0;0;0
+Skorgeelva (Vestnes);102.5Z;2014;0.6;8;;0.53;;;FALSE;5;3;0;3;1;0;0;0;0;0;0;0
+Skorgeelva (Vestnes);102.5Z;2015;0.6;132;;0.53;;;FALSE;60;72;0;30;18;0;0;0;0;0;0;0
+Skorgeelva (Vestnes);102.5Z;2016;0.6;4;;0.53;;;FALSE;4;0;0;4;0;0;0;0;0;0;0;0
+Skorgeelva (Vestnes);102.5Z;2017;0.6;91;;0.53;;;FALSE;28;63;0;18;16;0;0;0;0;0;0;0
+Skorgeelva (Vestnes);102.5Z;2018;0.6;1;;0.53;;;FALSE;0;0;0;0;0;0;0;0;0;0;0;0
+Skorgeelva (Vestnes);102.5Z;2019;0.6;1;;0.53;;;FALSE;16;4;0;9;1;0;0;0;0;0;0;0
