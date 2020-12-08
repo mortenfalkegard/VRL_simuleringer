@@ -6,11 +6,12 @@
 
 library(openxlsx)
 library(tidyverse)
+library(rio)
 
 # Variablene nedenfor definerer startår og antall år som skal estimeres. Skriptet er fleksibelt organisert rundt disse for å gi mulighet
 # til å gjennomføre historiske sammenligninger, for eksempel før og etter viktige reguleringsendringer
-start_aar <- 2019
-antall_aar <- 1
+start_aar <- 2012
+antall_aar <- 8
 
 # Variable som gir navn på output-filer fra siste gytebestandsimulering
 sim_beskat_filnavn <- "results/Beskatning_FangstAndel2019.txt"
@@ -19,14 +20,14 @@ sim_villOppdr_filnavn <- "results/AntVillogOppdrettElvEstimater2019.txt"
 sim_kghunnlaks_filnavn <- "results/KgHunnlaks2019.txt"
 
 # initialiser en liste over vassdrag som skal være med i innsigsfordelingen med noen bakgrunnstall
-elveliste <- read.csv("data/elveliste.csv", header = TRUE, sep = ";", stringsAsFactors = FALSE, fileEncoding = "UTF-8-BOM")
+elveliste <- import("data/elveliste.csv", encoding = "UTF-8")
 antall_elver <- nrow(elveliste)
 
 # fordelingsnøkkel for fordeling av fangsten i kystregionene 
-kyst_fordeling <- read.csv("data/fordelingsnokkel_sjofangst.csv", header = TRUE, sep = ";", stringsAsFactors = FALSE, fileEncoding = "UTF-8-BOM")
+kyst_fordeling <- import("data/fordelingsnokkel_sjofangst.csv", encoding = "UTF-8")
 
 # fordelingsnøkkel for å fordele kommunefangst til regioner
-region_fordeling <- read.csv("data/fordelingsnokkel_kommune_region.csv", header = TRUE, sep = ";", stringsAsFactors = FALSE, fileEncoding = "UTF-8-BOM")
+region_fordeling <- import("data/fordelingsnokkel_kommune_region.csv", encoding = "UTF-8")
 antall_regioner <- ncol(region_fordeling) - 1
 antall_kommuner <- nrow(region_fordeling)
 
@@ -41,6 +42,7 @@ aar_liste <- vector()
 elv_fangst <- array(0, c(antall_aar, antall_elver, 6)) # 6 =  3 størrelsesklasser for vekg og antall
 elv_gyting <- array(0, c(antall_aar, antall_elver, 6))
 elv_innsig <- array(0, c(antall_aar, antall_elver, 6))
+elv_andelhunn <- matrix(nrow = antall_aar, ncol = antall_elver)
 elv_hunnproporsjon <- array(0, c(antall_aar, antall_elver, 3)) # 3 størrelseskategorier
 elv_beskatningsrate <- array(0, c(antall_aar, antall_elver, 3))
 snittvekt <- vector()
@@ -65,10 +67,11 @@ for (j in 1:antall_aar) {
 #simul_beskatning <- read.table(sim_beskat_filnavn, stringsAsFactors = FALSE, header = TRUE)
 #simul_gyting <- read.table(sim_gyt_filnavn, stringsAsFactors = FALSE, header = TRUE)
 #simul_villoppdrett <- read.table(sim_villOppdr_filnavn, stringsAsFactors = FALSE, header = TRUE)
-simul_kghunnlaks <- read.table(sim_kghunnlaks_filnavn, stringsAsFactors = FALSE, header = TRUE)
+simul_kghunnlaks <- import(sim_kghunnlaks_filnavn, encoding = "UTF-8")
 simul_kghunnlaks[is.na(simul_kghunnlaks)] <- 0
-elvedatamatrise <- read.table("data/elvedata_2019.csv", sep = ";", stringsAsFactors = FALSE, header = TRUE, fileEncoding = "UTF-8-BOM")
-elvefangst_ssb <- read.table("data/ssb_elv_2010-2019.csv", sep = ";", stringsAsFactors = FALSE, header = TRUE, fileEncoding = "UTF-8")
+
+# elvedatamatrise <- read.table("data/elvedata_2019.csv", sep = ";", stringsAsFactors = FALSE, header = TRUE, fileEncoding = "UTF-8-BOM")
+elvefangst_ssb <- import("data/ssb_elv_2010-2019.csv", encoding = "UTF-8")
 
 #-----------------------------------------------------------------------------------------------------------------
 # gå gjennom alle vassdrag, hent inn data for hver enkelt elv og beregn innsig 
@@ -78,15 +81,17 @@ for (i in 1:antall_elver) {
 
   elv_vdrnr <- elveliste$VdrNr[i]
   
-  if(elveliste$GytingSim[i]) { # vassdrag har filnavn, hent data fra simulering og vassdragsfil
+  if(elveliste$GytingSim[i]) { # vassdrag med i gytebestandsimulering, hent data fra simulering og vassdragsfil
     
     elv_filnavn <- paste("data/vassdrag/", elveliste[i, "Filnavn"], ".csv", sep="")
     elv_grunnlag <- read.table(elv_filnavn, header = TRUE, sep = ";", stringsAsFactors = FALSE, fileEncoding = "UTF-8")
+#    elv_grunnlag <- import(elv_filnavn, encoding = "UTF-8")
     elv_grunnlag <- elv_grunnlag %>% rename(Gjen_vekt_o7kg = Gjen_vekto7kg)
 
     for (j in 1:antall_aar) {
       df <- filter(simul_kghunnlaks, Aar == aar_liste[j], Vdrnr == elveliste$VdrNr[i])
       df2 <- filter(elv_grunnlag, Aar == aar_liste[j])
+      df2[is.na(df2)] <- 0
       df3 <- filter(elvefangst_ssb, Aar == aar_liste[j])
       fangst_elv_ssb <- filter(elvefangst_ssb, Aar == aar_liste[j], VdrNr == elveliste$VdrNr[i])
       
@@ -132,10 +137,17 @@ for (i in 1:antall_elver) {
       elv_innsig[j, i, ] <- elv_fangst[j, i, ] + elv_gyting[j, i, ]
     }
     
-  } else { # mangler filnavn, det vil si elv uten simulering, hent data fra elvedatamatrise og SSB
+  } else { # elv uten simulering, hent data fra elvedatafiler
     
+    elv_filnavn <- paste("data/vassdrag/", elveliste[i, "Filnavn"], ".csv", sep="")
+    elv_grunnlag <- import(elv_filnavn, encoding = "UTF-8")
+
     for (j in 1:antall_aar) {
-      df <- filter(elvedatamatrise, VdrNr == elv_vdrnr)
+#      df <- filter(elvedatamatrise, VdrNr == elv_vdrnr)
+      df <- filter(elv_grunnlag, Aar == aar_liste[j])
+      
+      elv_andelhunn[j, i] <- df$Andel_hunn
+      
       df2 <- filter(elvefangst_ssb, VdrNr == elv_vdrnr, Aar == aar_liste[j])
       df3 <- filter(elvefangst_ssb, Aar == aar_liste[j])
       
@@ -273,15 +285,16 @@ resultat_fordeling <- data.frame(matrix(0, nrow = antall_elver * antall_aar, nco
                                                                 ))))
 i <- 1
 for (j in 1:antall_aar) {
-  resultat_fordeling[i:antall_elver+i-1, 1] <- elveliste$VdrNr
-  resultat_fordeling[i:antall_elver+i-1, 2] <- elveliste$Vassdrag
-  resultat_fordeling[i:antall_elver+i-1, 3] <- aar_liste[j]
-  resultat_fordeling[i:antall_elver+i-1, 4] <- elveliste$RegionNr
-  resultat_fordeling[i:antall_elver+i-1, 5] <- elveliste$RegionNavn
+  l <- antall_elver + i - 1
+  resultat_fordeling[i:l, 1] <- elveliste$VdrNr
+  resultat_fordeling[i:l, 2] <- elveliste$Vassdrag
+  resultat_fordeling[i:l, 3] <- aar_liste[j]
+  resultat_fordeling[i:l, 4] <- elveliste$RegionNr
+  resultat_fordeling[i:l, 5] <- elveliste$RegionNavn
   
-  resultat_fordeling[i:antall_elver+i-1, 6:11] <- elv_gyting[j, , 1:6] 
-  resultat_fordeling[i:antall_elver+i-1, 12:17] <- elv_fangst[j, , 1:6] 
-  resultat_fordeling[i:antall_elver+i-1, 18:23] <- elv_fangst[j, , 1:6] + elv_gyting[j, , 1:6]
+  resultat_fordeling[i:l, 6:11] <- elv_gyting[j, , 1:6] 
+  resultat_fordeling[i:l, 12:17] <- elv_fangst[j, , 1:6] 
+  resultat_fordeling[i:l, 18:23] <- elv_fangst[j, , 1:6] + elv_gyting[j, , 1:6]
   
   i <- i + antall_elver
 }
@@ -308,8 +321,8 @@ for (j in 1:antall_aar) {
         resultat_fordeling$Innsig_sjo_vekt_37[l] * m$AndelHunn37 + resultat_fordeling$Innsig_sjo_vekt_o7[l] * m$AndelHunnO7
       samlet_gytebestand_hunn <- m$GytingHunnU3 + m$GytingHunn37 + m$GytingHunnO7
     } else {
-      resultat_fordeling$Innsig_total_hunn[l] <- sum(resultat_fordeling[l, 36:38]) * elvedatamatrise$Andel_hunn[i]
-      samlet_gytebestand_hunn <- sum(resultat_fordeling[l, 6:8]) * elvedatamatrise$Andel_hunn[i]
+      resultat_fordeling$Innsig_total_hunn[l] <- sum(resultat_fordeling[l, 36:38]) * elv_andelhunn[j, i]
+      samlet_gytebestand_hunn <- sum(resultat_fordeling[l, 6:8]) * elv_andelhunn[j, i]
     }
 
     # beregn overbeskatning
@@ -328,7 +341,7 @@ for (j in 1:antall_aar) {
           resultat_fordeling$Overbeskatning[l] <- ((resultat_fordeling$Fangst_elv_vekt_u3[l] + resultat_fordeling$Fangst_elv_vekt_37[l] +
                                                      resultat_fordeling$Fangst_elv_vekt_o7[l] + resultat_fordeling$Sjofangst_vekt_u3[l] +
                                                      resultat_fordeling$Sjofangst_vekt_37[l] + resultat_fordeling$Sjofangst_vekt_o7[l]) *
-                                                     elvedatamatrise$Andel_hunn[i]) / elveliste$GBM[i]
+                                                     elv_andelhunn[j, i]) / elveliste$GBM[i]
       }
     }
     
@@ -344,4 +357,4 @@ for (j in 1:antall_aar) {
   }
 }
 
-write.table(resultat_fordeling, "results/resultat_fordeling.csv", sep = ";", row.names = FALSE, fileEncoding = "UTF-8")
+export(resultat_fordeling, "results/resultat_fordeling.csv", sep = ";", dec = ".", bom = TRUE)
