@@ -1,5 +1,5 @@
 ﻿Vassdrag;VdrNr;Aar;Andel_hunn;Fangst_storstygg;Maloppnaelse;Fangstrate;Gytebestand;Elvinnsig;GytingSim;Laks_vekt_u3kg;Laks_vekt_o3u7kg;Laks_vekt_o7kg;Laks_ant_u3kg;Laks_ant_o3u7kg;Laks_ant_o7kg;Gjen_vekt_u3kg;Gjen_vekt_o3u7kg;Gjen_vekto7kg;Gjen_ant_u3kg;Gjen_ant_o3u7kg;Gjen_ant_o7kg
-Steinkjerelva;128.Z;2012;;0;;;;;FALSE;0;0;0;0;0;0;0;0;0;0;0;0
+Steinkjerelva;128.Z;2012;0.6;0;;;;;FALSE;0;0;0;0;0;0;0;0;0;0;0;0
 Steinkjerelva;128.Z;2013;0.6;0;;;;;FALSE;0;0;0;0;0;0;0;0;0;0;0;0
 Steinkjerelva;128.Z;2014;0.6;400;;0.2;;;FALSE;100;200;100;55;39;12;0;0;0;0;0;0
 Steinkjerelva;128.Z;2015;0.6;881;;0.2;;;FALSE;65;638;178;44;128;21;0;0;0;0;0;0
