@@ -95,8 +95,6 @@ for (j in 1:antall_aar) {
     fangst <- df[, i + 4] * reg_ford[, 4:(antall_regioner + 3)]
     region_fangst[j, , i] <- colSums(fangst, na.rm = TRUE)
   }
-#  debug_filnavn <- paste("debug/region_fangst_", aar_indeks, ".csv", sep = "")
-#  export(region_fangst[j, , ], debug_filnavn, sep = ";", dec = ".", bom = TRUE)
 }
 
 #-----------------------------------------------------------------------------------------------------------------
@@ -121,8 +119,6 @@ for (j in 1:antall_aar) {
   }
   restfordeling_fylke <- proportions(restfordeling_fylke, 1) %>% replace(is.na(.), 0)
   restfordeling_fylke[is.na(restfordeling_fylke)] <- 0
-#  debug_filnavn <- paste("debug/restfordeling_fylke_", aar_indeks, ".csv", sep = "")
-#  export(restfordeling_fylke, debug_filnavn, sep = ";", dec = ".", bom = TRUE)
 
   rest_aar <- filter(restfangst_sjo, Aar == aar_indeks) # fylkene med restfangst fra statistikken
   antall_fylker_rest <- nrow(rest_aar)
@@ -136,10 +132,6 @@ for (j in 1:antall_aar) {
       }
     }
   }
-#  debug_filnavn2 <- paste("debug/region_deb_", aar_indeks, ".csv", sep = "")
-#  export(region_deb[j, , ], debug_filnavn2, sep = ";", dec = ".", bom = TRUE)
-#  debug_filnavn3 <- paste("debug/region_fangst_med_rest_", aar_indeks, ".csv", sep = "")
-#  export(region_fangst[j, , ], debug_filnavn3, sep = ";", dec = ".", bom = TRUE)
 }
 
 # fordel fangst på ytre kyst inn i fjordene
@@ -502,8 +494,7 @@ for (j in 1:antall_aar) {
 
   i <- i + antall_elver
 }
-#resultat_debug_fil <- paste("debug/resultat_fordeling_deb_", start_aar + antall_aar - 1, ".csv", sep = "")
-#export(resultat_fordeling, resultat_debug_fil, sep = ";", dec = ".", bom = TRUE)
+
 #-----------------------------------------------------------------------------------------------------------------
 # beregn innsig til elv og kyst for hvert vassdrag
 #-----------------------------------------------------------------------------------------------------------------
@@ -674,9 +665,6 @@ for (j in 1:antall_aar) { # lag liste over måloppnåelse til foreldrene til inn
     l <- l + 1
   }
 }
-
-#resultat_debug_fil <- paste("debug/resultat_fordeling_deb_", start_aar + antall_aar - 1, ".csv", sep = "")
-#export(resultat_fordeling, resultat_debug_fil, sep = ";", dec = ".", bom = TRUE)
 
 vassdrag_normal <- matrix(0, nrow = antall_elver * antall_aar, ncol = 8,
                           dimnames = list(NULL, c("VdrNr", "Vassdrag", "Aar", "Omrade", "ForeldreMaal",
