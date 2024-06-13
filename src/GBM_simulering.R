@@ -3,16 +3,16 @@
 # Output fra skriptet er data som kan importeres rett inn i sjøfangstfordelingen.
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-library(dplyr)    # pakke for datasettmanipulering
-library(tidyr)    # pakke for datasettmanipulering
-library(openxlsx) # pakke for å lese og skrive Excel-filer
-library(ggplot2)  # pakke for plotting
-library(cowplot)  # pakke for plotting
-library(ggpubr)   # pakke for å sette sammen flere plott
-library(triangle) # pakke for trekke tilfeldige tall fra trekantfordeling
-library(stringr) # pakke for tekstbehandling
-library(rio) # pakke for import og eksport av data
-library(qlcMatrix) # pakke for matriseregning
+library(dplyr)       # pakke for datasettmanipulering
+library(tidyr)       # pakke for datasettmanipulering
+library(openxlsx)    # pakke for å lese og skrive Excel-filer
+library(ggplot2)     # pakke for plotting
+library(cowplot)     # pakke for plotting
+library(ggpubr)      # pakke for å sette sammen flere plott
+library(triangle)    # pakke for trekke tilfeldige tall fra trekantfordeling
+library(stringr)     # pakke for tekstbehandling
+library(rio)         # pakke for import og eksport av data
+library(qlcMatrix)   # pakke for matriseregning
 library(matrixStats) # pakke for matriseregning
 
 # elveliste.csv er en fil som inneholder informasjon om vassdragene som skal simuleres
@@ -97,31 +97,19 @@ for (m in 1:antall_elver) {
     # Feil navn på Gjen_vekt_o7kg i inputfil, ta vekk linja under når dette er fikset i inputfiler
     d <- d %>% rename(Gjen_vekt_o7kg = Gjen_vekto7kg)
 
-    # erstatt NA med 0 for å forenkle skriptet
-    d$StamAntSmaHo[is.na(d$StamAntSmaHo)] <- 0
-    d$StamAntMelHo[is.na(d$StamAntMelHo)] <- 0
-    d$StamAntStorHo[is.na(d$StamAntStorHo)] <- 0
+    # erstatt NA med 0 i utvalgte kolonner for å forenkle skriptet
+    kolonner <- c("StamAntSmaHo", "StamAntMelHo", "StamAntStorHo",
+                  "Laks_vekt_u3kg", "Laks_vekt_o3u7kg", "Laks_vekt_o7kg",
+                  "Laks_ant_u3kg", "Laks_ant_o3u7kg", "Laks_ant_o7kg",
+                  "Gjen_vekt_u3kg", "Gjen_vekt_o3u7kg", "Gjen_vekt_o7kg",
+                  "Gjen_ant_u3kg", "Gjen_ant_o3u7kg", "Gjen_ant_o7kg",
+                  "Laks_ant", "Gjen_ant")
+    for (k in kolonner) {
+      d[[k]][is.na(d[[k]])] <- 0
+    }
 
-    d$Laks_vekt_u3kg[is.na(d$Laks_vekt_u3kg)] <- 0
-    d$Laks_vekt_o3u7kg[is.na(d$Laks_vekt_o3u7kg)] <- 0
-    d$Laks_vekt_o7kg[is.na(d$Laks_vekt_o7kg)] <- 0
-
-    d$Laks_ant_u3kg[is.na(d$Laks_ant_u3kg)] <- 0
-    d$Laks_ant_o3u7kg[is.na(d$Laks_ant_o3u7kg)] <- 0
-    d$Laks_ant_o7kg[is.na(d$Laks_ant_o7kg)] <- 0
-
-    d$Gjen_vekt_u3kg[is.na(d$Gjen_vekt_u3kg)] <- 0
-    d$Gjen_vekt_o3u7kg[is.na(d$Gjen_vekt_o3u7kg)] <- 0
-    d$Gjen_vekt_o7kg[is.na(d$Gjen_vekt_o7kg)] <- 0
-
-    d$Gjen_ant_u3kg[is.na(d$Gjen_ant_u3kg)] <- 0
-    d$Gjen_ant_o3u7kg[is.na(d$Gjen_ant_o3u7kg)] <- 0
-    d$Gjen_ant_o7kg[is.na(d$Gjen_ant_o7kg)] <- 0
-
-    d$Laks_ant[is.na(d$Laks_ant)] <- 0
-    d$Gjen_ant[is.na(d$Gjen_ant)] <- 0
-
-    d$telling <- with(d, ifelse(is.na(Obs_laks_ant), 0, 1)) # indeks for om det er telling eller ikke i et år
+    # definer indeks for om det er telling eller ikke i et år, 1=telling, 0=ikke telling
+    d$telling <- with(d, ifelse(is.na(Obs_laks_ant), 0, 1))
 
     #### --------- Vekt i år med telling --------- ####
     # For år som har fangst og/eller gjenutsatte regner vi ut gjennomsnittsvekt: gjen_vekt+laks_vekt/gjen_ant+Laks_ant
