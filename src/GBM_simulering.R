@@ -30,68 +30,49 @@ for (m in 1:antall_elver) {
 
     d$Vdrnr <- elveliste$VdrNr[m] # erstatt vassdragsnummer slik at vi er sikker på at vi har med oss riktig nr videre
 
-    # Sette beskatningsrate og fangstandel til NA i år der det mangler fangst og gjenutsatte og ikke er telling
-    d$ExpStorMin <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
-                           NA, d$ExpStorMin)
-    d$ExpStorMed <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
-                           NA, d$ExpStorMed)
-    d$ExpStorMax <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
-                           NA, d$ExpStorMax)
-    d$ExpMellomMin <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
-                             NA, d$ExpMellomMin)
-    d$ExpMellomMed <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
-                             NA, d$ExpMellomMed)
-    d$ExpMellomMax <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
-                             NA, d$ExpMellomMax)
-    d$ExpSmallMin <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
-                            NA, d$ExpSmallMin)
-    d$ExpSmallMed <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
-                            NA, d$ExpSmallMed)
-    d$ExpSmallMax <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
-                            NA, d$ExpSmallMax)
+    # sette beskatningsrate og fangstandel til NA i år der det mangler fangst og gjenutsatte og ikke er telling
+    kolonner <- c("ExpStorMin", "ExpStorMed", "ExpStorMax", "ExpMellomMin", "ExpMellomMed", "ExpMellomMax",
+                  "ExpSmallMin", "ExpSmallMed", "ExpSmallMax")
+    betingelse <- d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant)
+    for (k in kolonner) {
+      d[[k]][betingelse] <- NA
+    }
 
     # flagg år som i simuleringen skal komme ut med asterisk (uten fangst og/eller problemer med telling)
+    # "Asterisk" blir satt til 0 for år som ikke skal simuleres, og 1 for år som skal simuleres
+    # dette flagget er den gamle måten å flagge år som ikke simuleres på, og er nå bare delvis i bruk
+    # det er nå kommmet et nytt flagg i datafilene som heter "Simulering"
+    # "Asterisk" skal derfor fases ut etterhvert
     d$Asterisk <- ifelse(is.na(d$ExpSmallMed) & is.na(d$FangstAndSmallMed) & is.na(d$Probs_small_med), 1, 0)
 
-    d$FangstAndStorMin <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
-                                 NA, d$FangstAndStorMin)
-    d$FangstAndStorMed <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
-                                 NA, d$FangstAndStorMed)
-    d$FangstAndStorMax <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
-                                 NA, d$FangstAndStorMax)
-    d$FangstAndMellomMin <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
-                                   NA, d$FangstAndMellomMin)
-    d$FangstAndMellomMed <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
-                                   NA, d$FangstAndMellomMed)
-    d$FangstAndMellomMax <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
-                                   NA, d$FangstAndMellomMax)
-    d$FangstAndSmallMin <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
-                                  NA, d$FangstAndSmallMin)
-    d$FangstAndSmallMed <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
-                                  NA, d$FangstAndSmallMed)
-    d$FangstAndSmallMax <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
-                                  NA, d$FangstAndSmallMax)
+    # nedenfor settes fangstandel til NA i år der det mangler fangst og gjenutsatte og ikke er telling
+    kolonner <- c("FangstAndStorMin", "FangstAndStorMed", "FangstAndStorMax", "FangstAndMellomMin",
+                  "FangstAndMellomMed", "FangstAndMellomMax", "FangstAndSmallMin", "FangstAndSmallMed",
+                  "FangstAndSmallMax")
+    betingelse <- d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant)
+    for (k in kolonner) {
+      d[[k]][betingelse] <- NA
+    }
 
-    # Sette beskatningsrate til 0 der det mangler fangst for en vektklasse men det er avliva fangst for
+    # sette beskatningsrate til 0 der det mangler fangst for en vektklasse men det er avliva fangst for
     # andre vektklasser, dersom da ikke året er flagget allerede
-    d$ExpStorMin <- ifelse(d$Asterisk == 0 & d$Laks_ant_o7kg == 0 & (d$Laks_ant_u3kg > 0 | d$Laks_ant_o3u7kg > 0),
-                           0, d$ExpStorMin)
-    d$ExpStorMed <- ifelse(d$Asterisk == 0 & d$Laks_ant_o7kg == 0 & (d$Laks_ant_u3kg > 0 | d$Laks_ant_o3u7kg > 0),
-                           0, d$ExpStorMed)
-    d$ExpStorMax <- ifelse(d$Asterisk == 0 & d$Laks_ant_o7kg == 0 & (d$Laks_ant_u3kg > 0 | d$Laks_ant_o3u7kg > 0),
-                           0, d$ExpStorMax)
-    d$ExpMellomMin <- ifelse(d$Asterisk == 0 & d$Laks_ant_o3u7kg == 0 & (d$Laks_ant_u3kg > 0 | d$Laks_ant_o7kg > 0),
-                             0, d$ExpMellomMin)
-    d$ExpMellomMed <- ifelse(d$Asterisk == 0 & d$Laks_ant_o3u7kg == 0 & (d$Laks_ant_u3kg > 0 | d$Laks_ant_o7kg > 0),
-                             0, d$ExpMellomMed)
-    d$ExpMellomMax <- ifelse(d$Asterisk == 0 & d$Laks_ant_o3u7kg == 0 & (d$Laks_ant_u3kg > 0 | d$Laks_ant_o7kg > 0),
-                             0, d$ExpMellomMax)
-    d$ExpSmallMin <- ifelse(d$Asterisk == 0 & d$Laks_ant_u3kg == 0 & (d$Laks_ant_o3u7kg > 0 | d$Laks_ant_o7kg > 0),
-                            0, d$ExpSmallMin)
-    d$ExpSmallMed <- ifelse(d$Asterisk == 0 & d$Laks_ant_u3kg == 0 & (d$Laks_ant_o3u7kg > 0 | d$Laks_ant_o7kg > 0),
-                            0, d$ExpSmallMed)
-    d$ExpSmallMax <- ifelse(d$Asterisk == 0 & d$Laks_ant_u3kg == 0 & (d$Laks_ant_o3u7kg > 0 | d$Laks_ant_o7kg > 0),
-                            0, d$ExpSmallMax)
+    kolonner <- c("ExpStorMin", "ExpStorMed", "ExpStorMax")
+    betingelse <- d$Asterisk == 0 & d$Laks_ant_o7kg == 0 & (d$Laks_ant_u3kg > 0 | d$Laks_ant_o3u7kg > 0)
+    for (k in kolonner) {
+      d[[k]][betingelse] <- 0
+    }
+
+    kolonner <- c("ExpMellomMin", "ExpMellomMed", "ExpMellomMax")
+    betingelse <- d$Asterisk == 0 & d$Laks_ant_o3u7kg == 0 & (d$Laks_ant_u3kg > 0 | d$Laks_ant_o7kg > 0)
+    for (k in kolonner) {
+      d[[k]][betingelse] <- 0
+    }
+
+    kolonner <- c("ExpSmallMin", "ExpSmallMed", "ExpSmallMax")
+    betingelse <- d$Asterisk == 0 & d$Laks_ant_u3kg == 0 & (d$Laks_ant_o3u7kg > 0 | d$Laks_ant_o7kg > 0)
+    for (k in kolonner) {
+      d[[k]][betingelse] <- 0
+    }
 
     #### ---------- Variabler ---------- ####
     # Feil navn på Gjen_vekt_o7kg i inputfil, ta vekk linja under når dette er fikset i inputfiler
@@ -115,7 +96,7 @@ for (m in 1:antall_elver) {
     # For år som har fangst og/eller gjenutsatte regner vi ut gjennomsnittsvekt: gjen_vekt+laks_vekt/gjen_ant+Laks_ant
     # År uten fangst eller gjenutsatte : gjennomsnittet av fangst og gjenutsatt 5 nærmeste år
 
-    if (sum(d$telling) > 0) { # Denne delen kjøres bare dersom det har vært telling
+    if (sum(d$telling) > 0) { # denne delen kjøres bare dersom det har vært telling
 
       d$Laks_vekt_u3kg_sum <- with(d, Laks_vekt_u3kg + Gjen_vekt_u3kg)
       d$Laks_ant_u3kg_sum <- with(d, Laks_ant_u3kg + Gjen_ant_u3kg)
