@@ -30,7 +30,7 @@ for (m in 1:antall_elver) {
 
     d$Vdrnr <- elveliste$VdrNr[m] # erstatt vassdragsnummer slik at vi er sikker på at vi har med oss riktig nr videre
 
-    # Sette beskatningsrate og fangstandel til NA i år der det mangler fangst og gjennutsatte og ikke er telling
+    # Sette beskatningsrate og fangstandel til NA i år der det mangler fangst og gjenutsatte og ikke er telling
     d$ExpStorMin <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
                            NA, d$ExpStorMin)
     d$ExpStorMed <- ifelse(d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant),
