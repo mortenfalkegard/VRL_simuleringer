@@ -5,16 +5,17 @@
 
 library(dplyr)    # pakke for datasettmanipulering
 library(tidyr)    # pakke for datasettmanipulering
-library(openxlsx)
+library(openxlsx) # pakke for å lese og skrive Excel-filer
 library(ggplot2)  # pakke for plotting
 library(cowplot)  # pakke for plotting
 library(ggpubr)   # pakke for å sette sammen flere plott
-library(triangle)
-library(stringr)
-library(rio)
-library(qlcMatrix)
-library(matrixStats)
+library(triangle) # pakke for trekke tilfeldige tall fra trekantfordeling
+library(stringr) # pakke for tekstbehandling
+library(rio) # pakke for import og eksport av data
+library(qlcMatrix) # pakke for matriseregning
+library(matrixStats) # pakke for matriseregning
 
+# elveliste.csv er en fil som inneholder informasjon om vassdragene som skal simuleres
 elveliste <- import("data/elveliste.csv", encoding = "UTF-8")
 antall_elver <- nrow(elveliste)
 
@@ -96,7 +97,7 @@ for (m in 1:antall_elver) {
     # Feil navn på Gjen_vekt_o7kg i inputfil, ta vekk linja under når dette er fikset i inputfiler
     d <- d %>% rename(Gjen_vekt_o7kg = Gjen_vekto7kg)
 
-    # setter vekt og antall til 0 for å forenkle skriptet
+    # erstatt NA med 0 for å forenkle skriptet
     d$StamAntSmaHo[is.na(d$StamAntSmaHo)] <- 0
     d$StamAntMelHo[is.na(d$StamAntMelHo)] <- 0
     d$StamAntStorHo[is.na(d$StamAntStorHo)] <- 0
@@ -664,9 +665,8 @@ for (m in 1:antall_elver) {
     #    }
     #  }
     #}
-    # Vectorized version
+    # Vektorisert versjon
     for (s in 1:n_sim) {
-      # Vectorized ifelse statement
       villaks_antall_u3kg[, s] <- ifelse(is.na(d$Obs_laks_ant_u3kg) | d$Obs_laks_ant_u3kg == 0,
                                          ifelse(!is.na(fangstandel_u3kg[, s]) & fangstandel_u3kg[, s] > 0,
                                                 ((d$Laks_ant_u3kg - oppdrett_dist_u3kg[, s] + (d$Gjen_ant_u3kg - (d$Gjen_ant_u3kg * fangstandel_u3kg[, s] * 0.2))) / fangstandel_u3kg[, s]), 0),
@@ -684,9 +684,8 @@ for (m in 1:antall_elver) {
     #    else         (d$Obs_laks_ant_o3u7kg[i]/dist_andel_obs_37kg[i,s]) + d$Laks_ant_o3u7kg[i] - oppdrett_dist_37kg[i,s]}
     #  }
     #}
-    # Vectorized version
+    # Vektorisert versjon
     for (s in 1:n_sim) {
-      # Vectorized ifelse statement
       villaks_antall_37kg[, s] <- ifelse(is.na(d$Obs_laks_ant_o3u7kg) | d$Obs_laks_ant_o3u7kg == 0,
                                          ifelse(!is.na(fangstandel_37kg[, s]) & fangstandel_37kg[, s] > 0,
                                                 ((d$Laks_ant_o3u7kg - oppdrett_dist_37kg[, s] + (d$Gjen_ant_o3u7kg - (d$Gjen_ant_o3u7kg * fangstandel_37kg[, s] * 0.2))) / fangstandel_37kg[, s]), 0),
@@ -705,7 +704,7 @@ for (m in 1:antall_elver) {
     #      (d$Obs_laks_ant_o7kg[i]/dist_andel_obs_o7kg[i,s]) + d$Laks_ant_o7kg[i] - oppdrett_dist_o7kg[i,s]}
     #  }
     #  }
-    # Vectorized version
+    # Vektorisert versjon
     for (s in 1:n_sim) {
       villaks_antall_o7kg[, s] <- ifelse(is.na(d$Obs_laks_ant_o7kg) | d$Obs_laks_ant_o7kg == 0,
                                          ifelse(!is.na(fangstandel_o7kg[, s]) & fangstandel_o7kg[, s] > 0,
@@ -893,8 +892,9 @@ for (m in 1:antall_elver) {
             else
               0
           }
-        } else
+        } else {
           gyting_hunn_kg_37kg[i, s] <- 0
+        }
       }
     }
 
@@ -913,8 +913,9 @@ for (m in 1:antall_elver) {
             else
               0
           }
-        } else
+        } else {
           gyting_hunn_kg_o7kg[i, s] <- 0
+        }
       }
     }
 
@@ -956,7 +957,7 @@ for (m in 1:antall_elver) {
     # MERK: Opprinnelig skript hentet GBM verdier fra de elvespesifikke datafilene.
     # Endret til å hente fra vassdragslisten.
     # MERK 2: Opprinnelig skript laget individuelle sannsynlighetsfordelinger for de ulike årene.
-    # Optimalisert til å bare lage en felles fordeling.
+    # Optimalisert til å bare lage én felles fordeling.
 
     gbm <- rtriangle(n = n_sim, a = elveliste$GBM_lav[m], b = elveliste$GBM_hoy[m], c = elveliste$GBM[m])
 
@@ -997,7 +998,9 @@ for (m in 1:antall_elver) {
             100
           else
             (100 * gyting_hunn_kg_totalt[i, s] / gbm[s])
-        } else NA
+        } else {
+          NA
+        }
       }
     }
 
@@ -1077,23 +1080,3 @@ for (m in 1:antall_elver) {
     export(gyting_hunn_kg_totalt_df, gytebestand_filnavn, sep = ";", dec = ".", bom = TRUE)
   }
 }
-
-
-
-#------------------------------------------------------------------------------------------------------------
-# subrutine for å sjekke hvilke vassdrag som kom gjennom simuleringen og om noen mangler
-#------------------------------------------------------------------------------------------------------------
-
-sim_kghunnlaks_filnavn <- "results/KgHunnlaks2021.txt"
-vassdrag_mangler <- vector()
-sim_kghunnlaks <- read.table(sim_kghunnlaks_filnavn, stringsAsFactors = FALSE, header = TRUE)
-for (i in 1:antall_elver) {
-  if (elveliste$GytingSim[i]) {
-    m <- which(sim_kghunnlaks$Vdrnr == elveliste$VdrNr[i])
-    if (length(m) == 0) vassdrag_mangler[i] <- elveliste$VdrNr[i]
-  }
-}
-
-
-df <- read.table("results/KgHunnlaks2021.txt", stringsAsFactors = FALSE, header = TRUE)
-export(df, "results/KgHunnlaks2021.xlsx")
