@@ -28,6 +28,7 @@ for (m in indeks_simuler) {
   elv_filnavn <- paste("data/vassdrag/", elveliste[m, "Filnavn"], ".csv", sep = "")
   d <- import(elv_filnavn, encoding = "UTF-8")
   d$Vdrnr <- elveliste$VdrNr[m] # erstatt vassdragsnummer slik at vi er sikker på at vi har med oss riktig nr videre
+  d <- d %>% rename(Gjen_vekt_o7kg = Gjen_vekto7kg) # Feil navn på Gjen_vekt_o7kg i input, ta vekk når dette er fikset
   if (m == 1) {
     elvedata <- d
   } else {
@@ -84,10 +85,6 @@ for (m in indeks_simuler) {
     d[[k]][betingelse] <- 0
   }
 
-  #### ---------- Variabler ---------- ####
-  # Feil navn på Gjen_vekt_o7kg i inputfil, ta vekk linja under når dette er fikset i inputfiler
-  d <- d %>% rename(Gjen_vekt_o7kg = Gjen_vekto7kg)
-
   # erstatt NA med 0 i utvalgte kolonner for å forenkle skriptet
   kolonner <- c("StamAntSmaHo", "StamAntMelHo", "StamAntStorHo",
                 "Laks_vekt_u3kg", "Laks_vekt_o3u7kg", "Laks_vekt_o7kg",
@@ -127,15 +124,15 @@ for (m in indeks_simuler) {
 
       # Færre enn totalt 5 avliva smålaks i tidsserien ---> standard snittvekt
       if (sum(d$Laks_ant_u3kg_sum, na.rm = TRUE) < 5) {
-        d$Laks_vekt_u3kg_sum[lite_eller_uten_fangst_smaa[1:length(lite_eller_uten_fangst_smaa)]] <- 2
-        d$Laks_ant_u3kg_sum[lite_eller_uten_fangst_smaa[1:length(lite_eller_uten_fangst_smaa)]] <- 1
+        d$Laks_vekt_u3kg_sum[lite_eller_uten_fangst_smaa] <- 2
+        d$Laks_ant_u3kg_sum[lite_eller_uten_fangst_smaa] <- 1
       } else {
         fangst <- which(d$Laks_vekt_u3kg_sum > 0) # Finne rader som har vekt
 
         # Dersom det er færre enn fem år med avliva laks, bruk snitt av alle disse årene
         if (length(fangst) < 5) {
-          d$Laks_vekt_u3kg_sum[lite_eller_uten_fangst_smaa[1:length(lite_eller_uten_fangst_smaa)]] <- sum(d$Laks_vekt_u3kg_sum)
-          d$Laks_ant_u3kg_sum[lite_eller_uten_fangst_smaa[1:length(lite_eller_uten_fangst_smaa)]] <- sum(d$Laks_ant_u3kg_sum)
+          d$Laks_vekt_u3kg_sum[lite_eller_uten_fangst_smaa] <- sum(d$Laks_vekt_u3kg_sum)
+          d$Laks_ant_u3kg_sum[lite_eller_uten_fangst_smaa] <- sum(d$Laks_ant_u3kg_sum)
         } else {
           # Hvis det er fem år eller med med fangst, bruker vi vekt fra fem nærmeste år som har vekt:
           # Funksjonen f sorterer de 1-5 minste avstandene til rader med fangst for hver rad med lite/ingen fangst
@@ -148,18 +145,18 @@ for (m in indeks_simuler) {
           abs_diff <- sapply(lite_eller_uten_fangst_smaa, function(x) abs(fangst - x))
           min_dist <- t(apply(abs_diff, 2, f))
 
-          d$Laks_vekt_u3kg_sum[lite_eller_uten_fangst_smaa[1:length(lite_eller_uten_fangst_smaa)]] <-
-            d$Laks_vekt_u3kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_smaa), 1]]] +
-            d$Laks_vekt_u3kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_smaa), 2]]] +
-            d$Laks_vekt_u3kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_smaa), 3]]] +
-            d$Laks_vekt_u3kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_smaa), 4]]] +
-            d$Laks_vekt_u3kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_smaa), 5]]]
-          d$Laks_ant_u3kg_sum[lite_eller_uten_fangst_smaa[1:length(lite_eller_uten_fangst_smaa)]] <-
-            d$Laks_ant_u3kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_smaa), 1]]] +
-            d$Laks_ant_u3kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_smaa), 2]]] +
-            d$Laks_ant_u3kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_smaa), 3]]] +
-            d$Laks_ant_u3kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_smaa), 4]]] +
-            d$Laks_ant_u3kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_smaa), 5]]]
+          d$Laks_vekt_u3kg_sum[lite_eller_uten_fangst_smaa] <-
+            d$Laks_vekt_u3kg_sum[fangst[min_dist[, 1]]] +
+            d$Laks_vekt_u3kg_sum[fangst[min_dist[, 2]]] +
+            d$Laks_vekt_u3kg_sum[fangst[min_dist[, 3]]] +
+            d$Laks_vekt_u3kg_sum[fangst[min_dist[, 4]]] +
+            d$Laks_vekt_u3kg_sum[fangst[min_dist[, 5]]]
+          d$Laks_ant_u3kg_sum[lite_eller_uten_fangst_smaa] <-
+            d$Laks_ant_u3kg_sum[fangst[min_dist[, 1]]] +
+            d$Laks_ant_u3kg_sum[fangst[min_dist[, 2]]] +
+            d$Laks_ant_u3kg_sum[fangst[min_dist[, 3]]] +
+            d$Laks_ant_u3kg_sum[fangst[min_dist[, 4]]] +
+            d$Laks_ant_u3kg_sum[fangst[min_dist[, 5]]]
         }
       }
     }
@@ -176,15 +173,15 @@ for (m in indeks_simuler) {
 
       # Færre enn totalt 5 avliva mellomlaks i tidsserien ---> standard snittvekt
       if (sum(d$Laks_ant_o3u7kg_sum, na.rm = TRUE) < 5) {
-        d$Laks_vekt_o3u7kg_sum[lite_eller_uten_fangst_mellom[1:length(lite_eller_uten_fangst_mellom)]] <- 4
-        d$Laks_ant_o3u7kg_sum[lite_eller_uten_fangst_mellom[1:length(lite_eller_uten_fangst_mellom)]] <- 1
+        d$Laks_vekt_o3u7kg_sum[lite_eller_uten_fangst_mellom] <- 4
+        d$Laks_ant_o3u7kg_sum[lite_eller_uten_fangst_mellom] <- 1
       } else {
         fangst <- which(d$Laks_vekt_o3u7kg_sum > 0) # Finne rader som har vekt
 
         # Dersom det er færre enn fem år med avliva laks, bruk snitt av alle disse årene
         if (length(fangst) < 5) {
-          d$Laks_vekt_o3u7kg_sum[lite_eller_uten_fangst_mellom[1:length(lite_eller_uten_fangst_mellom)]] <- sum(d$Laks_vekt_o3u7kg_sum)
-          d$Laks_ant_o3u7kg_sum[lite_eller_uten_fangst_mellom[1:length(lite_eller_uten_fangst_mellom)]] <- sum(d$Laks_ant_o3u7kg_sum)
+          d$Laks_vekt_o3u7kg_sum[lite_eller_uten_fangst_mellom] <- sum(d$Laks_vekt_o3u7kg_sum)
+          d$Laks_ant_o3u7kg_sum[lite_eller_uten_fangst_mellom] <- sum(d$Laks_ant_o3u7kg_sum)
         } else {
           # Hvis det er flere enn fem år med fangst, bruker vi vekt fra fem nærmeste år som har vekt:
           # Funksjonen f sorterer de 1-5 minste avstandene til rader med fangst for hver rad med lite/ingen fangst
@@ -197,18 +194,18 @@ for (m in indeks_simuler) {
           abs_diff <- sapply(lite_eller_uten_fangst_mellom, function(x) abs(fangst - x))
           min_dist <- t(apply(abs_diff, 2, f))
 
-          d$Laks_vekt_o3u7kg_sum[lite_eller_uten_fangst_mellom[1:length(lite_eller_uten_fangst_mellom)]] <-
-            d$Laks_vekt_o3u7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_mellom), 1]]] +
-            d$Laks_vekt_o3u7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_mellom), 2]]] +
-            d$Laks_vekt_o3u7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_mellom), 3]]] +
-            d$Laks_vekt_o3u7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_mellom), 4]]] +
-            d$Laks_vekt_o3u7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_mellom), 5]]]
-          d$Laks_ant_o3u7kg_sum[lite_eller_uten_fangst_mellom[1:length(lite_eller_uten_fangst_mellom)]] <-
-            d$Laks_ant_o3u7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_mellom), 1]]] +
-            d$Laks_ant_o3u7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_mellom), 2]]] +
-            d$Laks_ant_o3u7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_mellom), 3]]] +
-            d$Laks_ant_o3u7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_mellom), 4]]] +
-            d$Laks_ant_o3u7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_mellom), 5]]]
+          d$Laks_vekt_o3u7kg_sum[lite_eller_uten_fangst_mellom] <-
+            d$Laks_vekt_o3u7kg_sum[fangst[min_dist[, 1]]] +
+            d$Laks_vekt_o3u7kg_sum[fangst[min_dist[, 2]]] +
+            d$Laks_vekt_o3u7kg_sum[fangst[min_dist[, 3]]] +
+            d$Laks_vekt_o3u7kg_sum[fangst[min_dist[, 4]]] +
+            d$Laks_vekt_o3u7kg_sum[fangst[min_dist[, 5]]]
+          d$Laks_ant_o3u7kg_sum[lite_eller_uten_fangst_mellom] <-
+            d$Laks_ant_o3u7kg_sum[fangst[min_dist[, 1]]] +
+            d$Laks_ant_o3u7kg_sum[fangst[min_dist[, 2]]] +
+            d$Laks_ant_o3u7kg_sum[fangst[min_dist[, 3]]] +
+            d$Laks_ant_o3u7kg_sum[fangst[min_dist[, 4]]] +
+            d$Laks_ant_o3u7kg_sum[fangst[min_dist[, 5]]]
         }
       }
     }
@@ -225,15 +222,15 @@ for (m in indeks_simuler) {
 
       # Færre enn totalt 5 avliva storlaks i tidsserien ---> standard snittvekt
       if (sum(d$Laks_ant_o7kg_sum, na.rm = TRUE) < 5) {
-        d$Laks_vekt_o7kg_sum[lite_eller_uten_fangst_stor[1:length(lite_eller_uten_fangst_stor)]] <- 8
-        d$Laks_ant_o7kg_sum[lite_eller_uten_fangst_stor[1:length(lite_eller_uten_fangst_stor)]] <- 1
+        d$Laks_vekt_o7kg_sum[lite_eller_uten_fangst_stor] <- 8
+        d$Laks_ant_o7kg_sum[lite_eller_uten_fangst_stor] <- 1
       } else {
         fangst <- which(d$Laks_vekt_o7kg_sum > 0) # Finne rader som har vekt
 
         # Dersom det er færre enn fem år med avliva laks, bruk snitt av alle disse årene
         if (length(fangst) < 5) {
-          d$Laks_vekt_o7kg_sum[lite_eller_uten_fangst_stor[1:length(lite_eller_uten_fangst_stor)]] <- sum(d$Laks_vekt_o7kg_sum)
-          d$Laks_ant_o7kg_sum[lite_eller_uten_fangst_stor[1:length(lite_eller_uten_fangst_stor)]] <- sum(d$Laks_ant_o7kg_sum)
+          d$Laks_vekt_o7kg_sum[lite_eller_uten_fangst_stor] <- sum(d$Laks_vekt_o7kg_sum)
+          d$Laks_ant_o7kg_sum[lite_eller_uten_fangst_stor] <- sum(d$Laks_ant_o7kg_sum)
         } else {
           # Hvis det er flere enn fem år, bruker vi vekt fra fem nærmeste år som har vekt:
           # Funksjonen f sorterer de 1-5 minste avstandene til rader med fangst for hver rad med lite/ingen fangst
@@ -246,18 +243,18 @@ for (m in indeks_simuler) {
           abs_diff <- sapply(lite_eller_uten_fangst_stor, function(x) abs(fangst - x))
           min_dist <- t(apply(abs_diff, 2, f))
 
-          d$Laks_vekt_o7kg_sum[lite_eller_uten_fangst_stor[1:length(lite_eller_uten_fangst_stor)]] <-
-            d$Laks_vekt_o7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_stor), 1]]] +
-            d$Laks_vekt_o7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_stor), 2]]] +
-            d$Laks_vekt_o7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_stor), 3]]] +
-            d$Laks_vekt_o7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_stor), 4]]] +
-            d$Laks_vekt_o7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_stor), 5]]]
-          d$Laks_ant_o7kg_sum[lite_eller_uten_fangst_stor[1:length(lite_eller_uten_fangst_stor)]] <-
-            d$Laks_ant_o7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_stor), 1]]] +
-            d$Laks_ant_o7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_stor), 2]]] +
-            d$Laks_ant_o7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_stor), 3]]] +
-            d$Laks_ant_o7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_stor), 4]]] +
-            d$Laks_ant_o7kg_sum[fangst[min_dist[1:length(lite_eller_uten_fangst_stor), 5]]]
+          d$Laks_vekt_o7kg_sum[lite_eller_uten_fangst_stor] <-
+            d$Laks_vekt_o7kg_sum[fangst[min_dist[, 1]]] +
+            d$Laks_vekt_o7kg_sum[fangst[min_dist[, 2]]] +
+            d$Laks_vekt_o7kg_sum[fangst[min_dist[, 3]]] +
+            d$Laks_vekt_o7kg_sum[fangst[min_dist[, 4]]] +
+            d$Laks_vekt_o7kg_sum[fangst[min_dist[, 5]]]
+          d$Laks_ant_o7kg_sum[lite_eller_uten_fangst_stor] <-
+            d$Laks_ant_o7kg_sum[fangst[min_dist[, 1]]] +
+            d$Laks_ant_o7kg_sum[fangst[min_dist[, 2]]] +
+            d$Laks_ant_o7kg_sum[fangst[min_dist[, 3]]] +
+            d$Laks_ant_o7kg_sum[fangst[min_dist[, 4]]] +
+            d$Laks_ant_o7kg_sum[fangst[min_dist[, 5]]]
         }
       }
     }
