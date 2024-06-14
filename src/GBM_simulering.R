@@ -373,15 +373,6 @@ for (m in indeks_simuler) {
     villaks_antall_o7kg <- empty_matrix
 
     # Smålaks
-    # gammel kode
-    #for (s in 1:n_sim) {
-    #  for (i in 1:n_years) {
-    #    villaks_antall_u3kg[i, s] <- if (!is.na(d$Obs_laks_ant_u3kg[i]))
-    #      ((d$Obs_laks_ant_u3kg[i] / dist_andel_obs_u3kg[i, s]) + d$Laks_ant_u3kg[i] - oppdrett_dist_u3k[i, s])
-    #    else
-    #      NA
-    #  }
-    #}
     for (i in 1:n_years) {
       if (!is.na(d$Obs_laks_ant_u3kg[i]))
         villaks_antall_u3kg[i, ] <- (d$Obs_laks_ant_u3kg[i] / dist_andel_obs_u3kg[i, ]) + d$Laks_ant_u3kg[i] - oppdrett_dist_u3kg[i, ]
@@ -391,15 +382,6 @@ for (m in indeks_simuler) {
     villaks_antall_u3kg[villaks_antall_u3kg < 0] <- 0 # Setter negative verdier til 0
 
     # Mellomlaks
-    # gammel kode
-    #for (s in 1:n_sim) {
-    #  for (i in 1:n_years) {
-    #    villaks_antall_37kg[i, s] <- if (!is.na(d$Obs_laks_ant_o3u7kg[i]))
-    #      ((d$Obs_laks_ant_o3u7kg[i] / dist_andel_obs_37kg[i, s]) + d$Laks_ant_o3u7kg[i] - oppdrett_dist_37kg[i, s])
-    #    else
-    #      NA
-    #  }
-    #}
     for (i in 1:n_years) {
       if (!is.na(d$Obs_laks_ant_o3u7kg[i]))
         villaks_antall_37kg[i, ] <- (d$Obs_laks_ant_o3u7kg[i] / dist_andel_obs_37kg[i, ]) + d$Laks_ant_o3u7kg[i] - oppdrett_dist_37kg[i, ]
@@ -409,15 +391,6 @@ for (m in indeks_simuler) {
     villaks_antall_37kg[villaks_antall_37kg < 0] <- 0
 
     # Storlaks
-    # gammel kode
-    #for (s in 1:n_sim) {
-    #  for (i in 1:n_years) {
-    #    villaks_antall_o7kg[i, s] <- if (!is.na(d$Obs_laks_ant_o7kg[i]))
-    #      ((d$Obs_laks_ant_o7kg[i] / dist_andel_obs_o7kg[i, s]) + d$Laks_ant_o7kg[i] - oppdrett_dist_o7kg[i, s])
-    #    else
-    #      NA
-    #  }
-    #}
     for (i in 1:n_years) {
       if (!is.na(d$Obs_laks_ant_o7kg[i]))
         villaks_antall_o7kg[i, ] <- (d$Obs_laks_ant_o7kg[i] / dist_andel_obs_o7kg[i, ]) + d$Laks_ant_o7kg[i] - oppdrett_dist_o7kg[i, ]
@@ -454,7 +427,7 @@ for (m in indeks_simuler) {
                            ifelse(!is.na(Obs_laks_ant_o3u7kg) & Obs_laks_ant_o3u7kg == 0 & is.na(ExpMellomMed),
                                   0, ExpMellomMed))
     d$ExpMellomMin <- with(d,
-                            ifelse(!is.na(Obs_laks_ant_o3u7kg) & Obs_laks_ant_o3u7kg > 0 & is.na(ExpMellomMin),
+                           ifelse(!is.na(Obs_laks_ant_o3u7kg) & Obs_laks_ant_o3u7kg > 0 & is.na(ExpMellomMin),
                                   Laks_ant_o3u7kg / as.vector(rowMax(villaks_antall_37kg)), ExpMellomMin))
     d$ExpMellomMin <- with(d,
                            ifelse(!is.na(Obs_laks_ant_o3u7kg) & Obs_laks_ant_o3u7kg == 0 & is.na(ExpMellomMin),
@@ -610,11 +583,11 @@ for (m in indeks_simuler) {
   # Antall oppdrettslaks samlet i elva (estimert fra fangst og beskatningsrate)
   # Oppdatering: regne hvis antall oppdrett og beskatning er større enn 0, eller sette til 0.
   oppdrett_antall_u3kg <- ifelse(is.na(beskatningsrate_u3kg) | oppdrett_dist_u3kg == 0 | beskatningsrate_u3kg == 0,
-                                  0, oppdrett_dist_u3kg / beskatningsrate_u3kg)
+                                 0, oppdrett_dist_u3kg / beskatningsrate_u3kg)
   oppdrett_antall_37kg <- ifelse(is.na(beskatningsrate_37kg) | oppdrett_dist_37kg == 0 | beskatningsrate_37kg == 0,
-                                  0, oppdrett_dist_37kg / beskatningsrate_37kg)
+                                 0, oppdrett_dist_37kg / beskatningsrate_37kg)
   oppdrett_antall_o7kg <- ifelse(is.na(beskatningsrate_o7kg) | oppdrett_dist_o7kg == 0 | beskatningsrate_o7kg == 0,
-                                  0, oppdrett_dist_o7kg / beskatningsrate_o7kg)
+                                 0, oppdrett_dist_o7kg / beskatningsrate_o7kg)
   oppdrett_antall_totalt <- oppdrett_antall_u3kg + oppdrett_antall_37kg + oppdrett_antall_o7kg
 
   # ENDRINGER:
@@ -628,62 +601,29 @@ for (m in indeks_simuler) {
   villaks_antall_totalt <- empty_matrix
 
   # Smålaks
-  # gammel versjon først, kommentert ut inntil videre
-  #for (i in 1:n_years) {
-  #  for (s in 1:n_sim) {
-  #    villaks_antall_u3kg[i, s] <- if (is.na(d$Obs_laks_ant_u3kg[i]) || d$Obs_laks_ant_u3kg[i] == 0) {
-  #      if (!is.na(fangstandel_u3kg[i, s]) && fangstandel_u3kg[i, s] > 0)
-  #        ((d$Laks_ant_u3kg[i] - oppdrett_dist_u3kg[i, s] + (d$Gjen_ant_u3kg[i] - (d$Gjen_ant_u3kg[i] * fangstandel_u3kg[i, s] * 0.2))) / fangstandel_u3kg[i, s]) else 0
-  #    } else {
-  #      (d$Obs_laks_ant_u3kg[i] / dist_andel_obs_u3kg[i, s]) + d$Laks_ant_u3kg[i] - oppdrett_dist_u3kg[i, s]
-  #    }
-  #  }
-  #}
-  # Vektorisert versjon
   for (s in 1:n_sim) {
     villaks_antall_u3kg[, s] <- ifelse(is.na(d$Obs_laks_ant_u3kg) | d$Obs_laks_ant_u3kg == 0,
-                                        ifelse(!is.na(fangstandel_u3kg[, s]) & fangstandel_u3kg[, s] > 0,
+                                       ifelse(!is.na(fangstandel_u3kg[, s]) & fangstandel_u3kg[, s] > 0,
                                               ((d$Laks_ant_u3kg - oppdrett_dist_u3kg[, s] + (d$Gjen_ant_u3kg - (d$Gjen_ant_u3kg * fangstandel_u3kg[, s] * 0.2))) / fangstandel_u3kg[, s]), 0),
-                                        (d$Obs_laks_ant_u3kg / dist_andel_obs_u3kg[, s]) + d$Laks_ant_u3kg - oppdrett_dist_u3kg[, s])
+                                       (d$Obs_laks_ant_u3kg / dist_andel_obs_u3kg[, s]) + d$Laks_ant_u3kg - oppdrett_dist_u3kg[, s])
   }
   villaks_antall_u3kg[villaks_antall_u3kg < 0] <- 0     # Setter negative verdier til 0
 
   # Mellomlaks
-  # gammel versjon først, kommentert ut inntil videre
-  #for(s in 1:n_sim){
-  #  for(i in 1:n_years){
-  #    villaks_antall_37kg[i,s]<- if(is.na(d$Obs_laks_ant_o3u7kg[i]) | d$Obs_laks_ant_o3u7kg[i] == 0){
-  #      if(!is.na(fangstandel_37kg[i,s]) & fangstandel_37kg[i, s] > 0)
-  #        ((d$Laks_ant_o3u7kg[i] - oppdrett_dist_37kg[i,s] + (d$Gjen_ant_o3u7kg[i] - (d$Gjen_ant_o3u7kg[i] * fangstandel_37kg[i,s] * 0.2)))/fangstandel_37kg[i,s]) else 0}
-  #    else         (d$Obs_laks_ant_o3u7kg[i]/dist_andel_obs_37kg[i,s]) + d$Laks_ant_o3u7kg[i] - oppdrett_dist_37kg[i,s]}
-  #  }
-  #}
-  # Vektorisert versjon
   for (s in 1:n_sim) {
     villaks_antall_37kg[, s] <- ifelse(is.na(d$Obs_laks_ant_o3u7kg) | d$Obs_laks_ant_o3u7kg == 0,
-                                        ifelse(!is.na(fangstandel_37kg[, s]) & fangstandel_37kg[, s] > 0,
+                                       ifelse(!is.na(fangstandel_37kg[, s]) & fangstandel_37kg[, s] > 0,
                                               ((d$Laks_ant_o3u7kg - oppdrett_dist_37kg[, s] + (d$Gjen_ant_o3u7kg - (d$Gjen_ant_o3u7kg * fangstandel_37kg[, s] * 0.2))) / fangstandel_37kg[, s]), 0),
-                                        (d$Obs_laks_ant_o3u7kg / dist_andel_obs_37kg[, s]) + d$Laks_ant_o3u7kg - oppdrett_dist_37kg[, s])
+                                       (d$Obs_laks_ant_o3u7kg / dist_andel_obs_37kg[, s]) + d$Laks_ant_o3u7kg - oppdrett_dist_37kg[, s])
   }
   villaks_antall_37kg[villaks_antall_37kg < 0] <- 0     # Setter negative verdier til 0
 
   # Storlaks
-  # gammel versjon først, kommentert ut inntil videre
-  #for(s in 1:n_sim){
-  #  for(i in 1:n_years){
-  #    villaks_antall_o7kg [i ,s]<- if(is.na(d$Obs_laks_ant_o7kg[i]) | d$Obs_laks_ant_o7kg[i] == 0){
-  #      if(!is.na(fangstandel_o7kg[i,s]) & fangstandel_o7kg[i,s] > 0)
-  #        ((d$Laks_ant_o7kg[i] - oppdrett_dist_o7kg[i,s] + (d$Gjen_ant_o7kg[i] - (d$Gjen_ant_o7kg[i] * fangstandel_o7kg[i,s] * 0.2)))/fangstandel_o7kg[i,s]) else 0}
-  #    else {
-  #      (d$Obs_laks_ant_o7kg[i]/dist_andel_obs_o7kg[i,s]) + d$Laks_ant_o7kg[i] - oppdrett_dist_o7kg[i,s]}
-  #  }
-  #  }
-  # Vektorisert versjon
   for (s in 1:n_sim) {
     villaks_antall_o7kg[, s] <- ifelse(is.na(d$Obs_laks_ant_o7kg) | d$Obs_laks_ant_o7kg == 0,
-                                        ifelse(!is.na(fangstandel_o7kg[, s]) & fangstandel_o7kg[, s] > 0,
+                                       ifelse(!is.na(fangstandel_o7kg[, s]) & fangstandel_o7kg[, s] > 0,
                                               ((d$Laks_ant_o7kg - oppdrett_dist_o7kg[, s] + (d$Gjen_ant_o7kg - (d$Gjen_ant_o7kg * fangstandel_o7kg[, s] * 0.2))) / fangstandel_o7kg[, s]), 0),
-                                        (d$Obs_laks_ant_o7kg / dist_andel_obs_o7kg[, s]) + d$Laks_ant_o7kg - oppdrett_dist_o7kg[, s])
+                                       (d$Obs_laks_ant_o7kg / dist_andel_obs_o7kg[, s]) + d$Laks_ant_o7kg - oppdrett_dist_o7kg[, s])
   }
   villaks_antall_o7kg [villaks_antall_o7kg < 0] <- 0 # Setter negative verdier til 0
 
@@ -736,20 +676,20 @@ for (m in indeks_simuler) {
 
   # Fil med antall oppdrett og villfisk
   til_fil_antall_vill_oppdrett <- tibble(villaks_antall_u3kg_q02.5, villaks_antall_u3kg_q25,
-                                          villaks_antall_u3kg_q50, villaks_antall_u3kg_q75,
-                                          villaks_antall_u3kg_q97.5, villaks_antall_37kg_q02.5,
-                                          villaks_antall_37kg_q25, villaks_antall_37kg_q50,
-                                          villaks_antall_37kg_q75, villaks_antall_37kg_q97.5,
-                                          villaks_antall_o7kg_q02.5, villaks_antall_o7kg_q25,
-                                          villaks_antall_o7kg_q50, villaks_antall_o7kg_q75,
-                                          villaks_antall_o7kg_q97.5, villaks_antall_totalt_q02.5,
-                                          villaks_antall_totalt_q25, villaks_antall_totalt_q50,
-                                          villaks_antall_totalt_q75, villaks_antall_totalt_q97.5,
-                                          oppdrett_dist_q02.5, oppdrett_dist_q25,
-                                          oppdrett_dist_q50, oppdrett_dist_q75,
-                                          oppdrett_dist_q97.5, oppdrett_antall_q02.5,
-                                          oppdrett_antall_q25, oppdrett_antall_q50,
-                                          oppdrett_antall_q75, oppdrett_antall_q97.5) %>%
+                                         villaks_antall_u3kg_q50, villaks_antall_u3kg_q75,
+                                         villaks_antall_u3kg_q97.5, villaks_antall_37kg_q02.5,
+                                         villaks_antall_37kg_q25, villaks_antall_37kg_q50,
+                                         villaks_antall_37kg_q75, villaks_antall_37kg_q97.5,
+                                         villaks_antall_o7kg_q02.5, villaks_antall_o7kg_q25,
+                                         villaks_antall_o7kg_q50, villaks_antall_o7kg_q75,
+                                         villaks_antall_o7kg_q97.5, villaks_antall_totalt_q02.5,
+                                         villaks_antall_totalt_q25, villaks_antall_totalt_q50,
+                                         villaks_antall_totalt_q75, villaks_antall_totalt_q97.5,
+                                         oppdrett_dist_q02.5, oppdrett_dist_q25,
+                                         oppdrett_dist_q50, oppdrett_dist_q75,
+                                         oppdrett_dist_q97.5, oppdrett_antall_q02.5,
+                                         oppdrett_antall_q25, oppdrett_antall_q50,
+                                         oppdrett_antall_q75, oppdrett_antall_q97.5) %>%
     mutate(Vassdrag = d$Vassdrag) %>%
     mutate(Vdrnr = d$Vdrnr) %>%
     mutate(Kommune = d$Kommune) %>%
@@ -793,15 +733,15 @@ for (m in indeks_simuler) {
 
   gjenutsatt_hunn_kg_u3kg_just <- sapply(1:n_sim, function(s) {
     ifelse(d$Gjen_vekt_u3kg > 0,
-            (d$Gjen_vekt_u3kg - (d$Gjen_vekt_u3kg * fangstandel_u3kg[, s] * 0.2)) * dist_andel_hunn_u3kg[, s], 0)
+           (d$Gjen_vekt_u3kg - (d$Gjen_vekt_u3kg * fangstandel_u3kg[, s] * 0.2)) * dist_andel_hunn_u3kg[, s], 0)
   })
   gjenutsatt_hunn_kg_37kg_just <- sapply(1:n_sim, function(s) {
     ifelse(d$Gjen_vekt_o3u7kg > 0,
-            (d$Gjen_vekt_o3u7kg - (d$Gjen_vekt_o3u7kg * fangstandel_37kg[, s] * 0.2)) * dist_andel_hunn_37kg[, s], 0)
+           (d$Gjen_vekt_o3u7kg - (d$Gjen_vekt_o3u7kg * fangstandel_37kg[, s] * 0.2)) * dist_andel_hunn_37kg[, s], 0)
   })
   gjenutsatt_hunn_kg_o7kg_just <- sapply(1:n_sim, function(s) {
     ifelse(d$Gjen_vekt_o7kg > 0,
-            (d$Gjen_vekt_o7kg - (d$Gjen_vekt_o7kg * fangstandel_o7kg[, s] * 0.2)) * dist_andel_hunn_o7kg[, s], 0)
+           (d$Gjen_vekt_o7kg - (d$Gjen_vekt_o7kg * fangstandel_o7kg[, s] * 0.2)) * dist_andel_hunn_o7kg[, s], 0)
   })
 
   # Avlivet fangst justert for oppdrett og andel hunnlaks
@@ -811,15 +751,15 @@ for (m in indeks_simuler) {
 
   avlivet_hunn_kg_u3kg_just <- sapply(1:n_sim, function(s) {
     ifelse(d$Laks_vekt_u3kg > 0,
-            (d$Laks_vekt_u3kg - oppdrett_kg_u3kg[, s]) * dist_andel_hunn_u3kg[, s], 0)
+           (d$Laks_vekt_u3kg - oppdrett_kg_u3kg[, s]) * dist_andel_hunn_u3kg[, s], 0)
   })
   avlivet_hunn_kg_37kg_just <- sapply(1:n_sim, function(s) {
     ifelse(d$Laks_vekt_o3u7kg > 0,
-            (d$Laks_vekt_o3u7kg - oppdrett_kg_37kg[, s]) * dist_andel_hunn_37kg[, s], 0)
+           (d$Laks_vekt_o3u7kg - oppdrett_kg_37kg[, s]) * dist_andel_hunn_37kg[, s], 0)
   })
   avlivet_hunn_kg_o7kg_just <- sapply(1:n_sim, function(s) {
     ifelse(d$Laks_vekt_o7kg > 0,
-            (d$Laks_vekt_o7kg - oppdrett_kg_o7kg[, s]) * dist_andel_hunn_o7kg[, s], 0)
+           (d$Laks_vekt_o7kg - oppdrett_kg_o7kg[, s]) * dist_andel_hunn_o7kg[, s], 0)
   })
 
   # Simulering gytebestand
@@ -903,8 +843,8 @@ for (m in indeks_simuler) {
   for (s in 1:n_sim) {
     for (i in 1:n_years) {
       gyting_hunn_kg_totalt[i, s] <- if (is.na(beskatningsrate_u3kg[i, s]) &&
-                                            is.na(beskatningsrate_37kg[i, s]) &&
-                                            is.na(beskatningsrate_o7kg[i, s])) NA
+                                           is.na(beskatningsrate_37kg[i, s]) &&
+                                           is.na(beskatningsrate_o7kg[i, s])) NA
       else
         (gyting_hunn_kg_u3kg[i, s] + gyting_hunn_kg_37kg[i, s] + gyting_hunn_kg_o7kg[i, s])
     }
@@ -935,11 +875,6 @@ for (m in indeks_simuler) {
 
   gbm <- rtriangle(n = n_sim, a = elveliste$GBM_lav[m], b = elveliste$GBM_hoy[m], c = elveliste$GBM[m])
 
-  #gbm <- empty_matrix
-  #for(i in 1:n_years) {
-  #  gbm[i, ] <- rtriangle(n = n_sim, a = d$GBMmin[i], b = d$GBMmax[i], c = d$GBMkghunner[i])
-  #}
-
   # Oppnåelse gytebestandsmål. 1 = nådd, 0 = ikke nådd
   naadgbm <- empty_matrix
   for (s in 1:n_sim) {
@@ -949,7 +884,9 @@ for (m in indeks_simuler) {
           1
         else
           0
-      } else NA
+      } else {
+        NA
+      }
     }
   }
 
@@ -1018,11 +955,11 @@ for (m in indeks_simuler) {
   simulert <- d$Simulering
 
   til_fil_gyting <- tibble(fangst_hunn_u3_justert, fangst_hunn_37_justert, fangst_hunn_o7_justert,
-                            gyting_hunn_u3, gyting_hunn_37, gyting_hunn_o7,
-                            andel_hunn_u3, andel_hunn_37, andel_hunn_o7,
-                            prosent_sannsynlighet_gbm, prosent_sanns_siste_fire, prosent_maaloppnaaelse,
-                            prosent_maalopp_siste_fire, prosent_maaloppnaaelse_utrunk,
-                            pros_maalopp_siste_fire_utrunk, simulert) %>%
+                           gyting_hunn_u3, gyting_hunn_37, gyting_hunn_o7,
+                           andel_hunn_u3, andel_hunn_37, andel_hunn_o7,
+                           prosent_sannsynlighet_gbm, prosent_sanns_siste_fire, prosent_maaloppnaaelse,
+                           prosent_maalopp_siste_fire, prosent_maaloppnaaelse_utrunk,
+                           pros_maalopp_siste_fire_utrunk, simulert) %>%
     mutate(Vassdrag = d$Vassdrag) %>%
     mutate(Vdrnr = d$Vdrnr) %>%
     mutate(Aar = d$Aar) %>%
@@ -1030,8 +967,7 @@ for (m in indeks_simuler) {
 
   if (paste("KgHunnlaks", d$Aar[max(n_years)], ".csv", sep = "") %in% list.files("results")) {
     write.table(til_fil_gyting, paste("results/KgHunnlaks", d$Aar[max(n_years)], ".csv", sep = ""),
-                sep = ";", row.names = FALSE,
-                col.names = FALSE, append = TRUE)
+                sep = ";", row.names = FALSE, col.names = FALSE, append = TRUE)
   } else {
     write.table(til_fil_gyting, paste("results/KgHunnlaks", d$Aar[max(n_years)], ".csv", sep = ""),
                 sep = ";", row.names = FALSE)
