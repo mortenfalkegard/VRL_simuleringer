@@ -28,7 +28,9 @@ for (m in indeks_simuler) {
   elv_filnavn <- paste("data/vassdrag/", elveliste[m, "Filnavn"], ".csv", sep = "")
   d <- import(elv_filnavn, encoding = "UTF-8")
   d$Vdrnr <- elveliste$VdrNr[m] # erstatt vassdragsnummer slik at vi er sikker på at vi har med oss riktig nr videre
-  d <- d %>% rename(Gjen_vekt_o7kg = Gjen_vekto7kg) # Feil navn på Gjen_vekt_o7kg i input, ta vekk når dette er fikset
+  d <- d %>%
+    rename(Gjen_vekt_o7kg = Gjen_vekto7kg) %>% # feil navn på Gjen_vekt_o7kg i input, ta vekk når dette er fikset
+    mutate(Region = elveliste$RegionNr[m]) # legg til region-id
   if (m == 1) {
     elvedata <- d
   } else {
@@ -36,6 +38,31 @@ for (m in indeks_simuler) {
   }
 }
 
+# regn ut regionale gjennomsnittsstørrelser pr år for laks i de ulike vektklassene (vekt/antall),
+# disse snittstørrelsene brukes i simuleringen for å beregne gytebestand i vassdrag med telling og
+# manglende fangstdata
+gjennomsnitt_str <- tibble(region = numeric(),
+                           aar = numeric(),
+                           snitt_u3kg = numeric(),
+                           snitt_o3u7kg = numeric(),
+                           snitt_o7kg = numeric())
+indeks_regioner <- unique(elvedata$Region) # liste over regioner i elvedataene
+indeks_aar <- unique(elvedata$Aar) # liste over år i elvedataene
+for (r in indeks_regioner) {
+  for (a in indeks_aar) {
+    d <- elvedata %>% filter(Region == r & Aar == a)
+    gjennomsnitt_str <- gjennomsnitt_str %>%
+      add_row(region = r, aar = a,
+              snitt_u3kg = sum(d$Laks_vekt_u3kg, d$Gjen_vekt_u3kg) / sum(d$Laks_ant_u3kg, d$Gjen_ant_u3kg),
+              snitt_o3u7kg = sum(d$Laks_vekt_o3u7kg, d$Gjen_vekt_o3u7kg) / sum(d$Laks_ant_o3u7kg, d$Gjen_ant_o3u7kg),
+              snitt_o7kg = sum(d$Laks_vekt_o7kg, d$Gjen_vekt_o7kg) / sum(d$Laks_ant_o7kg, d$Gjen_ant_o7kg))
+  }
+}
+gjennomsnitt_str <- gjennomsnitt_str %>% # sett NA verdier i gjennomsnitt_str til regionale gjennomsnitt
+  group_by(region) %>%
+  mutate_at(vars(snitt_u3kg:snitt_o7kg), ~replace_na(., mean(., na.rm = TRUE)))
+
+# ====================  START SIMULERING ==================== #
 for (m in indeks_simuler) {
 
   # hent ut data for ett vassdrag
@@ -122,9 +149,9 @@ for (m in indeks_simuler) {
     if (sum(lite_fangst_smaa, na.rm = TRUE) > 0 || sum(uten_fangst_smaa, na.rm = TRUE) > 0) {
       lite_eller_uten_fangst_smaa <- which(lite_fangst_smaa | uten_fangst_smaa)  # Rader med fangst færre enn 5
 
-      # Færre enn totalt 5 avliva smålaks i tidsserien ---> standard snittvekt
+      # Færre enn totalt 5 avliva smålaks i tidsserien ---> regional snittvekt
       if (sum(d$Laks_ant_u3kg_sum, na.rm = TRUE) < 5) {
-        d$Laks_vekt_u3kg_sum[lite_eller_uten_fangst_smaa] <- 2
+        d$Laks_vekt_u3kg_sum[lite_eller_uten_fangst_smaa] <- gjennomsnitt_str$snitt_u3kg[gjennomsnitt_str$region %in% d$Region[1] & gjennomsnitt_str$aar %in% d$Aar[lite_eller_uten_fangst_smaa]]
         d$Laks_ant_u3kg_sum[lite_eller_uten_fangst_smaa] <- 1
       } else {
         fangst <- which(d$Laks_vekt_u3kg_sum > 0) # Finne rader som har vekt
@@ -171,9 +198,9 @@ for (m in indeks_simuler) {
     if (sum(lite_fangst_mellom, na.rm = TRUE) > 0 || sum(uten_fangst_mellom, na.rm = TRUE) > 0) {
       lite_eller_uten_fangst_mellom <- which(lite_fangst_mellom | uten_fangst_mellom)  # Rader med fangst færre enn 5
 
-      # Færre enn totalt 5 avliva mellomlaks i tidsserien ---> standard snittvekt
+      # Færre enn totalt 5 avliva mellomlaks i tidsserien ---> regional snittvekt
       if (sum(d$Laks_ant_o3u7kg_sum, na.rm = TRUE) < 5) {
-        d$Laks_vekt_o3u7kg_sum[lite_eller_uten_fangst_mellom] <- 4
+        d$Laks_vekt_o3u7kg_sum[lite_eller_uten_fangst_smaa] <- gjennomsnitt_str$snitt_o3u7kg[gjennomsnitt_str$region %in% d$Region[1] & gjennomsnitt_str$aar %in% d$Aar[lite_eller_uten_fangst_smaa]]
         d$Laks_ant_o3u7kg_sum[lite_eller_uten_fangst_mellom] <- 1
       } else {
         fangst <- which(d$Laks_vekt_o3u7kg_sum > 0) # Finne rader som har vekt
@@ -220,9 +247,9 @@ for (m in indeks_simuler) {
     if (sum(lite_fangst_stor, na.rm = TRUE) > 0 || sum(uten_fangst_stor, na.rm = TRUE) > 0) {
       lite_eller_uten_fangst_stor <- which(lite_fangst_stor | uten_fangst_stor)  # Rader med fangst færre enn 5
 
-      # Færre enn totalt 5 avliva storlaks i tidsserien ---> standard snittvekt
+      # Færre enn totalt 5 avliva storlaks i tidsserien ---> regional snittvekt
       if (sum(d$Laks_ant_o7kg_sum, na.rm = TRUE) < 5) {
-        d$Laks_vekt_o7kg_sum[lite_eller_uten_fangst_stor] <- 8
+        d$Laks_vekt_o7kg_sum[lite_eller_uten_fangst_smaa] <- gjennomsnitt_str$snitt_o7kg[gjennomsnitt_str$region %in% d$Region[1] & gjennomsnitt_str$aar %in% d$Aar[lite_eller_uten_fangst_smaa]]
         d$Laks_ant_o7kg_sum[lite_eller_uten_fangst_stor] <- 1
       } else {
         fangst <- which(d$Laks_vekt_o7kg_sum > 0) # Finne rader som har vekt
@@ -986,4 +1013,88 @@ for (m in indeks_simuler) {
   gytebestand_filnavn <- paste("results/vassdrag/", elveliste[m, "Filnavn"], "-gyting_hunn_kg_totalt.csv", sep = "")
   export(gyting_hunn_kg_totalt_df, gytebestand_filnavn, sep = ";", dec = ".", bom = TRUE)
 
+}
+
+
+for (m in indeks_simuler) {
+  d <- elvedata %>% filter(Vdrnr == elveliste$VdrNr[m])
+  kolonner <- c("ExpStorMin", "ExpStorMed", "ExpStorMax", "ExpMellomMin", "ExpMellomMed", "ExpMellomMax",
+                "ExpSmallMin", "ExpSmallMed", "ExpSmallMax")
+  betingelse <- d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant)
+  for (k in kolonner) {
+    d[[k]][betingelse] <- NA
+  }
+
+  # flagg år som i simuleringen skal komme ut med asterisk (uten fangst og/eller problemer med telling)
+  # "Asterisk" blir satt til 0 for år som ikke skal simuleres, og 1 for år som skal simuleres
+  # dette flagget er den gamle måten å flagge år som ikke simuleres på, og er nå bare delvis i bruk
+  # det er nå kommmet et nytt flagg i datafilene som heter "Simulering"
+  # "Asterisk" skal derfor fases ut etterhvert
+  d$Asterisk <- ifelse(is.na(d$ExpSmallMed) & is.na(d$FangstAndSmallMed) & is.na(d$Probs_small_med), 1, 0)
+
+  # nedenfor settes fangstandel til NA i år der det mangler fangst og gjenutsatte og ikke er telling
+  kolonner <- c("FangstAndStorMin", "FangstAndStorMed", "FangstAndStorMax", "FangstAndMellomMin",
+                "FangstAndMellomMed", "FangstAndMellomMax", "FangstAndSmallMin", "FangstAndSmallMed",
+                "FangstAndSmallMax")
+  betingelse <- d$Laks_ant == 0 & (d$Gjen_ant == 0 | is.na(d$Gjen_ant)) & is.na(d$Obs_laks_ant)
+  for (k in kolonner) {
+    d[[k]][betingelse] <- NA
+  }
+
+  # sette beskatningsrate til 0 der det mangler fangst for en vektklasse men det er avliva fangst for
+  # andre vektklasser, dersom da ikke året er flagget allerede
+  kolonner <- c("ExpStorMin", "ExpStorMed", "ExpStorMax")
+  betingelse <- d$Asterisk == 0 & d$Laks_ant_o7kg == 0 & (d$Laks_ant_u3kg > 0 | d$Laks_ant_o3u7kg > 0)
+  for (k in kolonner) {
+    d[[k]][betingelse] <- 0
+  }
+
+  kolonner <- c("ExpMellomMin", "ExpMellomMed", "ExpMellomMax")
+  betingelse <- d$Asterisk == 0 & d$Laks_ant_o3u7kg == 0 & (d$Laks_ant_u3kg > 0 | d$Laks_ant_o7kg > 0)
+  for (k in kolonner) {
+    d[[k]][betingelse] <- 0
+  }
+
+  kolonner <- c("ExpSmallMin", "ExpSmallMed", "ExpSmallMax")
+  betingelse <- d$Asterisk == 0 & d$Laks_ant_u3kg == 0 & (d$Laks_ant_o3u7kg > 0 | d$Laks_ant_o7kg > 0)
+  for (k in kolonner) {
+    d[[k]][betingelse] <- 0
+  }
+
+  # erstatt NA med 0 i utvalgte kolonner for å forenkle skriptet
+  kolonner <- c("StamAntSmaHo", "StamAntMelHo", "StamAntStorHo",
+                "Laks_vekt_u3kg", "Laks_vekt_o3u7kg", "Laks_vekt_o7kg",
+                "Laks_ant_u3kg", "Laks_ant_o3u7kg", "Laks_ant_o7kg",
+                "Gjen_vekt_u3kg", "Gjen_vekt_o3u7kg", "Gjen_vekt_o7kg",
+                "Gjen_ant_u3kg", "Gjen_ant_o3u7kg", "Gjen_ant_o7kg",
+                "Laks_ant", "Gjen_ant")
+  for (k in kolonner) {
+    d[[k]][is.na(d[[k]])] <- 0
+  }
+
+  # definer indeks for om det er telling eller ikke i et år, 1=telling, 0=ikke telling
+  d$telling <- with(d, ifelse(is.na(Obs_laks_ant), 0, 1))
+
+  #### --------- Vekt i år med telling --------- ####
+  # For år som har fangst og/eller gjenutsatte regner vi ut gjennomsnittsvekt: gjen_vekt+laks_vekt/gjen_ant+Laks_ant
+  # År uten fangst eller gjenutsatte : gjennomsnittet av fangst og gjenutsatt 5 nærmeste år
+
+  if (sum(d$telling) > 0) { # denne delen kjøres bare dersom det har vært telling
+
+    d$Laks_vekt_u3kg_sum <- with(d, Laks_vekt_u3kg + Gjen_vekt_u3kg)
+    d$Laks_ant_u3kg_sum <- with(d, Laks_ant_u3kg + Gjen_ant_u3kg)
+    d$Laks_vekt_o3u7kg_sum <- with(d, Laks_vekt_o3u7kg + Gjen_vekt_o3u7kg)
+    d$Laks_ant_o3u7kg_sum <- with(d, Laks_ant_o3u7kg + Gjen_ant_o3u7kg)
+    d$Laks_vekt_o7kg_sum <- with(d, Laks_vekt_o7kg + Gjen_vekt_o7kg)
+    d$Laks_ant_o7kg_sum <- with(d, Laks_ant_o7kg + Gjen_ant_o7kg)
+
+    ### SMÅLAKS
+    # Flagg hvis det mangler fangst i år med telling
+    uten_fangst_smaa <- ifelse(d$Obs_laks_ant_u3kg > 0 & d$Laks_vekt_u3kg_sum == 0, 1, 0)
+
+    # Flagg hvis færre enn 5 laks fanget i år med telling
+    lite_fangst_smaa <- ifelse(d$Obs_laks_ant_u3kg > 0 & (d$Laks_ant_u3kg_sum < 5 & d$Laks_ant_u3kg_sum > 0), 1, 0)
+
+    if (sum(d$Laks_ant_u3kg_sum) < 5) break
+  }
 }
