@@ -13,7 +13,7 @@ Repositoriet er organisert med følgende kataloger:
 
 * `data` inneholder rådataene som inngår i simuleringene
 * `src` innholder koden som simulerer gytebestand, beregner innsig og lager figurer
-* `results` er katalogen hvor resultatfiler og figurer blir lagret 
+* skriptet oppretter en katalog (`results`) hvor resultatfiler og figurer blir lagret 
 
 ## Instruksjon
 
