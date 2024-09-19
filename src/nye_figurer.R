@@ -46,12 +46,7 @@ for (m in 1:antall_elver) {
       mutate(Elvefangst_hunn = Fangst_elv_vekt_u3 * Andel_hunn_u3 + Fangst_elv_vekt_37 * Andel_hunn_37 + Fangst_elv_vekt_o7 * Andel_hunn_o7)
     df <- df %>% mutate(Simulert = 0)
 
-    for (i in 1:antall_aar) {
-      if (df$Gyting_hunn[i] == 0)
-        df$Simulert[i] <- 0
-      else
-        df$Simulert[i] <- 1
-    }
+    df$Simulert <- ifelse(df$Gyting_hunn == 0, 0, 1)
 
     kategorisering <- as.vector(df$Sanns_kat)
     Aar <- as.vector(df$Aar)
