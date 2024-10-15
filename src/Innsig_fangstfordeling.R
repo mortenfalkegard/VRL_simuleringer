@@ -113,7 +113,7 @@ fylkesliste <- unique(region_fordeling$Fylke)
 for (j in 1:antall_aar) {
   aar_indeks <- start_aar + j - 1
 
-  # initier en matrise for fordeling av restfangsten hvert år
+  # initier en matrise for fordeling av restfangsten for det aktuelle året
   restfordeling_fylke <- matrix(0, nrow = antall_fylker, ncol = antall_regioner)
 
   # filtrer ut fangstlinjer for det aktuelle året
@@ -147,17 +147,16 @@ for (j in 1:antall_aar) {
   antall_fylker_rest <- nrow(rest_aar)
 
   # loop gjennom alle fylkene med restfangst
-  for (l in 1:antall_fylker_rest) {
+  for (l in seq_len(antall_fylker_rest)) {
     # finn linjen i fordelingsmatrisen som tilsvarer fylket
-    n <- which(fylkesliste == rest_aar[l, 1])
+    fylkesindeks <- which(fylkesliste == rest_aar[l, 1])
 
-    # loop gjennom alle regionene for hvert fylke
-    for (m in 1:antall_regioner) {
-
-      # loop gjennom de tre størrelsesklassene fordelt på vekt og antall
-      for (i in 1:6) {
-        region_fangst[j, m, i] <- region_fangst[j, m, i] + (rest_aar[l, i + 2] * restfordeling_fylke[n, m])
-        region_deb[j, m, i] <- region_deb[j, m, i] + (rest_aar[l, i + 2] * restfordeling_fylke[n, m])
+    # Beregn fordeling for hver region og størrelsesklasse
+    for (m in seq_len(antall_regioner)) {
+      for (i in seq_len(6)) {
+        restmengde <- rest_aar[l, i + 2] * restfordeling_fylke[fylkesindeks, m]
+        region_fangst[j, m, i] <- region_fangst[j, m, i] + restmengde
+        region_deb[j, m, i] <- region_deb[j, m, i] + restmengde
       }
     }
   }
