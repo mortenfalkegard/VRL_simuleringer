@@ -163,11 +163,14 @@ for (j in 1:antall_aar) {
 }
 
 # fordel fangst på ytre kyst inn i fjordene
-antall_kyst <- sum(regionliste$Kontrast == 0) # antall kystregioner
-for (j in 1:antall_aar) { # loop gjennom alle årene
+antall_kystregioner <- sum(regionliste$Kontrast == 0) # antall kystregioner
+
+for (j in seq_len(antall_aar)) { # loop gjennom alle årene
+  # fordel fangst i ytre kystregioner på indre kystregioner
   region_indre[j, , 1:6] <- region_fangst[j, , 1:6] * regionliste$Kontrast
-  for (k in 1:antall_kyst) { # loop gjennom de ytre kyst regionene
-    for (i in 1:6) { # loop gjennom de tre størrelsesklassene fordelt på vekt og antall
+
+  for (k in seq_len(antall_kystregioner)) { # loop gjennom de ytre kyst regionene
+    for (i in seq_len(6)) { # loop gjennom de tre størrelsesklassene fordelt på vekt og antall
       region_leggtil[j, , i] <- region_leggtil[j, , i] +
         (region_fangst[j, k, i] * kyst_fordeling[1:antall_regioner, k + 1])
     }
@@ -180,12 +183,15 @@ sjofordeling <- matrix(0, nrow = antall_regioner * antall_aar, ncol = 8,
                        dimnames = list(NULL, c("Region", "Aar", "Vekt_u3", "Vekt_37",
                                                "Vekt_o7", "Ant_u3", "Ant_37", "Ant_o7")))  %>%
   as_tibble()
-l <- 1
-for (i in 1:antall_aar) {
-  sjofordeling$Region[l:(l + antall_regioner - 1)] <- regionliste$Regioner
-  sjofordeling$Aar[l:(l + antall_regioner - 1)] <- start_aar + i - 1
-  sjofordeling[l:(l + antall_regioner - 1), 3:8] <- region_fangst[i, , 1:6]
-  l <- l + antall_regioner
+
+# fyll inn data i sjøfangstfordelingen
+for (i in seq_len(antall_aar)) {
+  start_indeks <- (i - 1) * antall_regioner + 1
+  slutt_indeks <- i * antall_regioner
+
+  sjofordeling$Region[start_indeks:slutt_indeks] <- regionliste$Regioner
+  sjofordeling$Aar[start_indeks:slutt_indeks] <- start_aar + i - 1
+  sjofordeling[start_indeks:slutt_indeks, 3:8] <- region_fangst[i, , 1:6]
 }
 
 # lagre sjøfangstfordeling til fil
