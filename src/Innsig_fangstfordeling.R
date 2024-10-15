@@ -4,10 +4,8 @@
 # gjøres på størrelsesgruppe og både biomasse og antall.
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-library(openxlsx)
 library(tidyverse)
 library(rio)
-library(readr)
 library(purrr)
 
 # navn på output-fil fra gytebestandsimulering

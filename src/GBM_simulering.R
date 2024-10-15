@@ -6,9 +6,6 @@
 library(dplyr)       # pakke for datasettmanipulering
 library(tidyr)       # pakke for datasettmanipulering
 library(openxlsx)    # pakke for å lese og skrive Excel-filer
-library(ggplot2)     # pakke for plotting
-library(cowplot)     # pakke for plotting
-library(ggpubr)      # pakke for å sette sammen flere plott
 library(triangle)    # pakke for trekke tilfeldige tall fra trekantfordeling
 library(stringr)     # pakke for tekstbehandling
 library(rio)         # pakke for import og eksport av data
