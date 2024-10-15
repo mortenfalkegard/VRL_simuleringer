@@ -28,7 +28,10 @@ antall_regioner <- nrow(regionliste)
 # fordelingsnøkkel for fordeling av fangsten i kystregionene
 kyst_fordeling <- import("data/fordelingsnokkel_sjofangst.csv", encoding = "UTF-8")
 
+#-----------------------------------------------------------------------------------------------------------------
 # nedenfor leses de årlige fordelingsnøklene inn som brukes til å fordele kommunefangst til regioner
+#-----------------------------------------------------------------------------------------------------------------
+
 # katalog og filnavn for de årlige fordelingsnøklene
 region_filnavn <- "data/fordeling_kommune/fordelingsnokkel_kommune_fjord-%d.csv"
 
@@ -87,12 +90,15 @@ snittvekt <- vector()
 for (j in 1:antall_aar) {
   aar_indeks <- start_aar + j - 1
   aar_liste[j] <- aar_indeks
-  df <- filter(sjofangst, aar == aar_indeks) %>% arrange(komnr)
+
+  df <- sjofangst %>% 
+    filter(aar == aar_indeks) %>%
+    arrange(komnr)
+
   reg_ford <- region_fordeling  %>%
-    filter(Year == aar_indeks) %>%
-    filter(Kommunenr %in% df$komnr) %>%
+    filter(Year == aar_indeks, Kommunenr %in% df$komnr) %>%
     arrange(Kommunenr)
-  fangst <- matrix(0, nrow = nrow(reg_ford), ncol = antall_regioner)
+
   for (i in 1:6) {
     fangst <- df[, i + 4] * reg_ford[, 4:(antall_regioner + 3)]
     region_fangst[j, , i] <- colSums(fangst, na.rm = TRUE)
