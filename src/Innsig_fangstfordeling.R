@@ -8,6 +8,7 @@ library(openxlsx)
 library(tidyverse)
 library(rio)
 library(readr)
+library(purrr)
 
 # navn på output-fil fra gytebestandsimulering
 sim_kghunnlaks_filnavn <- "results/KgHunnlaks2023.csv"
@@ -29,23 +30,26 @@ antall_regioner <- nrow(regionliste)
 # fordelingsnøkkel for fordeling av fangsten i kystregionene
 kyst_fordeling <- import("data/fordelingsnokkel_sjofangst.csv", encoding = "UTF-8")
 
-# fordelingsnøkkel for å fordele kommunefangst til regioner
-region_filnavn  <- paste("data/fordeling_kommune/fordelingsnokkel_kommune_fjord-", start_aar, ".csv", sep = "")
-region_fordeling <- import(region_filnavn, encoding = "UTF-8")
-antall_kommuner <- nrow(region_fordeling)
-antall_fylker <- n_distinct(region_fordeling$Fylke)
-region_fordeling <- region_fordeling %>% mutate(Year = start_aar)
+# nedenfor leses de årlige fordelingsnøklene inn som brukes til å fordele kommunefangst til regioner
+# katalog og filnavn for de årlige fordelingsnøklene
+region_filnavn <- "data/fordeling_kommune/fordelingsnokkel_kommune_fjord-%d.csv"
 
-if (antall_aar > 1) {
-  for (y in (start_aar + 1):(start_aar + antall_aar - 1)) {
-    region_filnavn  <- paste("data/fordeling_kommune/fordelingsnokkel_kommune_fjord-", y, ".csv", sep = "")
-    neste_aar_fordeling <- import(region_filnavn, encoding = "UTF-8")
-    neste_aar_fordeling <- neste_aar_fordeling %>% mutate(Year = y)
-    region_fordeling <- rbind(region_fordeling, neste_aar_fordeling)
-  }
-}
-region_fordeling$Fylke <- as.numeric(region_fordeling$Fylke)
-region_fordeling[is.na(region_fordeling)] <- 0
+# lag en liste med årstall
+liste_aar <- start_aar:(start_aar + antall_aar - 1)
+
+# importer og slå sammen fordelingsnøklene for alle år
+region_fordeling <- map_dfr(liste_aar, ~ {
+  file_path <- sprintf(region_filnavn, .x)
+  import(file_path, encoding = "UTF-8") %>% mutate(Year = .x)
+})
+
+# konverter fylke til tall og erstatt NA med 0
+region_fordeling <- region_fordeling %>%
+  mutate(Fylke = as.numeric(Fylke)) %>%
+  replace_na(list(Fylke = 0))
+
+antall_kommuner <- n_distinct(region_fordeling$Kommune)
+antall_fylker <- n_distinct(region_fordeling$Fylke)
 
 # les inn fangststatistikk fra sjølaksefisket
 sjofangst <- import("data/ssb_sjo_1993-.csv", encoding = "UTF-8", na.strings = c(":", ".."))
