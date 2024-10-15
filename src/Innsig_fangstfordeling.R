@@ -109,32 +109,53 @@ for (j in 1:antall_aar) {
 # lag fordeling av rest
 #-----------------------------------------------------------------------------------------------------------------
 fylkesliste <- unique(region_fordeling$Fylke)
+
 for (j in 1:antall_aar) {
   aar_indeks <- start_aar + j - 1
-  # matrise hvor det bygges opp en fordelingsnøkkel for restfangsten i gitt år
-  restfordeling_fylke <- matrix(0, nrow = antall_fylker, ncol = antall_regioner)
-  df <- filter(sjofangst, aar == aar_indeks) # alle fangstlinjer fra det aktuelle året
-  df$fylke <- as.numeric(df$fylke) # fylkesnummer i fangststatistikken fra det aktuelle året
-  fordeling_aar <- filter(region_fordeling, Year == aar_indeks) # fordelingsnøkkel kommune til region det aktuelle året
 
-  for (k in seq_len(nrow(df))) { # loop gjennom alle radene i fangststatistikken
-    if (is.na(df[k, 5])) { # NA vil si at det har vært fisket men ikke oppgitt fangst pga få fiskere
-      fylkesindeks <- which(fylkesliste == df[k, 1]) # finn hvilket fylke kommunen hører til
-      fordelingsindeks <- which(fordeling_aar$Kommunenr == df[k, 3]) # finn hvilken linje i fordelingsmatrisen som tilsvarer kommunen
+  # initier en matrise for fordeling av restfangsten hvert år
+  restfordeling_fylke <- matrix(0, nrow = antall_fylker, ncol = antall_regioner)
+
+  # filtrer ut fangstlinjer for det aktuelle året
+  df <- filter(sjofangst, aar == aar_indeks)
+  df$fylke <- as.numeric(df$fylke)
+
+  # fordelingsnøkkel for regioner i det aktuelle året
+  fordeling_aar <- filter(region_fordeling, Year == aar_indeks)
+
+  # loop gjennom alle radene i fangststatistikken
+  for (k in seq_len(nrow(df))) {
+    # sjekk om fangst ikke er rapportert (NA)
+    if (is.na(df[k, 5])) {
+      # finn hvilket fylke kommunen hører til
+      fylkesindeks <- which(fylkesliste == df[k, 1])
+
+      # finn hvilken linje i fordelingsmatrisen som tilsvarer kommunen
+      fordelingsindeks <- which(fordeling_aar$Kommunenr == df[k, 3])
+
+      # legg til kommunens regionfordeling til fylket
       restfordeling_fylke[fylkesindeks, ] <- restfordeling_fylke[fylkesindeks, ] +
-        as.numeric(fordeling_aar[fordelingsindeks, 4:(antall_regioner + 3)]) # adder kommunens regionfordeling til fylket
+        as.numeric(fordeling_aar[fordelingsindeks, 4:(antall_regioner + 3)])
     }
   }
-  restfordeling_fylke <- proportions(restfordeling_fylke, 1) %>% replace(is.na(.), 0)
-  restfordeling_fylke[is.na(restfordeling_fylke)] <- 0
 
-  rest_aar <- filter(restfangst_sjo, Aar == aar_indeks) # fylkene med restfangst fra statistikken
+  # normaliser fordelingsmatrisen og erstatt NA verdier med 0
+  restfordeling_fylke <- proportions(restfordeling_fylke, 1) %>% replace(is.na(.), 0)
+
+  # fordel fylkene med restfangst på regioner
+  rest_aar <- filter(restfangst_sjo, Aar == aar_indeks)
   antall_fylker_rest <- nrow(rest_aar)
 
-  for (l in 1:antall_fylker_rest) { # loop gjennom alle fylkene med restfangst
-    n <- which(fylkesliste == rest_aar[l, 1])  # indeks for hvilken linje i fordelingsmatrisen som tilsvarer gjeldende fylke i restfangsten
-    for (m in 1:antall_regioner) { # for hvert fylke, loop gjennom regionene
-      for (i in 1:6) { # loop gjennom de tre størrelsesklassene fordelt på vekt og antall
+  # loop gjennom alle fylkene med restfangst
+  for (l in 1:antall_fylker_rest) {
+    # finn linjen i fordelingsmatrisen som tilsvarer fylket
+    n <- which(fylkesliste == rest_aar[l, 1])
+
+    # loop gjennom alle regionene for hvert fylke
+    for (m in 1:antall_regioner) {
+
+      # loop gjennom de tre størrelsesklassene fordelt på vekt og antall
+      for (i in 1:6) {
         region_fangst[j, m, i] <- region_fangst[j, m, i] + (rest_aar[l, i + 2] * restfordeling_fylke[n, m])
         region_deb[j, m, i] <- region_deb[j, m, i] + (rest_aar[l, i + 2] * restfordeling_fylke[n, m])
       }
