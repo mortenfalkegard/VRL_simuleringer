@@ -4,7 +4,8 @@
 # gjøres på størrelsesgruppe og både biomasse og antall.
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-library(tidyverse)
+library(tidyr)
+library(dplyr)
 library(rio)
 library(purrr)
 
@@ -36,10 +37,10 @@ kyst_fordeling <- import("data/fordelingsnokkel_sjofangst.csv", encoding = "UTF-
 region_filnavn <- "data/fordeling_kommune/fordelingsnokkel_kommune_fjord-%d.csv"
 
 # lag en liste med årstall
-liste_aar <- start_aar:(start_aar + antall_aar - 1)
+aar_liste <- start_aar:(start_aar + antall_aar - 1)
 
 # importer og slå sammen fordelingsnøklene for alle år
-region_fordeling <- map_dfr(liste_aar, ~ {
+region_fordeling <- map_dfr(aar_liste, ~ {
   file_path <- sprintf(region_filnavn, .x)
   import(file_path, encoding = "UTF-8") %>% mutate(Year = .x)
 })
@@ -70,7 +71,6 @@ region_deb <- array(0, c(antall_aar, antall_regioner, 6))
 
 fangst <- matrix(0, nrow = antall_kommuner, ncol = antall_regioner)
 
-aar_liste <- vector()
 elv_fangst <- array(0, c(antall_aar, antall_elver, 6)) # 6 =  3 størrelsesklasser for vekt og antall
 elv_gyting <- array(0, c(antall_aar, antall_elver, 6))
 elv_innsig <- array(0, c(antall_aar, antall_elver, 6))
@@ -89,7 +89,6 @@ snittvekt <- vector()
 #-----------------------------------------------------------------------------------------------------------------
 for (j in 1:antall_aar) {
   aar_indeks <- start_aar + j - 1
-  aar_liste[j] <- aar_indeks
 
   df <- sjofangst %>% 
     filter(aar == aar_indeks) %>%
@@ -478,7 +477,6 @@ for (i in 1:antall_elver) {
 #-----------------------------------------------------------------------------------------------------------------
 # initier data.frame for samlede resultat og begynn å sette inn variable med resultat
 #-----------------------------------------------------------------------------------------------------------------
-
 resultat_fordeling <- matrix(0, nrow = antall_elver * antall_aar, ncol = 75,
                              dimnames = list(NULL, c("VdrNr", "Vassdrag", "Aar", "RegionNr", "Region", "Gyt_vekt_u3", #1-6
                                "Gyt_vekt_37", "Gyt_vekt_o7", "Gyt_ant_u3", "Gyt_ant_37", "Gyt_ant_o7", #7-11
@@ -528,6 +526,31 @@ for (j in 1:antall_aar) {
 
   i <- i + antall_elver
 }
+
+resultat_fordeling$VdrNr <- rep(elveliste$VdrNr, times = antall_aar)
+resultat_fordeling$Vassdrag <- rep(elveliste$Vassdrag, times = antall_aar)
+resultat_fordeling$Aar <- rep(aar_liste, each = antall_elver)
+resultat_fordeling$RegionNr <- rep(elveliste$RegionNr, times = antall_aar)
+resultat_fordeling$Region <- rep(elveliste$RegionNavn, times = antall_aar)
+resultat_fordeling$BeskatningsRegion <- rep(elveliste$Normalbeskatningsregion, times = antall_aar)
+resultat_fordeling$GytingSimulert <- as.vector(t(elv_simulert))
+resultat_fordeling$Delbestand <- rep(elveliste$Delbestand, times = antall_aar)
+resultat_fordeling$Inkluder_til_Norm <- as.vector(t(elv_inkluder_normal))
+
+resultat_fordeling[, 6:11] <- matrix(elv_gyting, ncol = 6, byrow = TRUE) # Gyt_vekt_u3 - Gyt_ant_o7
+resultat_fordeling[, 12:17] <- matrix(elv_fangst, ncol = 6, byrow = TRUE) # Fangst_elv_vekt_u3 - Fangst_elv_ant_o7
+resultat_fordeling[, 18:23] <- matrix(elv_innsig, ncol = 6, byrow = TRUE) # Innsig_elv
+
+resultat_fordeling$snittvekt_u3 <- as.vector(t(elv_snittvekt[, , 1]))
+resultat_fordeling$snittvekt_37 <- as.vector(t(elv_snittvekt[, , 2]))
+resultat_fordeling$snittvekt_o7 <- as.vector(t(elv_snittvekt[, , 3]))
+
+resultat_fordeling$elveinnsig_u3kg_over1.5kg <- as.vector(t(elv_innsigvekt_over15kg))
+resultat_fordeling$andel_over_1.5kg <- as.vector(t(andel_over15kg))
+
+debug_filnavn <- paste("results/resultat_deb_fordeling_", start_aar + antall_aar - 1, ".csv", sep = "")
+export(resultat_fordeling, debug_filnavn, sep = ";", dec = ".", bom = TRUE)
+
 
 #-----------------------------------------------------------------------------------------------------------------
 # beregn innsig til elv og kyst for hvert vassdrag
