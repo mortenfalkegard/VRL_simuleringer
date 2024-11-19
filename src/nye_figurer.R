@@ -1,3 +1,8 @@
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Dette skriptet tar utgangspunkt i simuleringene av gytebestand og innsigsberegningen, og lager figurene
+# som brukes på innsynsløsningen på nettsiden til vitenskapsrådet.
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 library(rio)
 library(dplyr)
 library(tidyr)
