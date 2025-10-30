@@ -153,7 +153,7 @@ elveliste <- import("data/elveliste.csv", setclass = "tibble", encoding = "UTF-8
 antall_elver <- nrow(elveliste)
 
 for (i in 1:antall_elver) {
-  if(!elveliste$GytingSim[i]) {
+  if (!elveliste$GytingSim[i]) {
     filnavn <- str_c("data/v/", elveliste$Filnavn[i], ".csv")
     df <- read_delim(filnavn, delim = ";", show_col_types = FALSE)
     df_ssb <- elvefangst_ssb %>% filter(VdrNr == df$VdrNr[1])# %>% select(-Vassdrag)
@@ -169,6 +169,63 @@ for (i in 1:antall_elver) {
   }
 }
 
+# importer SSB-tall fra siste år, alternativt ------------------------
+elvefangst_ssb <- import("data/ssb_elv_1993-.csv", setclass = "tibble", encoding = "UTF-8")
+elveliste <- import("data/elveliste.csv", setclass = "tibble", encoding = "UTF-8")
+
+# filtrer elveliste for å finne de elvene som ikke er med i simuleringen
+elver_uten_simulering <- elveliste %>%
+  filter(TypeVassdrag == 2) %>%
+  pull(VdrNr)
+
+# hent filnavn for elver uten simulering
+filnavn_liste <- elveliste %>%
+  filter(VdrNr %in% elver_uten_simulering) %>%
+  pull(Filnavn)
+filnavn  <- filnavn_liste[1]
+
+# kjør gjennom hver elv og oppdater datafilene
+for (filnavn in filnavn_liste) {
+  # les inn datafilen for elven
+  file_path <- str_c("data/vassdrag/", filnavn, ".csv")
+  df <- import(file_path, encoding = "UTF-8")
+
+  # hent vassdragsnummer fra datafilen
+  vdr_nr <- df$VdrNr[1]
+  vassdrag <- df$Vassdrag[1]
+
+  # finn fangstdata fra 2024 for denne elven
+  df_ssb_2024 <- elvefangst_ssb %>%
+    filter(VdrNr == vdr_nr, Aar == 2024)
+
+  if (nrow(df_ssb_2024) > 0) {
+    # finn raden med data for 2023
+    row_2023 <- which(df$Aar == 2023)
+    if (length(row_2023) > 0) {
+      # lag en ny rad for 2024 basert på 2023 data
+      new_row <- df[row_2023, ]
+
+      # oppdater år til 2024
+      new_row$Aar <- 2024
+
+      # oppdater fangstdata for 2024 med data fra SSB
+      new_row[1, 10:21] <- df_ssb_2024[1, 4:15]
+
+      # legg til den nye raden i dataframen
+      df <- rbind(df, new_row)
+
+      # lagre den oppdaterte datafilen
+      export(df, file_path, ";", dec = ".", bom = TRUE)
+
+      # gi beskjed om oppdatering
+      cat("Oppdatert fil for elv:", vdr_nr, " ", vassdrag, "\n")
+    } else {
+      cat("Ingen 2023 data funnet for elv:", vdr_nr, " ", vassdrag, "\n")
+    }
+  } else {
+    cat("Ingen 2024 data funnet for elv:", vdr_nr, " ", vassdrag, "\n")
+  }
+}
 
 # les inn xlsx fra simulering og lag csv ----------------------------------
 
