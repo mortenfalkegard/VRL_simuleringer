@@ -104,7 +104,6 @@ gjennomsnitt_str <- gjennomsnitt_str %>%
     vars(snitt_u3kg:snitt_o7kg),
     ~replace_na(., mean(., na.rm = TRUE))
   )
-m <- which(elveliste$VdrNr == "161.Z")
 
 #-----------------------------------------------------------------------------------------------------------------
 # start simulering av gytebestand for hvert vassdrag
